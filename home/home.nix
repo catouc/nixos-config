@@ -1,6 +1,10 @@
 { config, pkgs, user, ... }:
 
 {
+
+  imports = [
+    (import modules/shell.nix)
+  ];
   home = {
     username = "${user}";
     homeDirectory = "/home/${user}";
@@ -16,14 +20,6 @@
       pkgs.cargo
       pkgs.docker-compose
     ];
-    
-    shellAliases = {
-      gs = "git status";
-      gp = "git push";
-      gpu = "git push -u origin $(git rev-parse --abbrev-ref HEAD)";
-      kc = "kubectl";
-      l = "ls -lisah";
-    };
     
     sessionVariables = {
       EDITOR = "vim";
