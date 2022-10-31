@@ -25,12 +25,18 @@
 
     settings = {
       add_newline = false;
-      format = "$username@$hostname$directory$git_branch$character";
+      format = "$username$hostname$directory$git_branch$character";
 
       username = {
         show_always = true;
-        format = "[$user]($style) ";
+        format = "[$user@]($style)";
         style_user = "bold green";
+      };
+
+      hostname = {
+        ssh_only = false;
+        format = "[$hostname]($style) ";
+        style = "bold green";
       };
 
       directory = {
