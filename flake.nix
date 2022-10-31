@@ -41,16 +41,5 @@
           ];
         };
       };
-
-      homeManagerConfig = {
-        inherit system pkgs;
-        username = "pb";
-        homeDirectory = "/home/pb";
-        configuration = {
-          imports = [
-            ./home/home.nix
-          ];
-        };
-      };
     };
 }
