@@ -6,6 +6,7 @@
     (import modules/shell.nix)
     (import modules/git.nix)
   ];
+
   home = {
     username = "${user}";
     homeDirectory = "/home/${user}";
