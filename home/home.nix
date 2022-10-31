@@ -11,15 +11,17 @@
     homeDirectory = "/home/${user}";
     stateVersion = "22.05";
     packages = with pkgs; [
+      pkgs.cargo
       pkgs.discord
+      pkgs.docker-compose
       pkgs.gh
       pkgs.go
+      pkgs.google-chrome
       pkgs.jetbrains.goland
       pkgs.vscode
-      pkgs.thunderbird
       pkgs.rustc
-      pkgs.cargo
-      pkgs.docker-compose
+      pkgs.spotify
+      pkgs.thunderbird
     ];
     
   };

@@ -23,7 +23,7 @@
     in {
       nixosConfigurations = {
         changeling = lib.nixosSystem {
-          inherit system;
+          inherit system pkgs;
           modules = [
             ./systems/changeling/configuration.nix
 

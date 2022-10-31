@@ -107,9 +107,6 @@
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = ''
@@ -119,13 +116,14 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
+  programs.steam.enable = true;
+
   environment.systemPackages = with pkgs; [
     file
+    gcc
     git
-    google-chrome
     htop
     jq
-    spotify
     unzip
     vim
     wget
@@ -139,8 +137,6 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-
-  programs.steam.enable = true;
 
   # List services that you want to enable:
 
