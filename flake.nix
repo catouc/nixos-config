@@ -23,16 +23,6 @@
           inherit system;
           modules = [
             ./systems/changeling/configuration.nix
-
-            home-manager.nixosModules.home-manager {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.pb = {
-                imports = [
-                  ./home/home.nix
-                ];
-              };
-            }
           ];
         };
       };
