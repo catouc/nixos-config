@@ -21,25 +21,13 @@
       pkgs.docker-compose
     ];
     
-    sessionVariables = {
-      EDITOR = "vim";
-    };
   };
     
   programs.home-manager.enable = true;
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
-  programs.autojump.enable = true;
   programs.go.enable = true;
-  programs.fzf.enable = true;
     
-  programs.bash = {
-    enable = true;
-    initExtra = ''
-      . "/$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
-    '';
-  };
-
   programs.git = {
     enable = true;
     userName = "Philipp Böschen";
@@ -59,36 +47,4 @@
     };
   };
 
-  programs.starship = {
-   enable = true;
-   
-   settings = {
-     add_newline = false;
-
-     format = "$username$directory$git_branch$character";
-       
-     username = {
-       show_always = true;
-       format = "[$user]($style) ";
-       style_user = "bold green";
-     };
-
-     directory = {
-       format = "[$path](bold green) ";
-     };
-
-     character = {
-       success_symbol = "[>](bold green)";
-       error_symbol = "[>](bold red)";
-     };
-
-     git_branch = {
-       format = "[$branch(:$remote_branch)](bold purple)";
-     };
-
-     package = {
-       disabled = true;
-     };
-   };
-  };
 }
