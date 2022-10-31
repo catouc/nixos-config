@@ -1,9 +1,10 @@
-{ config, pkgs, user, ... }:
+{ config, pkgs, user, git-email, ... }:
 
 {
 
   imports = [
     (import modules/shell.nix)
+    (import modules/git.nix)
   ];
   home = {
     username = "${user}";
@@ -27,24 +28,4 @@
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
   programs.go.enable = true;
-    
-  programs.git = {
-    enable = true;
-    userName = "Philipp Böschen";
-    userEmail = "catouc@philipp.boeschen.me";
-
-    aliases = {
-      tree = "log --graph --decorate --oneline --abbrev-commit";
-    };
-
-    extraConfig = {
-      init = {
-        defaultBranch = "main";
-      };
-      pull = {
-        rebase = true;
-      };
-    };
-  };
-
 }

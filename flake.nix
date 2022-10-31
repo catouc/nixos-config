@@ -19,6 +19,7 @@
       };
       lib = nixpkgs.lib;
       user = "pb";
+      git-email = "catouc@philipp.boeschen.me";
     in {
       nixosConfigurations = {
         changeling = lib.nixosSystem {
@@ -29,7 +30,10 @@
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = { inherit user; };
+              home-manager.extraSpecialArgs = {
+                inherit user;
+                inherit git-email;
+              };
               home-manager.users.${user} = {
                 imports = [ ./home/home.nix ];
               };
