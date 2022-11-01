@@ -22,7 +22,7 @@
         inherit system;
         config.allowUnfree = true;
         overlays = [
-          (final: prev: semver-go.packages.${system}.semVerGo)
+          #(final: prev: semver-go.packages.${system}.semVerGo)
         ];
       };
       lib = nixpkgs.lib;
