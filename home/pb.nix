@@ -1,10 +1,9 @@
-{ config, pkgs, git-email, common-pkgs, ... }:
+{ config, pkgs, common-pkgs, ... }:
 
 {
-
   imports = [
     (import modules/shell.nix)
-    (import modules/git.nix)
+    (import modules/git.nix { git-email = "catouc@philipp.boeschen.me"; })
   ];
 
   home = {
