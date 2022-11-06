@@ -57,6 +57,22 @@
             }
           ];
         };
+
+        szashune = lib.nixosSystem {
+          inherit system pkgs;
+          modules = [
+            ./systems/szashune/configuration.nix
+
+            home-manager.nixosModules.home-manager {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.pboeschen = {
+                imports = [ ./home/pboeschen.nix ];
+                imports = [ ./home/pb.nix ];
+              };
+            }
+          ];
+        };
       };
     };
 }
