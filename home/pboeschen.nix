@@ -3,6 +3,7 @@
 {
 
   imports = [
+    (import modules/common.nix)
     (import modules/shell.nix)
     (import modules/git.nix { git-email = "philipp.boeschen@booking.com"; })
   ];
@@ -21,8 +22,4 @@
       pkgs.zoom-us
     ] ++ common-pkgs;
   };
-
-  programs.home-manager.enable = true;
-  programs.direnv.enable = true;
-  programs.direnv.nix-direnv.enable = true;
 }

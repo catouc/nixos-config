@@ -2,6 +2,7 @@
 
 {
   imports = [
+    (import modules/common.nix)
     (import modules/shell.nix)
     (import modules/git.nix { git-email = "catouc@philipp.boeschen.me"; })
   ];
@@ -21,8 +22,4 @@
       pkgs.thunderbird
     ] ++ common-pkgs;
   };
-
-  programs.home-manager.enable = true;
-  programs.direnv.enable = true;
-  programs.direnv.nix-direnv.enable = true;
 }
