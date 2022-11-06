@@ -1,4 +1,4 @@
-{ config, pkgs, common-pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [
@@ -20,6 +20,6 @@
       pkgs.vscode
       pkgs.rustc
       pkgs.thunderbird
-    ] ++ common-pkgs;
+    ];
   };
 }

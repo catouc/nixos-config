@@ -1,4 +1,4 @@
-{ config, pkgs, common-pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
 
@@ -20,6 +20,6 @@
       pkgs.kustomize
       pkgs.slack
       pkgs.zoom-us
-    ] ++ common-pkgs;
+    ];
   };
 }
