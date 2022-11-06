@@ -26,8 +26,13 @@
         ];
       };
       lib = nixpkgs.lib;
-      user = "pb";
-      git-email = "catouc@philipp.boeschen.me";
+      common-pkgs = [
+        pkgs.delta
+        pkgs.go
+        pkgs.google-chrome
+        pkgs.jetbrains.goland
+        pkgs.spotify
+      ];
     in {
       nixosConfigurations = {
         changeling = lib.nixosSystem {
@@ -39,11 +44,32 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = {
-                inherit user;
-                inherit git-email;
+                user = "pb";
+                git-email = "catouc@philipp.boeschen.me";
+                inherit common-pkgs;
               };
-              home-manager.users.${user} = {
-                imports = [ ./home/home.nix ];
+              home-manager.users.pb = {
+                imports = [ ./home/pb.nix ];
+              };
+            }
+          ];
+        };
+
+        fractine = lib.nixosSystem {
+          inherit system pkgs;
+          modules = [
+            ./systems/changeling/configuration.nix
+
+            home-manager.nixosModules.home-manager {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {
+                user = "pboeschen";
+                git-email = "philipp.boeschen@booking.com";
+                inherit common-pkgs;
+              };
+              home-manager.users.pboeschen = {
+                imports = [ ./home/pboeschen.nix ];
               };
             }
           ];

@@ -1,4 +1,4 @@
-{ config, pkgs, user, git-email, ... }:
+{ config, pkgs, git-email, common-pkgs, ... }:
 
 {
 
@@ -8,25 +8,21 @@
   ];
 
   home = {
-    username = "${user}";
-    homeDirectory = "/home/${user}";
+    username = "pb";
+    homeDirectory = "/home/pb";
     stateVersion = "22.05";
-    packages = with pkgs; [
+    packages = [
       pkgs.cargo
       pkgs.discord
       pkgs.docker-compose
+      pkgs.gcc
       pkgs.gh
-      pkgs.go
-      pkgs.google-chrome
-      pkgs.jetbrains.goland
       pkgs.vscode
       pkgs.rustc
-      pkgs.spotify
       pkgs.thunderbird
-    ];
-    
+    ] ++ common-pkgs;
   };
-    
+
   programs.home-manager.enable = true;
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
