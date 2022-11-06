@@ -12,7 +12,7 @@
     username = "pboeschen";
     homeDirectory = "/home/pboeschen";
     stateVersion = "22.05";
-    packages = with pkgs; [
+    packages = [
       pkgs.gcc
       pkgs.globalprotect-openconnect
       pkgs.k9s
