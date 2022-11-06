@@ -68,6 +68,8 @@
               home-manager.useUserPackages = true;
               home-manager.users.pboeschen = {
                 imports = [ ./home/pboeschen.nix ];
+              };
+              home-manager.users.pb = {
                 imports = [ ./home/pb.nix ];
               };
             }

@@ -31,6 +31,4 @@ in
       pkgs.zoom-us
     ];
   };
-
-  services.globalprotect.enable = true;
 }
