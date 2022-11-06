@@ -3,10 +3,19 @@
 {
   home.packages = [
     pkgs.delta
+    pkgs.file
+    pkgs.gcc
+    pkgs.git
     pkgs.go
     pkgs.google-chrome
+    pkgs.htop
     pkgs.jetbrains.goland
+    pkgs.jq
+    pkgs.unzip
+    pkgs.vim
+    pkgs.wget
     pkgs.spotify
+    pkgs.zip
   ];
 
   programs.home-manager.enable = true;
