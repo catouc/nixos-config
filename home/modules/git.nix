@@ -1,4 +1,4 @@
-{ git-email, ... }:
+{ git-email, url-rewrites ? {}, ... }:
 {
   programs.git = {
     enable = true;
@@ -42,6 +42,8 @@
       push = {
         autoSetupRemote = true;
       };
+
+      url = {};
     };
   };
 }

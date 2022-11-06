@@ -1,11 +1,20 @@
 { config, pkgs, ... }:
-
+let
+  url-rewrites = {
+    "ssh://git@gitlab.booking.com/" = {
+      insteadOf = "https://gitlab.booking.com/";
+    };
+  };
+in
 {
 
   imports = [
     (import modules/common.nix)
     (import modules/shell.nix)
-    (import modules/git.nix { git-email = "philipp.boeschen@booking.com"; })
+    (import modules/git.nix {
+      git-email = "philipp.boeschen@booking.com";
+      inherit url-rewrites;
+    })
   ];
 
   home = {
