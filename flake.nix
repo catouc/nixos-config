@@ -44,7 +44,6 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = {
-                user = "pb";
                 git-email = "catouc@philipp.boeschen.me";
                 inherit common-pkgs;
               };
@@ -64,7 +63,6 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = {
-                user = "pboeschen";
                 git-email = "philipp.boeschen@booking.com";
                 inherit common-pkgs;
               };
