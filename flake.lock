@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "flake-utils": {
+      "locked": {
+        "lastModified": 1652776076,
+        "narHash": "sha256-gzTw/v1vj4dOVbpBSJX4J0DwUR6LIyXo7/SuuTJp1kM=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "04c1b180862888302ddfb2e3ad9eaa63afc60cf8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "ref": "v1.0.0",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -8,11 +24,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1667708081,
-        "narHash": "sha256-FChEy05x4ed/pttjfTeKxjPCnHknMYrUtDyBiYbreT4=",
+        "lastModified": 1667830176,
+        "narHash": "sha256-TNm8W88Jf9qELqKI8rGMr0sZWlTV9WKIlqN4dzvuKUA=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "1ef0da321217c6c19b7a30509631c080a19321e5",
+        "rev": "886675991b643b701a33f533443db165c70692d1",
         "type": "github"
       },
       "original": {
@@ -46,16 +62,17 @@
     },
     "semver-go": {
       "inputs": {
+        "flake-utils": "flake-utils",
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1667758789,
-        "narHash": "sha256-c3aTu7v+lcwTCdoLiEA54Af5ODQ+Gkkp+UeMumMMVN4=",
+        "lastModified": 1667760373,
+        "narHash": "sha256-r4T8G4D1Tna+jynL65zAnKkhcjKYaByLEtkXTR/GimY=",
         "owner": "catouc",
         "repo": "semver-go",
-        "rev": "5d291b327099fdf6f7ce74223e60e142e256c4db",
+        "rev": "f49c994521650b9ff24e6e6d618ca48a3f47821c",
         "type": "github"
       },
       "original": {
