@@ -24,6 +24,7 @@ in
     packages = [
       pkgs.gcc
       pkgs.globalprotect-openconnect
+      pkgs.jiwa
       pkgs.k9s
       pkgs.kubectl
       pkgs.kustomize

@@ -13,9 +13,14 @@
       url = "github:catouc/semver-go";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    jiwa = {
+      url = "github:catouc/jiwa";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, semver-go, }:
+  outputs = { self, nixpkgs, home-manager, semver-go, jiwa, }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -23,6 +28,7 @@
         config.allowUnfree = true;
         overlays = [
           (final: prev: {semver-go = semver-go.packages.${system}.semver-go;})
+          (final: prev: {jiwa = jiwa.packages.${system}.jiwa;})
         ];
       };
       lib = nixpkgs.lib;
