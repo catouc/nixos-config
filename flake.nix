@@ -46,7 +46,7 @@
         fractine = lib.nixosSystem {
           inherit system pkgs;
           modules = [
-            ./systems/changeling/configuration.nix
+            ./systems/fractine/configuration.nix
 
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
