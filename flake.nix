@@ -9,11 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    semver-go = {
-      url = "github:catouc/semver-go";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     jiwa = {
       url = "github:catouc/jiwa";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -27,7 +22,6 @@
         inherit system;
         config.allowUnfree = true;
         overlays = [
-          (final: prev: {semver-go = semver-go.packages.${system}.semver-go;})
           (final: prev: {jiwa = jiwa.packages.${system}.jiwa;})
         ];
       };

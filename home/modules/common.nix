@@ -15,7 +15,7 @@
     pkgs.vim
     pkgs.wget
     pkgs.spotify
-    pkgs.semver-go
+    pkgs.semver
     pkgs.tmux
     pkgs.zip
   ];
