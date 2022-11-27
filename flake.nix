@@ -15,7 +15,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, semver-go, jiwa, }:
+  outputs = { self, nixpkgs, home-manager, jiwa, }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
