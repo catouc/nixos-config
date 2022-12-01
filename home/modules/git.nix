@@ -43,7 +43,7 @@
         autoSetupRemote = true;
       };
 
-      url = {};
+      url = url-rewrites;
     };
   };
 }
