@@ -11,6 +11,7 @@
     pkgs.htop
     pkgs.jetbrains.goland
     pkgs.jq
+    pkgs.kitty
     pkgs.obsidian
     pkgs.unzip
     pkgs.vim
