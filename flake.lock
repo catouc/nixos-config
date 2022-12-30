@@ -45,11 +45,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1672396188,
-        "narHash": "sha256-n2/WR2vvMENGoTee5O7rL9vq5OuIohAX0pDqysetB3M=",
+        "lastModified": 1672400564,
+        "narHash": "sha256-zvkSFDskJHWNV3FFhNIWYTP88K8b9N5IN085396JL9Q=",
         "owner": "catouc",
         "repo": "jiwa",
-        "rev": "7ba5a27038bec7a6eaa66ad0bcb10165a8b9bc68",
+        "rev": "07b0977f0e90664bb52a9e5b4469073709fe2442",
         "type": "github"
       },
       "original": {
