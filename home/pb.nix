@@ -14,10 +14,7 @@
     packages = [
       pkgs.cargo
       pkgs.discord
-      pkgs.docker-compose
       pkgs.gcc
-      pkgs.gh
-      pkgs.vscode
       pkgs.rustc
       pkgs.thunderbird
     ];

@@ -76,5 +76,16 @@
           ];
         };
       };
+
+      templates = {
+        go = {
+          path = ./templates/go;
+          description = "My Go application template";
+          welcomeText = ''
+            # Go application template
+            run `./setup.sh <package name>` to set this thing up properly
+          '';
+        };
+      };
     };
 }
