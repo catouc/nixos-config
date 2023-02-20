@@ -19,6 +19,7 @@
     pkgs.spotify
     pkgs.semver
     pkgs.tmux
+    pkgs.xsv
     pkgs.zip
   ];
 
