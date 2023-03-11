@@ -12,6 +12,7 @@
     pkgs.jetbrains.goland
     pkgs.jq
     pkgs.lapce
+    pkgs.ncspot
     pkgs.obsidian
     pkgs.unzip
     pkgs.vim
