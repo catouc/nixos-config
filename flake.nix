@@ -77,6 +77,11 @@
         };
       };
 
+      homeConfigurations.pb = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [ ./home/pb.nix ];
+      };
+
       templates = {
         go = {
           path = ./templates/go;
