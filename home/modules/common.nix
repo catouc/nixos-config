@@ -7,6 +7,7 @@
     pkgs.gcc
     pkgs.git
     pkgs.go
+    pkgs.gopls
     pkgs.google-chrome
     pkgs.htop
     pkgs.jetbrains.goland
@@ -27,4 +28,19 @@
   programs.home-manager.enable = true;
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
+  programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+    plugins = with pkgs.vimPlugins; [
+      {
+        plugin = nvim-lspconfig;
+	type = "lua";
+	config = ''
+	  local lspconfig = require('lspconfig')
+	  lspconfig.gopls.setup{}
+	'';
+      }
+    ];
+  };
 }
