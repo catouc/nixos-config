@@ -32,6 +32,10 @@
     enable = true;
     viAlias = true;
     vimAlias = true;
+    extraConfig = ''
+      syntax off
+      set number
+    '';
     plugins = with pkgs.vimPlugins; [
       {
         plugin = nvim-lspconfig;
