@@ -13,7 +13,6 @@
     stateVersion = "22.05";
     packages = [
       pkgs.cargo
-      pkgs.discord
       pkgs.gcc
       pkgs.rustc
       pkgs.thunderbird
