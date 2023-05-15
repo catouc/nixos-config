@@ -8,6 +8,7 @@
     pkgs.git
     pkgs.go
     pkgs.gopls
+    pkgs.gotools
     pkgs.google-chrome
     pkgs.htop
     pkgs.jq
