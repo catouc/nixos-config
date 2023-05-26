@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 nix flake update
 hostname="$(hostname -s)"
 sudo nixos-rebuild switch --flake .#"$hostname"
