@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+hostname="$(hostname -s)"
+sudo nixos-rebuild switch --flake .#"$hostname"
+
