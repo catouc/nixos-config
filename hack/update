@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+nix flake update
 hostname="$(hostname -s)"
 sudo nixos-rebuild switch --flake .#"$hostname"
+git add flake.lock
+git commit -m "Update flake.lock"
 
