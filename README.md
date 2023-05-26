@@ -1,5 +1,9 @@
 # My Nix configs
 
+## Updating linux boxes
+
+A helper script at `./hack/update` is there that will prepare the lock file, reconfigure the system and then try to add the new lock to git and commit
+
 # Chromebook
 
 ## Special notes
