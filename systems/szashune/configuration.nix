@@ -86,6 +86,8 @@
     '';
   };
 
+  programs.steam.enable = true;
+
   services.globalprotect.enable = true;
 
   system.stateVersion = "22.05";
