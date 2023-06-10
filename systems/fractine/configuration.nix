@@ -32,8 +32,27 @@
   # Enable the GNOME Desktop Environment.
   services.xserver.enable = true;
   services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  #services.xserver.desktopManager.gnome.enable = true;
   services.xserver.displayManager.gdm.wayland = false;
+
+  environment.loginShellInit = ''
+    [[ "$(tty)" == /dev/tty1 ]] && sway
+  '';
+
+  # Hardware Support for Wayland Sway
+  hardware = {
+    opengl = {
+      enable = true;
+      driSupport = true;
+    };
+  };
+
+  security.polkit.enable = true;
+
+  # Swaylock
+  security.pam.services.swaylock = {
+    text = "auth include login";
+  };
 
   # Configure keymap in X11
   services.xserver = {

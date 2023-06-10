@@ -5,6 +5,13 @@ let
       insteadOf = "https://gitlab.booking.com/";
     };
   };
+
+  vpnLogin = pkgs.writeShellScriptBin "vpn" ''
+    gpclient --start-minimized --now gp.booking.com 2> ~/error.log &
+    until $(ip route | grep tun0); do sleep 1; done
+    sudo ip route del default dev tun0
+    sudo ip route add 10.0.0.0/8 dev tun0
+  '';
 in
 {
 
@@ -18,6 +25,25 @@ in
     })
   ];
 
+  wayland.windowManager.sway = {
+    enable = true;
+    config = rec {
+      modifier = "Mod4";
+      # Use kitty as default terminal
+      terminal = "alacritty"; 
+      input = {
+	"type:touchpad" = {
+	  tap = "enabled"; 
+	  natural_scroll = "enabled"; 
+	};
+      };
+      startup = [
+        # Launch Firefox on start
+        {command = "firefox";}
+      ];
+    };
+  };
+
   home = {
     username = "pboeschen";
     homeDirectory = "/home/pboeschen";
@@ -30,6 +56,16 @@ in
       pkgs.kubectl
       pkgs.kustomize
       pkgs.slack
+      pkgs.zoom-us
+      vpnLogin
+      pkgs.zoom-us
+      # sway
+      pkgs.swaylock
+      pkgs.swayidle
+      pkgs.wl-clipboard
+      pkgs.mako
+      pkgs.alacritty
+      pkgs.wofi
     ];
   };
 }
