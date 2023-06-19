@@ -1,5 +1,16 @@
 # My Nix configs
 
+# NixOS boxes
+
+## Removing old grub entries
+
+This [comment](https://github.com/NixOS/nixpkgs/issues/3542#issuecomment-695162502) has gotten me there to cleanup properly. TL;DR
+
+```
+sudo nix-env --delete-generations 10d --profile /nix/var/nix/profiles/system
+sudo nixos-rebuild switch --flake .#$(uname -n)
+```
+
 ## Updating linux boxes
 
 A helper script at `./hack/update` is there that will prepare the lock file, reconfigure the system and then try to add the new lock to git and commit
