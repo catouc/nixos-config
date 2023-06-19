@@ -30,7 +30,6 @@ in
       pkgs.kubectl
       pkgs.kustomize
       pkgs.slack
-      pkgs.zoom-us
     ];
   };
 }

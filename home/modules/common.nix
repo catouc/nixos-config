@@ -3,6 +3,7 @@
 {
   home.packages = [
     pkgs.delta
+    pkgs.dig
     pkgs.file
     pkgs.gcc
     pkgs.git
@@ -16,7 +17,6 @@
     pkgs.unzip
     pkgs.vim
     pkgs.wget
-    pkgs.spotify
     pkgs.semver
     pkgs.tmux
     pkgs.xsv
