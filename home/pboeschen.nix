@@ -63,7 +63,7 @@ in
       pkgs.swaylock
       pkgs.swayidle
       pkgs.wl-clipboard
-      pkgs.mako
+      # pkgs.mako notification daemon
       pkgs.alacritty
       pkgs.wofi
     ];
