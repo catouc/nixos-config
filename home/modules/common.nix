@@ -2,6 +2,7 @@
 
 {
   home.packages = [
+    pkgs.bluez
     pkgs.delta
     pkgs.dig
     pkgs.file
