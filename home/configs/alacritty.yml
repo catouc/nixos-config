@@ -2,5 +2,32 @@ font:
   normal:
     family: DroidSansM Nerd Font Mono
     style: Regular
-
   size: 11
+colors:
+  cursor:
+    cursor: '#FFE64D'
+    text: '#FFE64D'
+  primary:
+    background: '#0C141F'
+    foreground: '#6FC3DF'
+  selection:
+    background: '#F58C4B'
+    text: '#6FC3DF'
+  normal:
+    black: '#0C141F'
+    blue: '#6FC3DF'
+    cyan: '#0D5C63'
+    green: '#44AF69'
+    magenta: '#A23E48'
+    red: '#Df740C'
+    white: '#FFFFFF'
+    yellow: '#FFE64D'
+  bright:
+    black: '#666666'
+    blue: '#E6FFFF'
+    cyan: '#12848E'
+    green: '#50DC81'
+    magenta: '#FFFFFF'
+    red: '#FA3F52'
+    white: '#FFFFFF'
+    yellow: '#FFFF00'

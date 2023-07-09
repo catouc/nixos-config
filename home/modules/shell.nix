@@ -31,26 +31,26 @@
       username = {
         show_always = true;
         format = "[$user@]($style)";
-        style_user = "bold green";
+        style_user = "bold red";
       };
 
       hostname = {
         ssh_only = false;
         format = "[$hostname]($style) ";
-        style = "bold green";
+        style = "bold red";
       };
 
       directory = {
-        format = "[$path](bold green) ";
+        format = "[$path](bold red) ";
       };
 
       character = {
-        success_symbol = "[>](bold green)";
+        success_symbol = "[>](bold yellow)";
         error_symbol = "[>](bold red)";
       };
 
       git_branch = {
-        format = "[$branch(:$remote_branch)](bold purple)";
+        format = "[$branch(:$remote_branch)](bold yellow)";
       };
 
       package = {
