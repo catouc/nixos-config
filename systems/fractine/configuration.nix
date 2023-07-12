@@ -74,6 +74,8 @@
     pulse.enable = true;
   };
 
+  services.upower.enable = true;
+
   virtualisation.docker.enable = true;
 
   users.users.pboeschen = {
