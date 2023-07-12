@@ -7,10 +7,24 @@ let
   };
 
   vpnLogin = pkgs.writeShellScriptBin "vpn" ''
-    gpclient --start-minimized --now gp.booking.com 2> ~/error.log &
-    until $(ip route | grep tun0); do sleep 1; done
-    sudo ip route del default dev tun0
-    sudo ip route add 10.0.0.0/8 dev tun0
+
+    if ! [ $(id -u) = 0 ]; then
+	echo "The script needs to be run with sudo" >&2
+	exit 1
+    fi
+
+    if [ $SUDO_USER ]; then
+	real_user=$SUDO_USER
+    else
+	real_user=$(whoami)
+    fi
+
+    sudo -u $real_user gpclient --start-minimized --now gp.booking.com 2> $HOME/error.log &
+    sudo -u $real_user eval `ssh-agent`
+    sudo -u $real_user ssh -A ssh.booking.com
+    until $(ip route | grep -q tun0); do sleep 1; done
+    ip route del default dev tun0
+    ip route add 10.0.0.0/8 dev tun0
   '';
 in
 {
