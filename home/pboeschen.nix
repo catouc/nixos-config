@@ -75,6 +75,7 @@ in
       pkgs.kustomize
       pkgs.slack
       pkgs.zoom-us
+      pkgs.vault
       vpnLogin
       pkgs.zoom-us
       # sway
