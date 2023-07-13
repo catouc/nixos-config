@@ -20,8 +20,6 @@ let
     fi
 
     sudo -u $real_user gpclient --start-minimized --now gp.booking.com 2> $HOME/error.log &
-    sudo -u $real_user eval `ssh-agent`
-    sudo -u $real_user ssh -A ssh.booking.com
     until $(ip route | grep -q tun0); do sleep 1; done
     ip route del default dev tun0
     ip route add 10.0.0.0/8 dev tun0
