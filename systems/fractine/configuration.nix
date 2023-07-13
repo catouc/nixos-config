@@ -62,8 +62,6 @@
   services.printing.enable = true;
   services.blueman.enable = true;
 
-  # Enable sound with pipewire.
-  sound.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;

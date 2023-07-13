@@ -11,6 +11,17 @@ sudo nix-env --delete-generations 10d --profile /nix/var/nix/profiles/system
 sudo nixos-rebuild switch --flake .#$(uname -n)
 ```
 
+## Connect bluetooth headphones
+
+```
+bluetoothctl scan
+# fish out device ID
+bluetoothctl pair <ID>
+bluetoothctl connect <ID>
+```
+
+Ideally pipewire should pick this up then if you followed https://nixos.wiki/wiki/PipeWire
+
 ## Updating linux boxes
 
 A helper script at `./hack/update` is there that will prepare the lock file, reconfigure the system and then try to add the new lock to git and commit

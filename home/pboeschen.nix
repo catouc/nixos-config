@@ -62,6 +62,12 @@ in
     target = "./.config/alacritty/alacritty.yml";
   };
 
+  home.file."wireplumber.bluetooth.lua.d" = {
+    enable = true;
+    source = ./configs/wireplumber-51-bluez-config.lua;
+    target = "./.config/wireplumber/bluetooth.lua.d/51-bluez-config.lua";
+  };
+
   home = {
     username = "pboeschen";
     homeDirectory = "/home/pboeschen";
