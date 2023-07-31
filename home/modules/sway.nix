@@ -27,6 +27,5 @@
     # pkgs.mako notification daemon
     pkgs.alacritty
     pkgs.wofi
-    (pkgs.nerdfonts.override { fonts = [ "DroidSansMono" ]; })
   ];
 }
