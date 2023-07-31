@@ -1,10 +1,29 @@
-{ config, pkgs, ... }:
+{ pkgs, config, ... }:
 let
   url-rewrites = {
     "ssh://git@gitlab.booking.com/" = {
       insteadOf = "https://gitlab.booking.com/";
     };
   };
+
+  vpnLogin = pkgs.writeShellScriptBin "vpn" ''
+
+    if ! [ $(id -u) = 0 ]; then
+	echo "The script needs to be run with sudo" >&2
+	exit 1
+    fi
+
+    if [ $SUDO_USER ]; then
+	real_user=$SUDO_USER
+    else
+	real_user=$(whoami)
+    fi
+
+    sudo -u $real_user gpclient --start-minimized --now gp.booking.com 2> $HOME/error.log &
+    until $(ip route | grep -q tun0); do sleep 1; done
+    ip route del default dev tun0
+    ip route add 10.0.0.0/8 dev tun0
+  '';
 in
 {
 
@@ -18,6 +37,37 @@ in
     })
   ];
 
+  wayland.windowManager.sway = {
+    enable = true;
+    config = rec {
+      modifier = "Mod4";
+      # Use kitty as default terminal
+      terminal = "alacritty"; 
+      input = {
+	"type:touchpad" = {
+	  tap = "enabled"; 
+	  natural_scroll = "enabled"; 
+	};
+      };
+      startup = [
+        # Launch Firefox on start
+        {command = "firefox";}
+      ];
+    };
+  };
+
+  home.file."alacritty.yml" = {
+    enable = true;
+    source = ./configs/alacritty.yml;
+    target = "./.config/alacritty/alacritty.yml";
+  };
+
+  home.file."wireplumber.bluetooth.lua.d" = {
+    enable = true;
+    source = ./configs/wireplumber-51-bluez-config.lua;
+    target = "./.config/wireplumber/bluetooth.lua.d/51-bluez-config.lua";
+  };
+
   home = {
     username = "pboeschen";
     homeDirectory = "/home/pboeschen";
@@ -30,6 +80,18 @@ in
       pkgs.kubectl
       pkgs.kustomize
       pkgs.slack
+      pkgs.zoom-us
+      pkgs.vault
+      vpnLogin
+      pkgs.zoom-us
+      # sway
+      pkgs.swaylock
+      pkgs.swayidle
+      pkgs.wl-clipboard
+      # pkgs.mako notification daemon
+      pkgs.alacritty
+      pkgs.wofi
+      (pkgs.nerdfonts.override { fonts = [ "DroidSansMono" ]; })
     ];
   };
 }

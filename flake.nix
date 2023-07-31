@@ -1,5 +1,5 @@
 {
-  description = "Phils config";
+  description = "Phils config ";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -37,7 +37,10 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.pb = {
-                imports = [ ./home/pb.nix ];
+                imports = [
+		  ./home/pb.nix
+		  ./home/modules/sway.nix
+		];
               };
             }
           ];
@@ -52,7 +55,10 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.pboeschen = {
-                imports = [ ./home/pboeschen.nix ];
+                imports = [
+		  ./home/pboeschen.nix
+		  ./home/modules/sway.nix
+		];
               };
             }
           ];
@@ -67,10 +73,14 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.pboeschen = {
-                imports = [ ./home/pboeschen.nix ];
+                imports = [
+		  ./home/pboeschen.nix
+		];
               };
               home-manager.users.pb = {
-                imports = [ ./home/pb.nix ];
+                imports = [
+		  ./home/pb.nix
+		];
               };
             }
           ];
@@ -79,7 +89,9 @@
 
       homeConfigurations.pb = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [ ./home/pb.nix ];
+        modules = [
+	  ./home/pb.nix
+	];
       };
 
       templates = {

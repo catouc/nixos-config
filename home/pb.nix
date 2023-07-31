@@ -1,5 +1,4 @@
-{ config, pkgs, ... }:
-
+{ pkgs, config, ... }:
 {
   imports = [
     (import modules/common.nix)
