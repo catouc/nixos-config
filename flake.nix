@@ -42,6 +42,7 @@
       common-imports = [
 	./home/modules/common.nix
 	./home/modules/shell.nix
+	./home/modules/terminal.nix
 	./home/modules/editor.nix
 	./home/modules/git.nix
       ];

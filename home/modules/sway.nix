@@ -14,18 +14,11 @@
     };
   };
 
-  home.file."alacritty.yml" = {
-    enable = true;
-    source = ../configs/alacritty.yml;
-    target = "./.config/alacritty/alacritty.yml";
-  };
-
   home.packages = [
     pkgs.swaylock
     pkgs.swayidle
     pkgs.wl-clipboard
     # pkgs.mako notification daemon
-    pkgs.alacritty
     pkgs.wofi
   ];
 }
