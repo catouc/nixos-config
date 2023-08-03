@@ -26,17 +26,6 @@ let
   '';
 in
 {
-
-  imports = [
-    (import modules/common.nix)
-    (import modules/shell.nix)
-    (import modules/editor.nix)
-    (import modules/git.nix {
-      git-email = "philipp.boeschen@booking.com";
-      inherit url-rewrites;
-    })
-  ];
-
   wayland.windowManager.sway = {
     enable = true;
     config = rec {

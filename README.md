@@ -35,4 +35,3 @@ A helper script at `./hack/update` is there that will prepare the lock file, rec
 # TODO
 
 * Move font config to shared file instead of copying it between systems
-* Think about moving all of the home manager modules into the flake.nix instead of inside of a layer of indirection, then just create a `workpackages` and `personalpackages` module?
