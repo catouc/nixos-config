@@ -111,6 +111,14 @@
             run `./setup.sh <package name>` to set this thing up properly
           '';
         };
+        go-shell = {
+          path = ./templates/go-shell;
+          description = "My Go shell template";
+          welcomeText = ''
+            # Go application template
+            run `./setup.sh` to set this thing up properly
+          '';
+        };
       };
     };
 }
