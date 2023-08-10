@@ -82,6 +82,7 @@
               home-manager.users.pboeschen = {
                 imports = [
 		  ./home/pboeschen.nix
+		  ./home/modules/sway.nix
 		] ++ common-imports;
               };
               home-manager.users.pb = {
