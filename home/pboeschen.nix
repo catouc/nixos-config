@@ -26,36 +26,22 @@ let
   '';
 in
 {
-  wayland.windowManager.sway = {
-    enable = true;
-    config = rec {
-      modifier = "Mod4";
-      # Use kitty as default terminal
-      terminal = "alacritty"; 
-      input = {
-	"type:touchpad" = {
-	  tap = "enabled"; 
-	  natural_scroll = "enabled"; 
-	};
-      };
-      startup = [
-        # Launch Firefox on start
-        {command = "firefox";}
-      ];
-    };
-  };
-
-  home.file."alacritty.yml" = {
-    enable = true;
-    source = ./configs/alacritty.yml;
-    target = "./.config/alacritty/alacritty.yml";
-  };
-
   home.file."wireplumber.bluetooth.lua.d" = {
     enable = true;
     source = ./configs/wireplumber-51-bluez-config.lua;
     target = "./.config/wireplumber/bluetooth.lua.d/51-bluez-config.lua";
   };
+
+  imports = [
+    (import ./modules/git.nix {
+      git-email = "philipp.boeschen@booking.com";
+      url-rewrites = {
+        "ssh://git@gitlab.booking.com/" = {
+          insteadOf = "https://gitlab.booking.com/";
+        };
+      };
+    })
+  ];
 
   home = {
     username = "pboeschen";
