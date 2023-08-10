@@ -37,6 +37,22 @@ A helper script at `./hack/update` is there that will prepare the lock file, rec
 List all templates with `nix flake show github:catouc/nixos-config templates`
 Init a template with `nix flake init github:catouc/nixos-config.#<template-name>`
 
+# Dev-shells
+
+On projects that I don't fully own that don't have nix first class support we can add our flakes with a little bit of trickery:
+
+```
+# add flake.nix
+echo "flake.nix" >> ./.git/info/exclude
+echo "flake.lock" >> ./.git/info/exclude
+echo ".envrc" >> ./.git/info/exclude
+echo ".direnv" >> ./.git/info/exclude
+
+echo "use flake" >> .envrc
+direnv allow
+nix develop path:$(pwd)
+```
+
 # TODO
 
 * Move font config to shared file instead of copying it between systems
