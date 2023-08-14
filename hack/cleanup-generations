@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+if ! [ $(id -u) = 0 ]; then
+	echo "The script needs to be run with sudo" >&2
+	exit 1
+fi
+
+nix-env --delete-generations 10d --profile /nix/var/nix/profiles/system
+nixos-rebuild switch --flake .#$(uname -n)
