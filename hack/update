@@ -5,6 +5,10 @@ set -euo pipefail
 nix flake update
 hostname="$(hostname -s)"
 sudo nixos-rebuild switch --flake .#"$hostname"
+if [ $? -ne 0 ]; then
+	echo "nixos-rebuild failed, aborting update"
+fi
+git checkout main
 git add flake.lock
 git commit -m "Update flake.lock"
-
+git push origin main
