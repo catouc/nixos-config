@@ -35,7 +35,7 @@ A helper script at `./hack/update` is there that will prepare the lock file, rec
 # Templates
 
 List all templates with `nix flake show github:catouc/nixos-config templates`
-Init a template with `nix flake init github:catouc/nixos-config.#<template-name>`
+Init a template with `nix flake init github:catouc/nixos-config#<template-name>`
 
 # Dev-shells
 
@@ -48,9 +48,8 @@ echo "flake.lock" >> ./.git/info/exclude
 echo ".envrc" >> ./.git/info/exclude
 echo ".direnv" >> ./.git/info/exclude
 
-echo "use flake" >> .envrc
+echo "use flake path:$(pwd)" >> .envrc
 direnv allow
-nix develop path:$(pwd)
 ```
 
 # TODO
