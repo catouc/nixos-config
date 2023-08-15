@@ -56,3 +56,4 @@ nix develop path:$(pwd)
 # TODO
 
 * Move font config to shared file instead of copying it between systems
+* Make the setup.sh script for my shell templates able to detect existing entires in the gitignore thing and don't add them twice

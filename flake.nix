@@ -119,6 +119,13 @@
             run `./setup.sh` to set this thing up properly
           '';
         };
+        terraform-shell = {
+          path = ./templates/terraform-shell;
+          description = "My Terraform shell template";
+          welcomeText = ''
+            run `./setup.sh` to set this thing up properly
+          '';
+        };
       };
     };
 }
