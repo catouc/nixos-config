@@ -13,13 +13,7 @@ let
 	exit 1
     fi
 
-    if [ $SUDO_USER ]; then
-	real_user=$SUDO_USER
-    else
-	real_user=$(whoami)
-    fi
-
-    sudo -u $real_user gpclient --start-minimized --now gp.booking.com 2> $HOME/error.log &
+    sudo -u $SUDO_USER gpclient --start-minimized --now gp.booking.com 2> $HOME/error.log &
     until $(ip route | grep -q tun0); do sleep 1; done
     ip route del default dev tun0
     ip route add 10.0.0.0/8 dev tun0
