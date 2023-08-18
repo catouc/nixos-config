@@ -1,14 +1,19 @@
 #!/usr/bin/env bash
-
 set -euo pipefail
 
-nix flake update
-hostname="$(hostname -s)"
-sudo nixos-rebuild switch --flake .#"$hostname"
+if ! [ $(id -u) = 0 ]; then
+	echo "The script needs to be run with sudo" >&2
+	exit 1
+fi
+
+sudo -u $SUDO_USER git checkout main
+sudo -u $SUDO_USER nix flake update
+
+nixos-rebuild switch --flake .#"$(uname -n)"
 if [ $? -ne 0 ]; then
 	echo "nixos-rebuild failed, aborting update"
 fi
-git checkout main
-git add flake.lock
-git commit -m "Update flake.lock"
-git push origin main
+
+sudo -u $SUDO_USER git add flake.lock
+sudo -u $SUDO_USER git commit -m "Update flake.lock"
+sudo -u $SUDO_USER git push origin main
