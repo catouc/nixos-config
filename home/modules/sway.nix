@@ -15,6 +15,7 @@
   };
 
   home.packages = [
+    pkgs.brightnessctl
     pkgs.swaylock
     pkgs.swayidle
     pkgs.wl-clipboard
