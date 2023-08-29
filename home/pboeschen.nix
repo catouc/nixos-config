@@ -51,6 +51,7 @@ in
       pkgs.slack
       pkgs.zoom-us
       pkgs.vault
+      pkgs.okta-aws-cli
       vpnLogin
       pkgs.zoom-us
       # sway
