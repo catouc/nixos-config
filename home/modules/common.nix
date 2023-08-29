@@ -6,6 +6,7 @@
     pkgs.delta
     pkgs.dig
     pkgs.file
+    pkgs.firefox
     pkgs.gcc
     pkgs.git
     pkgs.google-chrome
