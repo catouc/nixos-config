@@ -12,6 +12,7 @@
     pkgs.htop
     pkgs.jq
     pkgs.ncspot
+    pkgs.ripgrep
     pkgs.unzip
     pkgs.vim
     pkgs.wget
