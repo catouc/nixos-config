@@ -6,7 +6,11 @@ let
     };
   };
 
-  vpnLogin = pkgs.writeShellScriptBin "vpn" ''
+  logbook = pkgs.writeShellScriptBin "lb" ''
+    #! /usr/bin/env bash
+    set -euo pipefail
+    vim ~/Logbook/$(date --rfc-3339=date)
+  '';
 
     if ! [ $(id -u) = 0 ]; then
 	echo "The script needs to be run with sudo" >&2
