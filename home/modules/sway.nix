@@ -14,12 +14,11 @@
     };
   };
 
-  home.packages = [
-    pkgs.brightnessctl
-    pkgs.swaylock
-    pkgs.swayidle
-    pkgs.wl-clipboard
-    # pkgs.mako notification daemon
-    pkgs.wofi
+  home.packages = with pkgs; [
+    brightnessctl
+    swayidle
+    swaylock
+    wl-clipboard
+    wofi
   ];
 }

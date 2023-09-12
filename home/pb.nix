@@ -9,11 +9,11 @@
     username = "pb";
     homeDirectory = "/home/pb";
     stateVersion = "22.05";
-    packages = [
-      pkgs.cargo
-      pkgs.gcc
-      pkgs.rustc
-      pkgs.thunderbird
+    packages = with pkgs; [
+      cargo
+      gcc
+      rustc
+      thunderbird
     ];
   };
 }

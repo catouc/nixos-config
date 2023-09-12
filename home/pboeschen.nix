@@ -41,27 +41,21 @@ in
     username = "pboeschen";
     homeDirectory = "/home/pboeschen";
     stateVersion = "22.05";
-    packages = [
-      pkgs.gcc
-      pkgs.globalprotect-openconnect
-      pkgs.jiwa
-      pkgs.k9s
-      pkgs.kubectl
-      pkgs.kustomize
-      pkgs.slack
-      pkgs.zoom-us
-      pkgs.vault
-      pkgs.okta-aws-cli
+    packages = with pkgs; [
+      alacritty
+      gcc
+      globalprotect-openconnect
+      jiwa
+      k9s
+      kubectl
+      kustomize
+      logbook
+      #(nerdfonts.override { fonts = [ "DroidSansMono" ]; })
+      okta-aws-cli
+      slack
+      vault
       vpnLogin
-      pkgs.zoom-us
-      # sway
-      pkgs.swaylock
-      pkgs.swayidle
-      pkgs.wl-clipboard
-      # pkgs.mako notification daemon
-      pkgs.alacritty
-      pkgs.wofi
-      (pkgs.nerdfonts.override { fonts = [ "DroidSansMono" ]; })
+      zoom-us
     ];
   };
 }

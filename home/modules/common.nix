@@ -1,26 +1,26 @@
 { pkgs, ... }:
 
 {
-  home.packages = [
-    pkgs.bluez
-    pkgs.delta
-    pkgs.dig
-    pkgs.file
-    pkgs.firefox
-    pkgs.gcc
-    pkgs.git
-    pkgs.google-chrome
-    pkgs.htop
-    pkgs.jq
-    pkgs.ncspot
-    pkgs.ripgrep
-    pkgs.unzip
-    pkgs.vim
-    pkgs.wget
-    pkgs.semver
-    pkgs.tmux
-    pkgs.xsv
-    pkgs.zip
+  home.packages = with pkgs; [
+    bluez
+    delta
+    dig
+    file
+    firefox
+    gcc
+    git
+    google-chrome
+    htop
+    jq
+    ncspot
+    ripgrep
+    semver
+    tmux
+    unzip
+    vim
+    wget
+    xsv
+    zip
   ];
 
   programs.home-manager.enable = true;
