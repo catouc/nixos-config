@@ -12,6 +12,9 @@ let
     vim ~/Logbook/$(date --rfc-3339=date)
   '';
 
+  vpnLogin = pkgs.writeShellScriptBin "vpn" ''
+    #! /usr/bin/env bash
+    set -euo pipefail
     if ! [ $(id -u) = 0 ]; then
 	echo "The script needs to be run with sudo" >&2
 	exit 1
