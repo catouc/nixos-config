@@ -10,12 +10,16 @@
 	  tap = "enabled"; 
 	  natural_scroll = "enabled"; 
 	};
+	"type:pointer" = {
+          pointer_accel = "-0.5";
+	};
       };
     };
   };
 
   home.packages = with pkgs; [
     brightnessctl
+    pamixer
     swayidle
     swaylock
     wl-clipboard
