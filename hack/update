@@ -7,6 +7,7 @@ if ! [ $(id -u) = 0 ]; then
 fi
 
 sudo -u $SUDO_USER git checkout main
+sudo -u $SUDO_USER git pull --rebase
 sudo -u $SUDO_USER nix flake update
 
 nixos-rebuild switch --flake .#"$(uname -n)"
