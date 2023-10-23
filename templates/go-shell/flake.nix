@@ -14,10 +14,12 @@
         rec {
         devShells = {
           default = pkgs.mkShell {
-            buildInputs = [
-              pkgs.go
-	      pkgs.gotools
-	      pkgs.delve
+            buildInputs = with pkgs; [
+              go
+              gopls
+              golangci-lint
+	      gotools
+	      delve
             ];
           };
         };
