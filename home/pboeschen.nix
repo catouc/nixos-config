@@ -33,6 +33,14 @@ in
     target = "./.config/wireplumber/bluetooth.lua.d/51-bluez-config.lua";
   };
 
+  services.gpg-agent = {
+    enable = true;
+    defaultCacheTtl = 1800;
+    enableSshSupport = true;
+  };
+
+  programs.gpg.enable = true;
+
   imports = [
     (import ./modules/git.nix {
       git-email = "philipp.boeschen@booking.com";
