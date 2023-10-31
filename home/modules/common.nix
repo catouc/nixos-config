@@ -13,6 +13,7 @@
     htop
     jq
     ncspot
+    powertop
     ripgrep
     semver
     tmux
