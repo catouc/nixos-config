@@ -76,6 +76,7 @@
   services.printing.enable = true;
   services.blueman.enable = true;
   services.upower.enable = true;
+  services.jellyfin.enable = true;
 
   # Enable sound with pipewire.
   security.rtkit.enable = true;

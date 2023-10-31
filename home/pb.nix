@@ -13,6 +13,7 @@
       cargo
       gcc
       rustc
+      rtorrent
       thunderbird
     ];
   };
