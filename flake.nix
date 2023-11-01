@@ -79,15 +79,10 @@
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.pboeschen = {
-                imports = [
-		  ./home/pboeschen.nix
-		  ./home/modules/sway.nix
-		] ++ common-imports;
-              };
               home-manager.users.pb = {
                 imports = [
 		  ./home/pb.nix
+		  ./home/modules/sway.nix
 		] ++ common-imports;
               };
             }

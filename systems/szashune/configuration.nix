@@ -7,6 +7,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ../modules/jellyfin.nix
     ../modules/ssh.nix
   ];
 
@@ -64,7 +65,6 @@
     text = "auth include login";
   };
 
-
   # Nvidia graphics
   #services.xserver.videoDrivers = [ "nvidia" ];
 
@@ -75,7 +75,6 @@
   };
 
   services.printing.enable = true;
-  services.blueman.enable = true;
   services.upower.enable = true;
 
   # Enable sound with pipewire.
@@ -89,12 +88,6 @@
   };
 
   virtualisation.docker.enable = true;
-
-  users.users.pboeschen = {
-    isNormalUser = true;
-    description = "Phil (Work)";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
-  };
 
   users.users.pb = {
     isNormalUser = true;
@@ -110,8 +103,5 @@
   };
 
   programs.steam.enable = true;
-
-  services.globalprotect.enable = true;
-
   system.stateVersion = "22.05";
 }
