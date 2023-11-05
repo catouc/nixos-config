@@ -16,6 +16,11 @@
 	type = "lua";
 	config = ''
 	  local lspconfig = require('lspconfig')
+	  lspconfig.rust_analyzer.setup{
+	    settings = {
+              highlightingOn = false;
+	    }
+	  }
 	  lspconfig.gopls.setup{}
 	  lspconfig.terraformls.setup{}
           vim.api.nvim_create_autocmd('LspAttach', {
