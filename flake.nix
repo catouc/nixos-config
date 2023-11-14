@@ -53,6 +53,24 @@
           ];
         };
 
+        marut = lib.nixosSystem {
+          inherit system pkgs;
+          modules = [
+            ./systems/marut/configuration.nix
+
+            home-manager.nixosModules.home-manager {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.pb = {
+                imports = [
+                  ./home/pb-server.nix
+                  ./home/modules/shell.nix
+                ];
+              };
+            }
+          ];
+        };
+
         fractine = lib.nixosSystem {
           inherit system pkgs;
           modules = [
