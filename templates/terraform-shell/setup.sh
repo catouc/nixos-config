@@ -6,4 +6,5 @@ echo ".direnv" >> .git/info/exclude
 
 echo "use flake path:$(pwd)" > .envrc
 direnv allow
-
+git reset flake.nix
+git reset flake.lock
