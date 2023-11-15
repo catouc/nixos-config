@@ -115,6 +115,13 @@
 	] ++ common-imports;
       };
 
+      homeConfigurations.pboeschen = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+	  ./home/pboeschen.nix
+	] ++ common-imports;
+      };
+
       templates = {
         go = {
           path = ./templates/go;
