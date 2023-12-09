@@ -14,9 +14,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hyprland.url = "github:hyprwm/Hyprland"; 
+
   };
 
-  outputs = { self, nixpkgs, home-manager, jiwa, }:
+  outputs = { self, nixpkgs, home-manager, jiwa, hyprland, }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -28,10 +30,10 @@
       };
       lib = nixpkgs.lib;
       common-imports = [
-	./home/modules/common.nix
-	./home/modules/shell.nix
-	./home/modules/terminal.nix
-	./home/modules/editor.nix
+        ./home/modules/common.nix
+        ./home/modules/shell.nix
+        ./home/modules/terminal.nix
+        ./home/modules/editor.nix
       ];
     in {
       nixosConfigurations = {
@@ -45,9 +47,9 @@
               home-manager.useUserPackages = true;
               home-manager.users.pb = {
                 imports = [
-		  ./home/pb.nix
-		  ./home/modules/sway.nix
-		] ++ common-imports;
+                  ./home/pb.nix
+                  ./home/modules/sway.nix
+                ] ++ common-imports;
               };
             }
           ];
@@ -81,9 +83,9 @@
               home-manager.useUserPackages = true;
               home-manager.users.pboeschen = {
                 imports = [
-		  ./home/pboeschen.nix
-		  ./home/modules/sway.nix
-		] ++ common-imports;
+                  ./home/pboeschen.nix
+                  ./home/modules/sway.nix
+                ] ++ common-imports;
               };
             }
           ];
@@ -99,9 +101,12 @@
               home-manager.useUserPackages = true;
               home-manager.users.pb = {
                 imports = [
-		  ./home/pb.nix
-		  ./home/modules/sway.nix
-		] ++ common-imports;
+                  ./home/pb.nix
+                  #./home/modules/sway.nix
+                  hyprland.homeManagerModules.default
+                  {wayland.windowManager.hyprland.enable = true;}
+                  ./home/modules/hyprland.nix
+		            ] ++ common-imports;
               };
             }
           ];
@@ -111,8 +116,8 @@
       homeConfigurations.pb = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-	  ./home/pb.nix
-	] ++ common-imports;
+	        ./home/pb.nix
+	      ] ++ common-imports;
       };
 
       templates = {
@@ -141,7 +146,7 @@
         };
         rust = {
           path = ./templates/rust;
-	};
+      	};
       };
     };
 }

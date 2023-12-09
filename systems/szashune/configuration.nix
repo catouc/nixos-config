@@ -42,17 +42,37 @@
     ];
   };
 
+  fileSystems = {
+    "/home/pb/.local/share/Steam" = {
+      device = "/dev/disk/by-uuid/9a986255-abe7-412d-a3ce-091381ed8abb";
+      fsType = "ext4";
+    };
+  };
+
   services.xserver.enable = false;
 
   environment.loginShellInit = ''
-    [[ "$(tty)" == /dev/tty1 ]] && sway
+    [[ "$(tty)" == /dev/tty1 ]] && WLR_NO_HARDWARE_CURSORS=1 Hyprland
   '';
+
+  programs.hyprland = {
+    enable = true;
+    enableNvidiaPatches = true;
+  };
 
   # Hardware Support for Wayland Sway
   hardware = {
     opengl = {
       enable = true;
       driSupport = true;
+    };
+    nvidia = {
+      modesetting.enable = true;
+      powerManagement.enable = false;
+      powerManagement.finegrained = false;
+      open = false;
+      nvidiaSettings = true;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
     bluetooth.enable = true;
     pulseaudio.enable = false;
@@ -66,7 +86,7 @@
   };
 
   # Nvidia graphics
-  #services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   # Configure keymap in X11
   services.xserver = {
