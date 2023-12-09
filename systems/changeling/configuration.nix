@@ -18,6 +18,9 @@
 
   networking.hostName = "changeling";
   networking.networkmanager.enable = true;
+  networking.wireguard.enable = true;
+  networking.nameservers = [ "1.1.1.1" "9.9.9.9" ];
+
 
   time.timeZone = "Europe/Amsterdam";
 
@@ -77,6 +80,7 @@
   services.blueman.enable = true;
   services.upower.enable = true;
   services.jellyfin.enable = true;
+  services.mullvad-vpn.enable = true;
 
   # Enable sound with pipewire.
   security.rtkit.enable = true;

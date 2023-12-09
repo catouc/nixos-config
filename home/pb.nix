@@ -11,6 +11,7 @@
     stateVersion = "22.05";
     packages = with pkgs; [
       cargo
+      mullvad-vpn
       gcc
       rustc
       rtorrent
