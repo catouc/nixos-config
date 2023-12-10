@@ -143,9 +143,6 @@
             run `./setup.sh` to set this thing up properly
           '';
         };
-        rust = {
-          path = ./templates/rust;
-      	};
       };
     };
 }
