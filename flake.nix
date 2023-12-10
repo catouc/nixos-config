@@ -103,9 +103,8 @@
                 imports = [
                   ./home/pb.nix
                   #./home/modules/sway.nix
-                  hyprland.homeManagerModules.default
-                  {wayland.windowManager.hyprland.enable = true;}
                   ./home/modules/hyprland.nix
+                  hyprland.homeManagerModules.default
 		            ] ++ common-imports;
               };
             }
