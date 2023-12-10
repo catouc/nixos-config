@@ -14,7 +14,7 @@
           pname = "replace";
           version = "v0.1.0";
           modSha256 = pkgs.lib.fakeSha256;
-          vendorSha256 = null;
+          vendorHash = null;
           src = ./.;
         };
       in
