@@ -39,3 +39,4 @@
     xdg-desktop-portal-wlr
   ];
 }
+
