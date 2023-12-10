@@ -2,23 +2,29 @@
 {
   imports = [
     ./hardware-configuration.nix
+
     ../modules/bluetooth.nix
     ../modules/boot.nix
     ../modules/docker.nix
+    ../modules/fonts.nix
     ../modules/hyprland.nix
     ../modules/jellyfin.nix
+    ../modules/locales.nix
     ../modules/mullvad-vpn.nix
-    ../modules/user.nix
+    ../modules/power.nix
+    ../modules/printing.nix
     ../modules/ssh.nix
+    ../modules/sound.nix
     ../modules/steam.nix
-    (import ../modules/common-services.nix { pkgs = pkgs; })
-    (import ../modules/nix.nix { pkgs = pkgs; })
+    ../modules/user.nix
+
     (import ../modules/1password.nix { username = "pboeschen"; })
-    (import ../modules/polkit-agent.nix { pkgs = pkgs; })
+    (import ../modules/nix.nix { pkgs = pkgs; })
     (import ../modules/network.nix {
       networkManagerEnabled = true;
       hostName = "changeling";
     })
+    (import ../modules/polkit-agent.nix { pkgs = pkgs; })
   ];
 
   system.stateVersion = "22.05";
