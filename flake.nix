@@ -48,7 +48,8 @@
               home-manager.users.pb = {
                 imports = [
                   ./home/pb.nix
-                  ./home/modules/sway.nix
+                  ./home/modules/hyprland.nix
+                  hyprland.homeManagerModules.default
                 ] ++ common-imports;
               };
             }
