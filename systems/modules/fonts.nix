@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   # Font config, nerdfonts can be big so maybe an
   # override would be useful for mobile systems
