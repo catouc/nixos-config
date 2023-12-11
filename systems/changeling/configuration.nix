@@ -27,5 +27,9 @@
     (import ../modules/polkit-agent.nix { pkgs = pkgs; })
   ];
 
+  pb.hyprland = {
+    enable = true;
+  };
+
   system.stateVersion = "22.05";
 }
