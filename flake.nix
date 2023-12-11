@@ -16,6 +16,11 @@
 
     hyprland.url = "github:hyprwm/Hyprland"; 
 
+    extrapkgs = {
+      url = "github:catouc/extranixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs = { self, nixpkgs, home-manager, jiwa, hyprland, }:
@@ -26,6 +31,7 @@
         config.allowUnfree = true;
         overlays = [
           (final: prev: {jiwa = jiwa.packages.${system}.jiwa;})
+          (final: prev: {ytdl-sub = extrapkgs.packages.${system}.ytdl-sub;})
         ];
       };
       lib = nixpkgs.lib;
@@ -48,7 +54,7 @@
               home-manager.users.pb = {
                 imports = [
                   ./home/pb.nix
-                  ./home/modules/hyprland.nix
+                  #./home/modules/hyprland.nix
                   hyprland.homeManagerModules.default
                 ] ++ common-imports;
               };
