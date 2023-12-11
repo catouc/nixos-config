@@ -23,7 +23,7 @@
 
   };
 
-  outputs = { self, nixpkgs, home-manager, jiwa, hyprland, }:
+  outputs = { self, nixpkgs, home-manager, jiwa, hyprland, extrapkgs, }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
