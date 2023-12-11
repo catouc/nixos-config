@@ -1,8 +1,6 @@
 { pkgs, ... }: {
   imports = [
     ./hardware-configuration.nix
-    
-    
   ];
 
   boot.tmp.cleanOnBoot = true;
@@ -39,12 +37,23 @@
         extraConfig = "proxy_ssl_server_name on;";
       };
     };
+
+    virtualHosts."jellyfin.catouc.com" = {
+      forceSSL = true;
+      enableACME = true;
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:8096";
+        extraConfig = "proxy_ssl_server_name on;";
+      };
+    };
   };
 
   security.acme = {
     acceptTerms = true;
     defaults.email = "acme@philipp.boeschen.me";
   };
+
+  services.jellyfin.enable = true;
 
   services.hydra = {
     enable = true;
