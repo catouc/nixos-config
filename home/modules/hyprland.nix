@@ -1,42 +1,84 @@
-{ pkgs, ... }:
-{
-  wayland.windowManager.hyprland = {
-    enable = true;
-    extraConfig = ''
-      exec = hyprpaper
-      $mod = SUPER
+{ config, lib, pkgs, ... }:
+  with lib;
+  let
+    cfg = config.pb.home.hyprland;
 
-      windowrulev2 = opacity 0.9 0.3,class:^(Alacritty)$
+    monitorOptionType = { ... }: {
+      options = {
+        name = mkOption {
+          type = types.str;
+          description = lib.mDoc "Name of the monitor device, can be read from hyprctl monitors all";
+        };
 
-      bind = $mod, C, closewindow
-      bind = $mod, D, exec, rofi -show run
-      bind = $mod, F, fullscreen, 0
-      bind = $mod, Q, exec, alacritty
-      # move workspaces
-      ${builtins.concatStringsSep "\n" (builtins.genList (
-        x:
-          let
-            ws = builtins.toString(x);
-          in ''
-            bind = $mod, ${ws}, workspace, ${ws}
-            #bind = $mod, ${ws}, exec, hyprctl hyprpaper wallpaper "DP-1,~/Pictures/Wallpapers/tron-1.jpg"
-            bind = SUPER_SHIFT, ${ws}, movetoworkspacesilent, ${ws}
-          ''
-      ) 10)}
-    '';
-  };
+        resolution = mkOption {
+          type = types.str;
+          description = lib.mDoc "Resolution of the monitor";
+          example = lib.literalExpression "1920x1080";
+        };
 
-  home.file = {
-    ".config/hypr/hyprpaper.conf".text = ''
-      preload = ~/Pictures/Wallpapers/tron-1.jpg
-      wallpaper = DP-1,~/Pictures/Wallpapers/tron-1.jpg
-    '';
-  };
+        position = mkOption {
+          type = types.str;
+          description = "Where in the coordinate space of resolutions your monitor is supposed to show";
+          example = lib.literalExpression "0x0";
+        };
 
-  home.packages = with pkgs; [
-    hyprpaper
-    rofi
-    xdg-desktop-portal-wlr
-  ];
-}
+        scale = mkOption {
+          type = types.int;
+          description = "The scale to apply to the screen";
+        };
+      };
+    };
+  in {
+    options.pb.home.hyprland = {
+      enable = mkEnableOption "Enable custom hyprland config";
+
+      monitors = mkOption {
+        type = types.listOf (types.submodule monitorOptionType);
+        default = [ ];
+        description = lib.mDoc "A set of monitor options";
+      };
+    };
+    config = mkIf cfg.enable {
+      wayland.windowManager.hyprland = {
+        enable = true;
+        extraConfig = ''
+          exec-once = hyprpaper
+          $mod = SUPER
+
+          windowrulev2 = opacity 0.9 0.3,class:^(Alacritty)$
+
+          bind = $mod, C, closewindow
+          bind = $mod, D, exec, rofi -show run
+          bind = $mod, F, fullscreen, 0
+          bind = $mod, Q, exec, alacritty
+
+          ${builtins.concatStringsSep "\n" (builtins.genList (
+            x:
+              let
+                ws = builtins.toString(x);
+              in ''
+                bind = $mod, ${ws}, workspace, ${ws}
+                #bind = $mod, ${ws}, exec, hyprctl hyprpaper wallpaper "DP-1,~/Pictures/Wallpapers/tron-1.jpg"
+                bind = SUPER_SHIFT, ${ws}, movetoworkspacesilent, ${ws}
+              ''
+          ) 10)}
+          ${concatMapStringsSep "\n" (monitor: "monitor = ${monitor.name},${monitor.resolution},${monitor.position},${toString monitor.scale}") cfg.monitors}
+        '';
+      };
+
+      home.file = {
+        ".config/hypr/hyprpaper.conf".text = ''
+          preload = ~/Pictures/Wallpapers/tron-1.jpg
+          wallpaper = DP-1,~/Pictures/Wallpapers/tron-1.jpg
+        '';
+      };
+
+      home.packages = with pkgs; [
+        hyprpaper
+        rofi
+        xdg-desktop-portal-wlr
+      ];
+
+    };
+  }
 

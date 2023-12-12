@@ -1,7 +1,8 @@
 # { nvidiaGPU ? false, lib, config, ... }:
 { config, lib, pkgs, ... }:
   with lib;
-  let cfg = config.pb.hyprland;
+  let
+    cfg = config.pb.hyprland;
   in {
     options.pb.hyprland = {
       enable = mkEnableOption "Enables Hyprland on system";
@@ -10,6 +11,12 @@
         type = types.bool;
         default = false;
         description = lib.mDoc "Whether your system has an nvidia GPU, sets a bunch of stuff under hardware and enables hyprland to use the driver";
+      };
+
+      monitors = mkOption {
+        type = types.attrsOf;
+        default = { };
+        description = lib.mDoc "A set of monitor options";
       };
     };
 
