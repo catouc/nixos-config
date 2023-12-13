@@ -53,6 +53,7 @@
     serviceConfig = {
       Type = "oneshot";
       User = "ytdl-sub";
+      WorkingDirectory = "/var/ytdl-sub";
     };
   };
 
