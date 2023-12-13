@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1702480799,
-        "narHash": "sha256-s7JxBM2CXc0eYFXgfxNrJl1DlGZj0P9mNemr8yPcaRw=",
+        "lastModified": 1702481098,
+        "narHash": "sha256-vLE3iIGkDPxLZMRdckEghE7E5Z3klAd18DyJXuxm9Wg=",
         "owner": "catouc",
         "repo": "extranixpkgs",
-        "rev": "8dd8382a8d048f2c03caa34a554f13ae39513596",
+        "rev": "5671912b5dfa1d5c26629edd859ed61d3bf93c37",
         "type": "github"
       },
       "original": {

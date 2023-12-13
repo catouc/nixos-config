@@ -66,6 +66,9 @@
           inherit system pkgs;
           modules = [
             ./systems/marut/configuration.nix
+            # TODO: somehow the config.pb bit is breaking, whereas the hyprland one isn't
+            # maybe I'll just move all of that into this repo instead
+            # extrapkgs.nixosModules.ytdl-sub
 
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
