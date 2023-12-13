@@ -21,11 +21,39 @@
   users.users.root.openssh.authorizedKeys.keys = [''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEUrXTWtqfBvZCn/SPlN0nZmhPhwvOc4M8gPeKN1b2eZ'' ];
 
   users.groups.downloaders = {};
+  users.groups.ytdl-sub = {};
 
   users.users.pb = {
     isNormalUser = true;
     extraGroups = [ "wheel" "downloaders" ];
     openssh.authorizedKeys.keys = [''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEUrXTWtqfBvZCn/SPlN0nZmhPhwvOc4M8gPeKN1b2eZ'' ];
+  };
+
+  users.users.ytdl-sub = {
+    isSystemUser = true;
+    group = "ytdl-sub";
+    extraGroups = [ "downloaders" ];
+  };
+
+  systemd.timers.ytdl-sub = {
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnBootSec = "30m";
+      OnUnitActiveSec = "30m";
+      Unit = "ytdl-sub.service";
+    };
+  };
+
+  systemd.services.ytdl-sub = {
+    script = ''
+      set -euo pipefail
+      ${pkgs.ytdl-sub}/bin/ytdl-sub --config /etc/ytdl-sub/config.yaml sub /etc/ytdl-sub/subcriptions.yaml
+    '';
+
+    serviceConfig = {
+      Type = "oneshot";
+      User = "ytdl-sub";
+    };
   };
 
   services.nginx = {
