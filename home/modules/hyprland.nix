@@ -51,6 +51,7 @@
           bind = $mod, D, exec, rofi -show run
           bind = $mod, F, fullscreen, 0
           bind = $mod, Q, exec, alacritty
+          bind = $mod, S, exec, rofi -show ssh
 
           ${builtins.concatStringsSep "\n" (builtins.genList (
             x:
@@ -74,8 +75,11 @@
       };
 
       home.packages = with pkgs; [
+        brightnessctl
         hyprpaper
+        pamixer
         rofi
+        swaylock
         xdg-desktop-portal-wlr
       ];
 
