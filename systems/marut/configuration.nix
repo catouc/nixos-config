@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   imports = [
     ./hardware-configuration.nix
+    ../modules/mullvad-vpn.nix
   ];
 
   boot.tmp.cleanOnBoot = true;
