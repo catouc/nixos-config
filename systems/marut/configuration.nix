@@ -38,7 +38,7 @@
 
   fileSystems = {
     "/media/jellyfin/YouTube" = {
-      device = "/dev/disk/by-uuid/f470f9eb-ac73-490b-ab63-861afe248452"
+      device = "/dev/disk/by-uuid/f470f9eb-ac73-490b-ab63-861afe248452";
       fsType = "ext4";
     };
   };
