@@ -52,6 +52,8 @@
           bind = $mod, F, fullscreen, 0
           bind = $mod, Q, exec, alacritty
           bind = $mod, S, exec, rofi -show ssh
+          bind = , Print, exec, grim -g "$(slurp)"
+          bind = SHIFT, Print, exec, grim -g "$(slurp)" - | wl-copy
 
           ${builtins.concatStringsSep "\n" (builtins.genList (
             x:
@@ -77,9 +79,12 @@
       home.packages = with pkgs; [
         brightnessctl
         hyprpaper
+        grim
         pamixer
         rofi
+        slurp
         swaylock
+        wl-clipboard
         xdg-desktop-portal-wlr
       ];
 
