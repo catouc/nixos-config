@@ -53,8 +53,7 @@
               home-manager.useUserPackages = true;
               home-manager.users.pb = {
                 imports = [
-                  ./home/pb.nix
-                  #./home/modules/hyprland.nix
+                  ./home/changeling.nix
                   hyprland.homeManagerModules.default
                 ] ++ common-imports;
               };
@@ -75,7 +74,7 @@
               home-manager.useUserPackages = true;
               home-manager.users.pb = {
                 imports = [
-                  ./home/pb-server.nix
+                  ./home/marut.nix
                   ./home/modules/shell.nix
                 ];
               };
@@ -111,7 +110,7 @@
               home-manager.useUserPackages = true;
               home-manager.users.pb = {
                 imports = [
-                  ./home/pb.nix
+                  ./home/szashune.nix
                   ./home/modules/hyprland.nix
                   hyprland.homeManagerModules.default
 		            ] ++ common-imports;
