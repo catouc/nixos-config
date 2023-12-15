@@ -37,6 +37,16 @@
         default = [ ];
         description = lib.mDoc "A set of monitor options";
       };
+
+      wallpaper = mkOption {
+        type = types.str;
+        default = "";
+        description = "Just the config text for hyprpaper";
+        example = lib.literalExpression ''
+          preload = ~/Pictures/Wallpapers/tron-1.jpg
+          wallpaper = DP-1,~/Pictures/Wallpapers/tron-1.jpg
+        '';
+      };
     };
     config = mkIf cfg.enable {
       wayland.windowManager.hyprland = {
@@ -69,12 +79,7 @@
         '';
       };
 
-      home.file = {
-        ".config/hypr/hyprpaper.conf".text = ''
-          preload = ~/Pictures/Wallpapers/tron-1.jpg
-          wallpaper = DP-1,~/Pictures/Wallpapers/tron-1.jpg
-        '';
-      };
+      home.file.".config/hypr/hyprpaper.conf".text = cfg.wallpaper;
 
       home.packages = with pkgs; [
         brightnessctl
