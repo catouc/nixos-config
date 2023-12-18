@@ -16,6 +16,7 @@
       gcc
       rustc
       rtorrent
+      shiori
       thunderbird
     ];
   };
