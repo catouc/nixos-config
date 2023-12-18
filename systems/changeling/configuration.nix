@@ -3,18 +3,10 @@
   imports = [
     ./hardware-configuration.nix
 
-    ../modules/bluetooth.nix
     ../modules/boot.nix
-    ../modules/docker.nix
     ../modules/hyprland.nix
-    ../modules/jellyfin.nix
     ../modules/locale.nix
-    ../modules/mullvad-vpn.nix
-    ../modules/power.nix
-    ../modules/printing.nix
-    ../modules/ssh.nix
     ../modules/sound.nix
-    ../modules/steam.nix
     ../modules/user.nix
 
     (import ../modules/fonts.nix { pkgs = pkgs; })
@@ -28,6 +20,22 @@
   pb.hyprland = {
     enable = true;
   };
+
+  networking.wireguard.enable = true;
+
+  programs.ssh.startAgent = true;
+  programs.steam.enable = true;
+  
+  services.blueman.enable = true;
+  services.mullvad-vpn.enable = true;
+  services.jellyfin = {
+    enable = true;
+    openFirewall = true;
+  };
+  services.printing.enable = true;
+  services.upower.enable = true;
+
+  virtualisation.docker.enable = true;
 
   system.stateVersion = "22.05";
 }
