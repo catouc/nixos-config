@@ -30,9 +30,8 @@
     }];
 
     wallpaper = ''
-      preload = ~/Pictures/Wallpapers/Caleb1.png
-      wallpaper = eDP-1,~/Pictures/Wallpapers/Caleb1.png
+      preload = ~/Pictures/Wallpapers/Caleb1.jpg
+      wallpaper = eDP-1,~/Pictures/Wallpapers/Caleb1.jpg
     '';
   };
-
 }
