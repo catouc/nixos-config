@@ -1,7 +1,6 @@
 { pkgs, ... }: {
   imports = [
     ./hardware-configuration.nix
-    ../modules/mullvad-vpn.nix
   ];
 
   boot.tmp.cleanOnBoot = true;
@@ -21,19 +20,19 @@
   ];
   users.users.root.openssh.authorizedKeys.keys = [''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEUrXTWtqfBvZCn/SPlN0nZmhPhwvOc4M8gPeKN1b2eZ'' ];
 
-  users.groups.downloaders = {};
   users.groups.ytdl-sub = {};
 
   users.users.pb = {
     isNormalUser = true;
     extraGroups = [ "wheel" "downloaders" ];
-    openssh.authorizedKeys.keys = [''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEUrXTWtqfBvZCn/SPlN0nZmhPhwvOc4M8gPeKN1b2eZ'' ];
+    openssh.authorizedKeys.keys = [
+      ''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEUrXTWtqfBvZCn/SPlN0nZmhPhwvOc4M8gPeKN1b2eZ''
+    ];
   };
 
   users.users.ytdl-sub = {
     isSystemUser = true;
     group = "ytdl-sub";
-    extraGroups = [ "downloaders" ];
   };
 
   fileSystems = {
