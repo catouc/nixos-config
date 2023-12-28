@@ -8,9 +8,10 @@
 
   networking.hostName = "marut";
   networking.domain = "";
+  networking.nftables.enable = true;
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 80 443 ];
+    allowedTCPPorts = [ 22 80 443 ];
   };
 
   users.groups = {
