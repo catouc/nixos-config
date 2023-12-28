@@ -9,6 +9,22 @@
   networking.hostName = "marut";
   networking.domain = "";
   networking.nftables.enable = true;
+  networking.nftables.flushRuleset = true;
+  networking.nftables.tables.excludeFromVPN = {
+    family = "inet";
+    name = "excludeFromVPN";
+    content = ''
+      chain allowIncoming {
+	type filter hook input priority -100; policy accept;
+	tcp dport 22 meta mark set 0x00000f41 meta mark set 0x6d6f6c65
+      }
+
+      chain allowOutgoing {
+        type route hook output priority -100; policy accept;
+	tcp sport 22 meta mark set 0x00000f41 meta mark set 0x6d6f6c65
+      }
+    '';
+  };
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [ 22 80 443 ];
@@ -70,6 +86,7 @@
 
   services.openssh.enable = true;
   services.jellyfin.enable = true;
+  services.mullvad-vpn.enable = true;
 
   services.nginx = {
     enable = true;
