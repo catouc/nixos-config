@@ -7,12 +7,6 @@
     options.pb.hyprland = {
       enable = mkEnableOption "Enables Hyprland on system";
 
-      nvidiaGPU = mkOption {
-        type = types.bool;
-        default = false;
-        description = lib.mDoc "Whether your system has an nvidia GPU, sets a bunch of stuff under hardware and enables hyprland to use the driver";
-      };
-
       monitors = mkOption {
         type = types.attrsOf;
         default = { };
@@ -32,7 +26,6 @@
 
       programs.hyprland = {
         enable = true;
-        enableNvidiaPatches = cfg.nvidiaGPU;
       };
 
       hardware = {
