@@ -32,6 +32,12 @@
     options.pb.home.hyprland = {
       enable = mkEnableOption "Enable custom hyprland config";
 
+      extraBinds = mkOption {
+        type = types.lines;
+        default = "";
+        description = "A number of extra binds, useful for binding function keys on different devices separately";
+      };
+
       monitors = mkOption {
         type = types.listOf (types.submodule monitorOptionType);
         default = [ ];
@@ -65,6 +71,7 @@
           bind = $mod, S, exec, rofi -show ssh
           bind = , Print, exec, grim -g "$(slurp)"
           bind = SHIFT, Print, exec, grim -g "$(slurp)" - | wl-copy
+          ${cfg.extraBinds}
 
           ${builtins.concatStringsSep "\n" (builtins.genList (
             x:

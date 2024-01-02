@@ -30,6 +30,14 @@
       scale = 1;
     }];
 
+    extraBinds = ''
+      bind = , code:233, exec, brightnessctl set 10%+
+      bind = , code:232, exec, brightnessctl set 10%-
+      bind = , code:123, exec, pamixer -i 10
+      bind = , code:122, exec, pamixer -d 10
+      bind = , code:121, exec, pamixer -t
+    '';
+
     wallpaper = ''
       preload = ~/Pictures/Wallpapers/Caleb1.jpg
       wallpaper = eDP-1,~/Pictures/Wallpapers/Caleb1.jpg
