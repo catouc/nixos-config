@@ -7,7 +7,6 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../modules/ssh.nix
     (import ../modules/1password.nix { username = "pboeschen"; })
     (import ../modules/polkit-agent.nix { pkgs = pkgs; })
   ];

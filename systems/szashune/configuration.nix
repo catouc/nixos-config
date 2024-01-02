@@ -20,7 +20,10 @@
   # Nvidia graphics
   # TODO: figure out if this can be safely dropped
   services.xserver.videoDrivers = [ "nvidia" ];
-  pb.hyprland.enable = true;
+  pb.hyprland= {
+    enable = true;
+    nvidiaGPU = true;
+  };
 
   fileSystems = {
     "/home/pb/.local/share/Steam" = {

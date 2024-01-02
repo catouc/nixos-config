@@ -12,6 +12,12 @@
         default = { };
         description = lib.mDoc "A set of monitor options";
       };
+
+      nvidiaGPU = mkOption {
+        type = types.bool;
+        default = false;
+        description = "toggles system settings for nvidia GPUs";
+      };
     };
 
     config = mkIf cfg.enable {
