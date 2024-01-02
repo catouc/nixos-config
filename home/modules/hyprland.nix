@@ -59,6 +59,8 @@
         enable = true;
         extraConfig = ''
           exec-once = hyprpaper
+          exec-once = [workspace 1 silent] alacritty
+          exec-once = [workspace 2 silent] firefox
           $mod = SUPER
 
           windowrulev2 = opacity 0.9 0.3,class:^(Alacritty)$
