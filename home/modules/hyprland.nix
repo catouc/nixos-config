@@ -65,7 +65,7 @@
 
           windowrulev2 = opacity 0.9 0.3,class:^(Alacritty)$
 
-          bind = $mod, C, closewindow
+          bind = $mod, C, killactive
           bind = $mod, L, exec, swaylock
           bind = $mod, D, exec, rofi -show run
           bind = $mod, F, fullscreen, 0
