@@ -65,6 +65,7 @@
   };
 
   systemd.timers.ytdl-sub = {
+    enable = false;
     wantedBy = [ "timers.target" ];
     timerConfig = {
       OnBootSec = "30m";
