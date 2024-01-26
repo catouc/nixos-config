@@ -115,7 +115,7 @@
   };
 
   services.hydra = {
-    enable = true;
+    enable = false;
     hydraURL = "https://hydra.catouc.com";
     listenHost = "127.0.0.1";
     notificationSender = "hydra@catouc.com";
@@ -137,7 +137,9 @@
 
   environment.systemPackages = with pkgs; [
     git
+    htop
     vim
+    tmux
   ];
 
   system.stateVersion = "23.05";
