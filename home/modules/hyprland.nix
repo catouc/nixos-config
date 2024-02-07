@@ -16,6 +16,13 @@
           example = lib.literalExpression "1920x1080";
         };
 
+        refreshRate = mkOption {
+          type = types.str;
+          description = lib.mDoc "Refresh rate of the monitor";
+          default = "60";
+          example = lib.literalExpression "60";
+        };
+
         position = mkOption {
           type = types.str;
           description = "Where in the coordinate space of resolutions your monitor is supposed to show";
@@ -85,7 +92,7 @@
                 bind = SUPER_SHIFT, ${ws}, movetoworkspacesilent, ${ws}
               ''
           ) 10)}
-          ${concatMapStringsSep "\n" (monitor: "monitor = ${monitor.name},${monitor.resolution},${monitor.position},${toString monitor.scale}") cfg.monitors}
+          ${concatMapStringsSep "\n" (monitor: "monitor = ${monitor.name},${monitor.resolution}@${monitor.refreshRate},${monitor.position},${toString monitor.scale}") cfg.monitors}
         '';
       };
 
