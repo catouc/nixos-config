@@ -23,8 +23,9 @@
   pb.home.hyprland = {
     enable = true;
     monitors = [{
-      name = "eDP-1";
-      resolution = "1920x1080";
+      name = "DP-1";
+      resolution = "3440x1440";
+      refreshRate = "175";
       position = "0x0";
       scale = 1;
     }];
