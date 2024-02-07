@@ -17,6 +17,7 @@
       rustc
       rtorrent
       thunderbird
+      xivlauncher
     ];
   };
 
