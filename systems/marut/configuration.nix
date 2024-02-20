@@ -37,17 +37,12 @@
   };
 
   users.users = {
-    root = {
-      openssh.authorizedKeys.keys = [
-        ''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEUrXTWtqfBvZCn/SPlN0nZmhPhwvOc4M8gPeKN1b2eZ''
-      ];
-    };
-
     pb = {
       isNormalUser = true;
       extraGroups = [ "wheel" "jellyfin" ];
       openssh.authorizedKeys.keys = [
         ''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEUrXTWtqfBvZCn/SPlN0nZmhPhwvOc4M8gPeKN1b2eZ''
+	''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINY+KfRjOhVNBHU0so8CI3zoXFQAvYtgCxKsAmQYjfSE''
       ];
     };
 
@@ -87,7 +82,14 @@
     };
   };
 
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    settings = {
+      PasswordAuthentication = false;
+      PermitRootLogin = "no";
+    };
+  };
+
   services.jellyfin.enable = true;
   services.mullvad-vpn.enable = true;
 
