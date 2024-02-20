@@ -15,8 +15,8 @@
   };
 
   # TODO: I have no idea if this works if the xserver is disabled?!
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "altgr-intl";
+    variant = "altgr-intl";
   };
 }
