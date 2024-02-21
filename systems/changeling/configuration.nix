@@ -21,6 +21,7 @@
     enable = true;
   };
 
+  pb.locale.enable = true;
   networking.wireguard.enable = true;
 
   programs.ssh.startAgent = true;
