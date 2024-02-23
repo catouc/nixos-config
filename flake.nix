@@ -82,24 +82,6 @@
           ];
         };
 
-        fractine = lib.nixosSystem {
-          inherit system pkgs;
-          modules = [
-            ./systems/fractine/configuration.nix
-
-            home-manager.nixosModules.home-manager {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.pboeschen = {
-                imports = [
-                  ./home/pboeschen.nix
-                  ./home/modules/sway.nix
-                ] ++ common-imports;
-              };
-            }
-          ];
-        };
-
         szashune = lib.nixosSystem {
           inherit system pkgs;
           modules = [
@@ -120,11 +102,20 @@
         };
       };
 
-      homeConfigurations.pb = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-	        ./home/pb.nix
-	      ] ++ common-imports;
+      homeConfigurations = {
+        pb = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [
+            ./home/pb.nix
+          ] ++ common-imports;
+        };
+
+        pboeschen = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [
+            ./home/pboeschen.nix
+          ] ++ common-imports;
+        };
       };
 
       templates = {
