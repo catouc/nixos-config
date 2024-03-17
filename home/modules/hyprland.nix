@@ -71,6 +71,7 @@
           $mod = SUPER
 
           windowrulev2 = opacity 0.9 0.3,class:^(Alacritty)$
+          windowrulev2 = size 720 640,title:(Project\ Settings\ \(project\.godot\))
 
           bind = $mod, C, killactive
           bind = $mod, L, exec, swaylock

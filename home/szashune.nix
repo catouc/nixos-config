@@ -14,6 +14,7 @@
       cargo
       mullvad-vpn
       gcc
+      godot_4
       rustc
       rtorrent
       thunderbird
