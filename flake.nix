@@ -128,6 +128,12 @@
 
       formatter.${system} = pkgs.nixpkgs-fmt;
 
+      devShells.${system}.default = pkgs.mkShell {
+        buildInputs = with pkgs; [
+          nixd
+        ];
+      };
+
       templates = {
         go = {
           path = ./templates/go;

@@ -22,6 +22,7 @@
           	    }
           	  }
           	  lspconfig.gopls.setup{}
+          	  lspconfig.nixd.setup{}
               lspconfig.gdscript.setup{}
 
               vim.api.nvim_create_autocmd('LspAttach', {
