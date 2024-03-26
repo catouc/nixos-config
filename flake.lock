@@ -1,25 +1,5 @@
 {
   "nodes": {
-    "extrapkgs": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1702481098,
-        "narHash": "sha256-vLE3iIGkDPxLZMRdckEghE7E5Z3klAd18DyJXuxm9Wg=",
-        "owner": "catouc",
-        "repo": "extranixpkgs",
-        "rev": "5671912b5dfa1d5c26629edd859ed61d3bf93c37",
-        "type": "github"
-      },
-      "original": {
-        "owner": "catouc",
-        "repo": "extranixpkgs",
-        "type": "github"
-      }
-    },
     "flake-utils": {
       "locked": {
         "lastModified": 1652776076,
@@ -93,11 +73,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1711331441,
-        "narHash": "sha256-Tvgc9hUfNELWl3R2gtCBQ2D7lVIjumzLHs6JiM1RT6g=",
+        "lastModified": 1711419979,
+        "narHash": "sha256-3MHxCysSDf+2anImp6UQInHJnQUp+3Ble2Y7tllwHkA=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "356414639fc06ace7045236ec41d673342981057",
+        "rev": "a9d7526aae38dcdceb391fe9f00919c6c400abe3",
         "type": "github"
       },
       "original": {
@@ -234,7 +214,6 @@
     },
     "root": {
       "inputs": {
-        "extrapkgs": "extrapkgs",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "jiwa": "jiwa",

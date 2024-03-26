@@ -15,15 +15,9 @@
     };
 
     hyprland.url = "github:hyprwm/Hyprland"; 
-
-    extrapkgs = {
-      url = "github:catouc/extranixpkgs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
   };
 
-  outputs = { self, nixpkgs, home-manager, jiwa, hyprland, extrapkgs, }:
+  outputs = { self, nixpkgs, home-manager, jiwa, hyprland, }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -31,9 +25,11 @@
         config.allowUnfree = true;
         overlays = [
           (final: prev: {jiwa = jiwa.packages.${system}.jiwa;})
-          (final: prev: {ytdl-sub = extrapkgs.packages.${system}.ytdl-sub;})
+          self.overlays.ytdl-sub
+          self.overlays.firefly-iii
         ];
       };
+
       lib = nixpkgs.lib;
       common-imports = [
         ./home/modules/common.nix
@@ -42,6 +38,14 @@
         ./home/modules/editor.nix
       ];
     in {
+      overlays = {
+        ytdl-sub = final: prev: {
+          ytdl-sub = final.callPackage ./packages/ytdl-sub.nix { };
+        };
+        firefly-iii = final: prev: {
+          firefly-iii = final.callPackage ./packages/firefly-iii.nix { };
+        };
+      };
       nixosConfigurations = {
         changeling = lib.nixosSystem {
           inherit system pkgs;
@@ -63,11 +67,11 @@
 
         marut = lib.nixosSystem {
           inherit system pkgs;
+          #extraArgs = { inherit extrapkgs; };
           modules = [
             ./systems/marut/configuration.nix
             # TODO: somehow the config.pb bit is breaking, whereas the hyprland one isn't
             # maybe I'll just move all of that into this repo instead
-            # extrapkgs.nixosModules.ytdl-sub
 
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
