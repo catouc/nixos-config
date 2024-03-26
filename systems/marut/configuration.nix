@@ -44,6 +44,7 @@
         ''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEUrXTWtqfBvZCn/SPlN0nZmhPhwvOc4M8gPeKN1b2eZ''
         ''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINY+KfRjOhVNBHU0so8CI3zoXFQAvYtgCxKsAmQYjfSE''
         ''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPRVGs2ui3gP3O8TgQP6+UJIQZrwipZgcDltOdIXvT4Y''
+        ''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJwwqbgUcJyKz5y+rrfjfSMmNwbhQ6/bygrVcyCbNMWx pb@changeling''
         ''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINOgT1Yh3UjIQvBzHOjnc4upo4sIRE1lZz+dB40P58Gj pb@penguin''
       ];
     };
