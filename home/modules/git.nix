@@ -1,4 +1,4 @@
-{ git-email, url-rewrites ? {}, ... }:
+{ git-email, url-rewrites ? { }, ... }:
 {
   programs.git = {
     enable = true;

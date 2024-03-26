@@ -14,7 +14,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland"; 
+    hyprland.url = "github:hyprwm/Hyprland";
   };
 
   outputs = { self, nixpkgs, home-manager, jiwa, hyprland, }:
@@ -24,7 +24,7 @@
         inherit system;
         config.allowUnfree = true;
         overlays = [
-          (final: prev: {jiwa = jiwa.packages.${system}.jiwa;})
+          (final: prev: { jiwa = jiwa.packages.${system}.jiwa; })
           self.overlays.ytdl-sub
           self.overlays.firefly-iii
         ];
@@ -37,7 +37,8 @@
         ./home/modules/terminal.nix
         ./home/modules/editor.nix
       ];
-    in {
+    in
+    {
       overlays = {
         ytdl-sub = final: prev: {
           ytdl-sub = final.callPackage ./packages/ytdl-sub.nix { };
@@ -52,7 +53,8 @@
           modules = [
             ./systems/changeling/configuration.nix
 
-            home-manager.nixosModules.home-manager {
+            home-manager.nixosModules.home-manager
+            {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.pb = {
@@ -73,7 +75,8 @@
             # TODO: somehow the config.pb bit is breaking, whereas the hyprland one isn't
             # maybe I'll just move all of that into this repo instead
 
-            home-manager.nixosModules.home-manager {
+            home-manager.nixosModules.home-manager
+            {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.pb = {
@@ -91,7 +94,8 @@
           modules = [
             ./systems/szashune/configuration.nix
 
-            home-manager.nixosModules.home-manager {
+            home-manager.nixosModules.home-manager
+            {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.pb = {
@@ -99,7 +103,7 @@
                   ./home/szashune.nix
                   ./home/modules/hyprland.nix
                   hyprland.homeManagerModules.default
-		            ] ++ common-imports;
+                ] ++ common-imports;
               };
             }
           ];
@@ -121,6 +125,8 @@
           ] ++ common-imports;
         };
       };
+
+      formatter.${system} = pkgs.nixpkgs-fmt;
 
       templates = {
         go = {

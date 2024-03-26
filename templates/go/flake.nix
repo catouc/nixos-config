@@ -7,7 +7,7 @@
   description = "";
 
   outputs = { self, nixpkgs, flake-utils }:
-    flake-utils.lib.eachDefaultSystem ( system:
+    flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
         build = pkgs.buildGoModule {
@@ -18,7 +18,7 @@
           src = ./.;
         };
       in
-        rec {
+      rec {
         packages = {
           replace = build;
           default = build;

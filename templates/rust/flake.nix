@@ -7,17 +7,17 @@
   description = "";
 
   outputs = { self, nixpkgs, flake-utils }:
-    flake-utils.lib.eachDefaultSystem ( system:
+    flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
         build = pkgs.rustPlatform.buildRustPackage {
           pname = "replace";
           version = "v0.1.0";
           src = ./.;
-	  cargoSha256 = "";
+          cargoSha256 = "";
         };
       in
-        rec {
+      rec {
         packages = {
           replace = build;
           default = build;
@@ -26,9 +26,9 @@
         devShells = {
           default = pkgs.mkShell {
             buildInputs = with pkgs; [
-	      cargo
-	      rustc
-	      rust-analyzer
+              cargo
+              rustc
+              rust-analyzer
             ];
           };
         };

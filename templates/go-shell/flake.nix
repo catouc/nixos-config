@@ -7,19 +7,19 @@
   description = "";
 
   outputs = { self, nixpkgs, flake-utils }:
-    flake-utils.lib.eachDefaultSystem ( system:
+    flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
       in
-        rec {
+      rec {
         devShells = {
           default = pkgs.mkShell {
             buildInputs = with pkgs; [
               go
               gopls
               golangci-lint
-	      gotools
-	      delve
+              gotools
+              delve
             ];
           };
         };

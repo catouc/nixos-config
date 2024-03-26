@@ -32,7 +32,7 @@
     LC_TELEPHONE = "nl_NL.utf8";
     LC_TIME = "nl_NL.utf8";
   };
-  
+
   fonts = {
     fontDir.enable = true;
     fontconfig.enable = true;

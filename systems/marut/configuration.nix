@@ -14,17 +14,17 @@
     family = "inet";
     name = "excludeFromVPN";
     content = ''
-      chain allowIncoming {
-	type filter hook input priority -100; policy accept;
-	tcp dport 22 meta mark set 0x00000f41 meta mark set 0x6d6f6c65
-	tcp dport 443 meta mark set 0x00000f41 meta mark set 0x6d6f6c65
-      }
+            chain allowIncoming {
+      	type filter hook input priority -100; policy accept;
+      	tcp dport 22 meta mark set 0x00000f41 meta mark set 0x6d6f6c65
+      	tcp dport 443 meta mark set 0x00000f41 meta mark set 0x6d6f6c65
+            }
 
-      chain allowOutgoing {
-        type route hook output priority -100; policy accept;
-	tcp sport 22 meta mark set 0x00000f41 meta mark set 0x6d6f6c65
-	tcp sport 443 meta mark set 0x00000f41 meta mark set 0x6d6f6c65
-      }
+            chain allowOutgoing {
+              type route hook output priority -100; policy accept;
+      	tcp sport 22 meta mark set 0x00000f41 meta mark set 0x6d6f6c65
+      	tcp sport 443 meta mark set 0x00000f41 meta mark set 0x6d6f6c65
+            }
     '';
   };
   networking.firewall = {
@@ -33,7 +33,7 @@
   };
 
   users.groups = {
-    ytdl-sub = {};
+    ytdl-sub = { };
   };
 
   users.users = {
@@ -42,8 +42,8 @@
       extraGroups = [ "wheel" "jellyfin" ];
       openssh.authorizedKeys.keys = [
         ''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEUrXTWtqfBvZCn/SPlN0nZmhPhwvOc4M8gPeKN1b2eZ''
-	      ''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINY+KfRjOhVNBHU0so8CI3zoXFQAvYtgCxKsAmQYjfSE''
-	      ''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPRVGs2ui3gP3O8TgQP6+UJIQZrwipZgcDltOdIXvT4Y''
+        ''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINY+KfRjOhVNBHU0so8CI3zoXFQAvYtgCxKsAmQYjfSE''
+        ''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPRVGs2ui3gP3O8TgQP6+UJIQZrwipZgcDltOdIXvT4Y''
         ''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINOgT1Yh3UjIQvBzHOjnc4upo4sIRE1lZz+dB40P58Gj pb@penguin''
       ];
     };
@@ -123,7 +123,7 @@
     hydraURL = "https://hydra.catouc.com";
     listenHost = "127.0.0.1";
     notificationSender = "hydra@catouc.com";
-    buildMachinesFiles = [];
+    buildMachinesFiles = [ ];
     useSubstitutes = true;
   };
 

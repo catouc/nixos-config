@@ -26,7 +26,7 @@
 
   programs.ssh.startAgent = true;
   programs.steam.enable = true;
-  
+
   services.blueman.enable = true;
   services.mullvad-vpn.enable = true;
   services.jellyfin = {
