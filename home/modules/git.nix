@@ -1,5 +1,11 @@
 { git-email, url-rewrites ? { }, ... }:
 {
+  home.shellAliases = {
+    gs = "git status";
+    gp = "git push";
+    gpu = "git push -u origin $(git rev-parse --abbrev-ref HEAD)";
+    gpum = "git push -u origin $(git rev-parse --abbrev-ref HEAD) -o merge_request.create";
+  };
   programs.git = {
     enable = true;
     userName = "Philipp Böschen";
