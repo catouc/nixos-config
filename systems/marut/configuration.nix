@@ -1,5 +1,6 @@
 { pkgs, ... }: {
   imports = [
+    ../modules/ytdl-sub.nix
     ./hardware-configuration.nix
   ];
 
@@ -32,10 +33,6 @@
     allowedTCPPorts = [ 22 80 443 ];
   };
 
-  users.groups = {
-    ytdl-sub = { };
-  };
-
   users.users = {
     pb = {
       isNormalUser = true;
@@ -48,40 +45,12 @@
         ''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINOgT1Yh3UjIQvBzHOjnc4upo4sIRE1lZz+dB40P58Gj pb@penguin''
       ];
     };
-
-    ytdl-sub = {
-      isSystemUser = true;
-      group = "ytdl-sub";
-    };
   };
 
   fileSystems = {
     "/media/jellyfin" = {
       device = "/dev/disk/by-uuid/f470f9eb-ac73-490b-ab63-861afe248452";
       fsType = "ext4";
-    };
-  };
-
-  systemd.timers.ytdl-sub = {
-    enable = false;
-    wantedBy = [ "timers.target" ];
-    timerConfig = {
-      OnBootSec = "30m";
-      OnUnitActiveSec = "30m";
-      Unit = "ytdl-sub.service";
-    };
-  };
-
-  systemd.services.ytdl-sub = {
-    script = ''
-      set -euo pipefail
-      ${pkgs.ytdl-sub}/bin/ytdl-sub --config /etc/ytdl-sub/config.yaml sub /etc/ytdl-sub/subcriptions.yaml
-    '';
-
-    serviceConfig = {
-      Type = "oneshot";
-      User = "ytdl-sub";
-      WorkingDirectory = "/var/ytdl-sub";
     };
   };
 
