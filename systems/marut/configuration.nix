@@ -1,6 +1,8 @@
 { pkgs, ... }: {
   imports = [
     ../modules/ytdl-sub.nix
+    ../modules/security.nix
+
     ./hardware-configuration.nix
   ];
 

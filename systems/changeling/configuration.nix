@@ -6,7 +6,7 @@
     ../modules/boot.nix
     ../modules/hyprland.nix
     ../modules/locale.nix
-    ../modules/sound.nix
+    ../modules/security.nix
     ../modules/user.nix
 
     (import ../modules/fonts.nix { pkgs = pkgs; })

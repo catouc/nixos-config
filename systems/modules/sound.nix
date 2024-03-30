@@ -1,8 +1,5 @@
 { ... }:
 {
-  # Pipewire sound
-  # TODO: No idea what rtkit is?
-  security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
