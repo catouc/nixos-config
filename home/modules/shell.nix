@@ -2,6 +2,7 @@
 {
   home = {
     shellAliases = {
+      grep = "rg";
       kc = "kubectl";
       l = "ls -lisah";
     };
