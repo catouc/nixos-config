@@ -81,8 +81,8 @@ in
         bind = $mod, F, fullscreen, 0
         bind = $mod, Q, exec, alacritty
         bind = $mod, S, exec, rofi -show ssh
-        bind = , Print, exec, grim -g "$(slurp)"
-        bind = SHIFT, Print, exec, grim -g "$(slurp)" - | wl-copy
+        bind = $mod, G, exec, grim -g "$(slurp)"
+        bind = SUPER_SHIFT, G, exec, grim -g "$(slurp)" - | wl-copy
         ${cfg.extraBinds}
 
         ${builtins.concatStringsSep "\n" (builtins.genList (
