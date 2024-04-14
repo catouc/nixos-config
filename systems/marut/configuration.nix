@@ -40,8 +40,7 @@
     };
   };
 
-  services.jellyfin.enable = true;
-  services.mullvad-vpn.enable = true;
+  services.jellyfin.enable = false;
 
   services.nginx = {
     enable = false;
