@@ -30,6 +30,33 @@
         ''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINOgT1Yh3UjIQvBzHOjnc4upo4sIRE1lZz+dB40P58Gj pb@penguin''
       ];
     };
+
+    mediawiki = {
+      extraGroups = [
+        "keys"
+      ];
+    };
+  };
+
+  services.mediawiki = {
+    enable = true;
+    name = "Panapa";
+    webserver = "nginx";
+    # There is only a default if you configure something for the apache server. I don't care
+    # for it so this is necessary to set manually.
+    passwordSender = "root@localhost";
+    passwordFile = "/run/keys/mediaWikiInitialPassword";
+    nginx.hostName = "panapa.catouc.com";
+    extraConfig = ''
+      # Disable reading by anonymous users
+      $wgGroupPermissions['*']['read'] = false;
+
+      # Disable anonymous editing
+      $wgGroupPermissions['*']['edit'] = false;
+
+      # Prevent new user registrations except by sysops
+      $wgGroupPermissions['*']['createaccount'] = false;
+    '';
   };
 
   services.openssh = {
@@ -43,25 +70,12 @@
   services.jellyfin.enable = false;
 
   services.nginx = {
-    enable = false;
+    enable = true;
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
-    virtualHosts."hydra.catouc.com" = {
+    virtualHosts."panapa.catouc.com" = {
       forceSSL = true;
       enableACME = true;
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:3000";
-        extraConfig = "proxy_ssl_server_name on;";
-      };
-    };
-
-    virtualHosts."jellyfin.catouc.com" = {
-      forceSSL = true;
-      enableACME = true;
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:8096";
-        extraConfig = "proxy_ssl_server_name on;";
-      };
     };
   };
 
