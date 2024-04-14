@@ -49,13 +49,6 @@
     };
   };
 
-  fileSystems = {
-    "/media/jellyfin" = {
-      device = "/dev/disk/by-uuid/f470f9eb-ac73-490b-ab63-861afe248452";
-      fsType = "ext4";
-    };
-  };
-
   services.openssh = {
     enable = true;
     settings = {
@@ -68,7 +61,7 @@
   services.mullvad-vpn.enable = true;
 
   services.nginx = {
-    enable = true;
+    enable = false;
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
     virtualHosts."hydra.catouc.com" = {
