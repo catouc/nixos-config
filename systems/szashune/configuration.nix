@@ -27,6 +27,10 @@
   };
 
   pb.locale.enable = true;
+  services.jellyfin = {
+    enable = true;
+    openFirewall = true;
+  };
 
   fileSystems = {
     "/home/pb/.local/share/Steam" = {
