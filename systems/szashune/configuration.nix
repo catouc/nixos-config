@@ -18,6 +18,9 @@
     })
   ];
 
+  networking.nftables.enable = true;
+  networking.nftables.flushRuleset = true;
+
   # Nvidia graphics
   # TODO: figure out if this can be safely dropped
   services.xserver.videoDrivers = [ "nvidia" ];
