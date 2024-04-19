@@ -40,6 +40,10 @@
       device = "/dev/disk/by-uuid/9a986255-abe7-412d-a3ce-091381ed8abb";
       fsType = "ext4";
     };
+    "/mnt/media" = {
+      device = "/dev/disk/by-uuid/7a4a22e6-2a7e-4b78-a12e-e7a18148c9bb";
+      fsType = "ext4";
+    };
   };
 
   programs.ssh.startAgent = true;
