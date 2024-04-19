@@ -40,6 +40,14 @@
     openFirewall = true;
   };
 
+  services.openssh = {
+    enable = true;
+    settings = {
+      PasswordAuthentication = false;
+      PermitRootLogin = "no";
+    };
+  };
+
   fileSystems = {
     "/home/pb/.local/share/Steam" = {
       device = "/dev/disk/by-uuid/9a986255-abe7-412d-a3ce-091381ed8abb";
