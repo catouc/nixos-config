@@ -6,6 +6,7 @@
     ../modules/boot.nix
     ../modules/hyprland.nix
     ../modules/locale.nix
+    ../modules/mullvad.nix
     ../modules/sound.nix
     ../modules/security.nix
     ../modules/user.nix
@@ -20,11 +21,6 @@
 
   networking.nftables.enable = true;
   networking.nftables.flushRuleset = true;
-  # based on https://discourse.nixos.org/t/connected-to-mullvadvpn-but-no-internet-connection/35803/12
-  # to restore mullvad VPN DNS resolution
-  networking.resolvconf.extraConfig = ''
-    dynamic_order='tap[0-9]* tun[0-9]* vpn vpn[0-9]* wg* wg[0-9]* ppp[0-9]* ippp[0-9]*'
-  '';
 
   # Nvidia graphics
   # TODO: figure out if this can be safely dropped
