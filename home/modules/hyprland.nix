@@ -66,6 +66,7 @@ in
     wayland.windowManager.hyprland = {
       enable = true;
       extraConfig = ''
+        exec-once = swaync
         exec-once = hyprpaper
         exec-once = [workspace 1 silent] alacritty
         exec-once = [workspace 2 silent] firefox
@@ -109,6 +110,7 @@ in
       rofi
       slurp
       swaylock
+      swaynotificationcenter
       wl-clipboard
       xdg-desktop-portal-wlr
     ];
