@@ -24,18 +24,28 @@
 
   pb.home.hyprland = {
     enable = true;
-    monitors = [{
-      name = "DP-1";
-      resolution = "3440x1440";
-      refreshRate = "175";
-      position = "0x0";
-      scale = 1;
-    }];
+    monitors = [
+      {
+        name = "DP-1";
+        resolution = "3440x1440";
+        refreshRate = "175";
+        position = "0x0";
+        scale = 1;
+      }
+      {
+        name = "DP-3";
+        resolution = "1920x1080";
+        refreshRate = "144";
+        position = "3440x0";
+        scale = 1;
+      }
+    ];
 
     wallpaper = ''
       preload = ~/Pictures/Wallpapers/Caleb1.png
-      wallpaper = eDP-1,~/Pictures/Wallpapers/Caleb1.png
+      wallpaper = eDP-1,~/Pictures/Wallpapers/tron-1.png
     '';
   };
 
 }
+
