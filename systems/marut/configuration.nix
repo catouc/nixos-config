@@ -57,6 +57,13 @@
       # Prevent new user registrations except by sysops
       $wgGroupPermissions['*']['createaccount'] = false;
     '';
+
+    extensions = {
+      Cargo = pkgs.fetchzip {
+        url = "https://github.com/wikimedia/mediawiki-extensions-Cargo/archive/3.5.1.zip";
+        hash = "sha256-mEzeCnZyFK6ig9JZD2ZsGN2slfvhBttohxYDDHKB5zU=";
+      };
+    };
   };
 
   services.openssh = {
