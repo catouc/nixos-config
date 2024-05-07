@@ -63,6 +63,11 @@
         url = "https://github.com/wikimedia/mediawiki-extensions-Cargo/archive/3.5.1.zip";
         hash = "sha256-mEzeCnZyFK6ig9JZD2ZsGN2slfvhBttohxYDDHKB5zU=";
       };
+
+      "PageForms" = pkgs.fetchzip {
+        url = "https://github.com/wikimedia/mediawiki-extensions-PageForms/archive/5.7.2.zip";
+        hash = "sha256-L+qWC7LjABbzs+YMnnNVhKEGgKlH+AWTci2KwWkEEPk=";
+      };
     };
   };
 
