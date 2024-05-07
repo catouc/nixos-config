@@ -71,6 +71,7 @@
     settings = {
       PasswordAuthentication = false;
       PermitRootLogin = "no";
+      PubkeyAuthOptions = "touch-required";
     };
   };
 
