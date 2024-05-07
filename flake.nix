@@ -4,6 +4,17 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    lix = {
+      url = "git+https://git@git.lix.systems/lix-project/lix?ref=refs/tags/2.90-beta.1";
+      flake = false;
+    };
+
+    lix-module = {
+      url = "git+https://git.lix.systems/lix-project/nixos-module";
+      inputs.lix.follows = "lix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -17,7 +28,7 @@
     hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = { self, nixpkgs, home-manager, jiwa, hyprland, }:
+  outputs = { self, nixpkgs, lix-module, home-manager, jiwa, hyprland, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -93,6 +104,7 @@
           inherit system pkgs;
           modules = [
             ./systems/szashune/configuration.nix
+            lix-module.nixosModules.default
 
             home-manager.nixosModules.home-manager
             {

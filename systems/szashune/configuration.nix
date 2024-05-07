@@ -10,7 +10,6 @@
     ../modules/sound.nix
     ../modules/security.nix
     ../modules/user.nix
-    ../modules/lix.nix
 
     (import ../modules/fonts.nix { pkgs = pkgs; })
     (import ../modules/fonts.nix { pkgs = pkgs; })
@@ -23,11 +22,6 @@
 
   networking.nftables.enable = true;
   networking.nftables.flushRuleset = true;
-
-  lix = {
-    enable = true;
-    enableSpecialisation = true;
-  };
 
   # Nvidia graphics
   # TODO: figure out if this can be safely dropped
