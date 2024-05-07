@@ -63,6 +63,7 @@
           inherit system pkgs;
           modules = [
             ./systems/changeling/configuration.nix
+            lix-module.nixosModules.default
 
             home-manager.nixosModules.home-manager
             {
