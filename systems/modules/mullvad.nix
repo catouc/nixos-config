@@ -14,11 +14,13 @@
       chain allowIncoming {
         type filter hook input priority -100; policy accept;
         tcp dport 8096 ct mark set 0x00000f41 meta mark set 0x6d6f6c65;
+        tcp dport 22 ct mark set 0x00000f41 meta mark set 0x6d6f6c65;
       }
 
       chain allowOutgoing {
         type route hook output priority -100; policy accept;
         tcp sport 8096 ct mark set 0x00000f41 meta mark set 0x6d6f6c65;
+        tcp sport 22 ct mark set 0x00000f41 meta mark set 0x6d6f6c65;
       }
     '';
   };

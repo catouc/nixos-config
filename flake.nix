@@ -101,6 +101,26 @@
           ];
         };
 
+        gargoyle = lib.nixosSystem {
+          inherit system pkgs;
+          modules = [
+            ./systems/gargoyle/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.pb = {
+                imports = [
+                  ./home/marut.nix
+                  ./home/modules/shell.nix
+                ];
+              };
+            }
+          ];
+        };
+
+
+
         szashune = lib.nixosSystem {
           inherit system pkgs;
           modules = [
