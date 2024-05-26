@@ -59,20 +59,27 @@
     openFirewall = true;
   };
 
-  #services.nginx = {
-  #  enable = true;
-  #  recommendedProxySettings = true;
-  #  recommendedTlsSettings = true;
-  #  virtualHosts."jellyfin.catouc.com" = {
-  #    forceSSL = true;
-  #    enableACME = true;
-  #  };
-  #};
+  services.nginx = {
+    enable = true;
+    recommendedProxySettings = true;
+    recommendedTlsSettings = true;
+    virtualHosts."jellyfin.catouc.com" = {
+      forceSSL = true;
+      enableACME = true;
 
-  #security.acme = {
-  #  acceptTerms = true;
-  #  defaults.email = "acme@philipp.boeschen.me";
-  #};
+      locations."/".proxyPass = "http://127.0.0.1:8096";
+    };
+  };
+
+  security.acme = {
+    acceptTerms = true;
+    defaults.email = "acme@philipp.boeschen.me";
+    certs."jellyfin.catouc.com" = {
+      dnsProvider = "cloudflare";
+      environmentFile = /run/keys/cloudflare;
+      webroot = null;
+    };
+  };
 
   nix = {
     package = pkgs.nixFlakes;
