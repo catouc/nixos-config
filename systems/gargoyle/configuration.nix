@@ -50,6 +50,7 @@
     portBypasses = [ 443 22 ];
   };
 
+  services.zfs.autoScrub.enable = true;
   services.sanoid = {
     enable = true;
     templates.videoBackup = {
