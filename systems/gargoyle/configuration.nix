@@ -45,6 +45,11 @@
     };
   };
 
+  pb.mullvad = {
+    enable = true;
+    portBypasses = [ 443 22 ];
+  };
+
   services.openssh = {
     enable = true;
     settings = {
