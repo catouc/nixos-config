@@ -50,6 +50,25 @@
     portBypasses = [ 443 22 ];
   };
 
+  services.sanoid = {
+    enable = true;
+    templates.videoBackup = {
+      hourly = 48;
+      daily = 7;
+      weekly = 2;
+      monthly = 1;
+      autosnap = true;
+      autoprune = true;
+    };
+
+    datasets = {
+      "media/Anime".useTemplate = [ "videoBackup" ];
+      "media/Movies".useTemplate = [ "videoBackup" ];
+      "media/Shows".useTemplate = [ "videoBackup" ];
+    };
+
+  };
+
   services.openssh = {
     enable = true;
     settings = {
