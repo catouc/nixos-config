@@ -1,15 +1,15 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
 
     ../modules/boot.nix
-    ../modules/hyprland.nix
     ../modules/locale.nix
     ../modules/mullvad.nix
     ../modules/sound.nix
     ../modules/security.nix
     ../modules/user.nix
+    ../modules/windowmanager.nix
 
     (import ../modules/fonts.nix { pkgs = pkgs; })
     (import ../modules/fonts.nix { pkgs = pkgs; })
@@ -23,14 +23,12 @@
   networking.nftables.enable = true;
   networking.nftables.flushRuleset = true;
 
-  # Nvidia graphics
-  # TODO: figure out if this can be safely dropped
-  services.xserver.videoDrivers = [ "nvidia" ];
-  pb.hyprland = {
+  pb.windowmanager = {
     enable = true;
-    nvidiaGPU = true;
+    configFile = ../../home/configs/szashune-i3;
   };
 
+  security.polkit.enable = true;
   pb.locale.enable = true;
   services.jellyfin = {
     enable = true;

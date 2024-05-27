@@ -1,7 +1,6 @@
-{ pkgs, config, ... }:
+{ pkgs, lib, config, ... }:
 {
   imports = [
-    ./modules/hyprland.nix
     (import ./modules/git.nix {
       git-email = "catouc@philipp.boeschen.me";
     })
@@ -22,28 +21,10 @@
     ];
   };
 
-  pb.home.hyprland = {
-    enable = true;
-    monitors = [
-      {
-        name = "DP-1";
-        resolution = "3440x1440";
-        refreshRate = "175";
-        position = "0x0";
-        scale = 1;
-      }
-      {
-        name = "DP-3";
-        resolution = "1920x1080";
-        refreshRate = "144";
-        position = "3440x0";
-        scale = 1;
-      }
-    ];
-
-    wallpaper = ''
-      preload = ~/Pictures/Wallpapers/Caleb1.png
-      wallpaper = eDP-1,~/Pictures/Wallpapers/tron-1.png
+  home.file.".config/i3" = {
+    source = ./configs/szashune-i3;
+    onChange = ''
+      ${pkgs.i3}/bin/i3-msg reload
     '';
   };
 
