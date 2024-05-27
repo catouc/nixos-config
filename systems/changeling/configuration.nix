@@ -8,6 +8,7 @@
     ../modules/locale.nix
     ../modules/security.nix
     ../modules/user.nix
+    ../modules/windowmanager.nix
 
     (import ../modules/fonts.nix { pkgs = pkgs; })
     (import ../modules/nix.nix { pkgs = pkgs; })
@@ -17,8 +18,9 @@
     })
   ];
 
-  pb.hyprland = {
+  pb.windowmanager = {
     enable = true;
+    configFile = ../../home/configs/changeling-i3;
   };
 
   pb.locale.enable = true;

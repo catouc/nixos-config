@@ -6,6 +6,8 @@ in
   options.pb.windowmanager = {
     enable = lib.mkEnableOption "Enable my custom window manager configurations";
 
+    useNvidiaVideoDriver = lib.mkEnableOption "Enable nvidia proprietary driver";
+
     configFile = lib.mkOption {
       type = lib.types.path;
       default = "";
@@ -17,7 +19,6 @@ in
     services.displayManager.defaultSession = "none+i3";
     services.xserver = {
       enable = true;
-      videoDrivers = [ "nvidia" ];
       desktopManager = {
         xterm.enable = false;
       };
@@ -34,5 +35,7 @@ in
         configFile = cfg.configFile;
       };
     };
+
+    services.xserver.videoDrivers = lib.mkIf cfg.useNvidiaVideoDriver [ "nvidia" ];
   };
 }

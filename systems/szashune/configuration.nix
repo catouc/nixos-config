@@ -25,6 +25,7 @@
 
   pb.windowmanager = {
     enable = true;
+    useNvidiaVideoDriver = true;
     configFile = ../../home/configs/szashune-i3;
   };
 

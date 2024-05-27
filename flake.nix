@@ -25,7 +25,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland.url = "github:hyprwm/Hyprland/v0.39.0";
   };
 
   outputs = { self, nixpkgs, lix-module, home-manager, jiwa, hyprland, ... }:
