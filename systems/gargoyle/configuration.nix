@@ -16,6 +16,11 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.enable = false;
   boot.loader.grub.device = "nodev";
+  # tailscale exit node requirements
+  boot.kernel.sysctl = {
+    "net.ipv4.ip_forward" = 1;
+    "net.ipv6.conf.all.forwarding" = 1;
+  };
 
   networking.hostName = "gargoyle";
   users.groups = {
@@ -26,7 +31,10 @@
   networking.nftables.flushRuleset = true;
   networking.firewall = {
     enable = true;
+
+    trustedInterfaces = [ "tailscale0" ];
     allowedTCPPorts = [ 22 80 443 ];
+    allowedUDPPorts = [ config.services.tailscale.port ];
   };
 
   users.users = {
@@ -106,7 +114,10 @@
     };
   };
 
-  services.tailscale.enable = true;
+  services.tailscale = {
+    enable = true;
+    useRoutingFeatures = "server";
+  };
 
   nix = {
     package = pkgs.nixFlakes;
