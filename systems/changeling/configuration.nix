@@ -37,6 +37,7 @@
   };
   services.printing.enable = true;
   services.upower.enable = true;
+  services.tailscale.enable = true;
 
   virtualisation.docker.enable = true;
 
