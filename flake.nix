@@ -25,10 +25,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland/v0.39.0";
+    nyaa-bulk = {
+      url = "github:catouc/nyaa-bulk";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, lix-module, home-manager, jiwa, hyprland, ... }:
+  outputs = { self, nixpkgs, lix-module, home-manager, jiwa, nyaa-bulk, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -36,6 +39,7 @@
         config.allowUnfree = true;
         overlays = [
           (final: prev: { jiwa = jiwa.packages.${system}.jiwa; })
+          (final: prev: { nyaa-bulk = nyaa-bulk.packages.${system}.default; })
           self.overlays.ytdl-sub
           self.overlays.firefly-iii
         ];
@@ -72,7 +76,6 @@
               home-manager.users.pb = {
                 imports = [
                   ./home/changeling.nix
-                  hyprland.homeManagerModules.default
                 ] ++ common-imports;
               };
             }
@@ -84,9 +87,6 @@
           #extraArgs = { inherit extrapkgs; };
           modules = [
             ./systems/marut/configuration.nix
-            # TODO: somehow the config.pb bit is breaking, whereas the hyprland one isn't
-            # maybe I'll just move all of that into this repo instead
-
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -134,8 +134,6 @@
               home-manager.users.pb = {
                 imports = [
                   ./home/szashune.nix
-                  ./home/modules/hyprland.nix
-                  hyprland.homeManagerModules.default
                 ] ++ common-imports;
               };
             }
