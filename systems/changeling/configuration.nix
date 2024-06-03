@@ -7,6 +7,7 @@
     ../modules/hyprland.nix
     ../modules/locale.nix
     ../modules/security.nix
+    ../modules/sound.nix
     ../modules/user.nix
     ../modules/windowmanager.nix
 
@@ -30,7 +31,7 @@
   programs.steam.enable = true;
 
   services.blueman.enable = true;
-  services.mullvad-vpn.enable = true;
+  hardware.bluetooth.enable = true;
   services.jellyfin = {
     enable = true;
     openFirewall = true;
