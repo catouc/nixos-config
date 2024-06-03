@@ -129,6 +129,7 @@
   environment.systemPackages = with pkgs; [
     git
     htop
+    nyaa-bulk
     vim
     tmux
   ];
