@@ -1,6 +1,7 @@
 { pkgs, lib, config, ... }:
 {
   imports = [
+    ./modules/terminal.nix
     (import ./modules/git.nix {
       git-email = "catouc@philipp.boeschen.me";
     })
@@ -28,5 +29,9 @@
     '';
   };
 
+  pb.home.terminal = {
+    enable = true;
+    fontSize = 11;
+  };
 }
 
