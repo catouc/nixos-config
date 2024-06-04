@@ -174,10 +174,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Workspace configuration for Desktop
-workspace "1: alacritty" output DP-0
-workspace "2: firefox" output DP-4
-
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
