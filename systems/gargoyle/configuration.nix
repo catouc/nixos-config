@@ -16,13 +16,12 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.enable = false;
   boot.loader.grub.device = "nodev";
-  # tailscale exit node requirements
-  boot.kernel.sysctl = {
-    "net.ipv4.ip_forward" = 1;
-    "net.ipv6.conf.all.forwarding" = 1;
-  };
+
+  boot.supportedFilesystems = [ "zfs" ];
+  boot.zfs.extraPools = [ "media" ];
 
   networking.hostName = "gargoyle";
+  networking.hostId = "7789dc7b";
   users.groups = {
     "media" = {};
   };
@@ -109,7 +108,7 @@
     defaults.email = "acme@philipp.boeschen.me";
     certs."jellyfin.catouc.com" = {
       dnsProvider = "cloudflare";
-      environmentFile = /run/keys/cloudflare;
+      environmentFile = /var/secrets/cloudflare;
       webroot = null;
     };
   };
