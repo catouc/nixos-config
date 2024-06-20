@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 let
   url-rewrites = {
     "ssh://git@gitlab.booking.com/" = {
@@ -10,20 +10,6 @@ let
     #! /usr/bin/env bash
     set -euo pipefail
     vim ~/Logbook/$(date --rfc-3339=date)
-  '';
-
-  vpnLogin = pkgs.writeShellScriptBin "vpn" ''
-        #! /usr/bin/env bash
-        set -euo pipefail
-        if ! [ $(id -u) = 0 ]; then
-    	echo "The script needs to be run with sudo" >&2
-    	exit 1
-        fi
-
-        sudo -u $SUDO_USER gpclient --start-minimized --now gp.booking.com 2> $HOME/error.log &
-        until $(ip route | grep -q tun0); do sleep 1; done
-        ip route del default dev tun0
-        ip route add 10.0.0.0/8 dev tun0
   '';
 in
 {
@@ -70,7 +56,6 @@ in
       okta-aws-cli
       slack
       vault
-      vpnLogin
       zoom-us
     ];
   };

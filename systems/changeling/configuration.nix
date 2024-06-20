@@ -4,7 +4,6 @@
     ./hardware-configuration.nix
 
     ../modules/boot.nix
-    ../modules/hyprland.nix
     ../modules/locale.nix
     ../modules/security.nix
     ../modules/sound.nix
