@@ -17,6 +17,22 @@
       }
     },
     "flake-utils_2": {
+      "locked": {
+        "lastModified": 1652776076,
+        "narHash": "sha256-gzTw/v1vj4dOVbpBSJX4J0DwUR6LIyXo7/SuuTJp1kM=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "04c1b180862888302ddfb2e3ad9eaa63afc60cf8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "ref": "v1.0.0",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "flake-utils_3": {
       "inputs": {
         "systems": "systems"
       },
@@ -49,6 +65,27 @@
         "type": "github"
       }
     },
+    "gitlab-notifications": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1716803372,
+        "narHash": "sha256-CNZ4Gz7hZ5M5ilhoHjVWHdAHLY9Y6U/ZW33HhoVevV4=",
+        "owner": "catouc",
+        "repo": "gitlab-notifications",
+        "rev": "5da282e3831c472e8d7d4acc32744834436381ff",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catouc",
+        "repo": "gitlab-notifications",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -71,7 +108,7 @@
     },
     "jiwa": {
       "inputs": {
-        "flake-utils": "flake-utils",
+        "flake-utils": "flake-utils_2",
         "nixpkgs": [
           "nixpkgs"
         ]
@@ -109,7 +146,7 @@
     },
     "lix-module": {
       "inputs": {
-        "flake-utils": "flake-utils_2",
+        "flake-utils": "flake-utils_3",
         "flakey-profile": "flakey-profile",
         "lix": [
           "lix"
@@ -170,6 +207,7 @@
     },
     "root": {
       "inputs": {
+        "gitlab-notifications": "gitlab-notifications",
         "home-manager": "home-manager",
         "jiwa": "jiwa",
         "lix": "lix",

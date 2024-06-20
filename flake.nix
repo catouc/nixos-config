@@ -25,13 +25,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    gitlab-notifications = {
+      url = "github:catouc/gitlab-notifications";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nyaa-bulk = {
       url = "github:catouc/nyaa-bulk";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, lix-module, home-manager, jiwa, nyaa-bulk, ... }:
+  outputs = { self, nixpkgs, lix-module, home-manager, jiwa, gitlab-notifications, nyaa-bulk, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -39,6 +44,7 @@
         config.allowUnfree = true;
         overlays = [
           (final: prev: { jiwa = jiwa.packages.${system}.jiwa; })
+          (final: prev: { gitlab-notifications = gitlab-notifications.packages.${system}.gitlab-notifications; })
           (final: prev: { nyaa-bulk = nyaa-bulk.packages.${system}.default; })
           self.overlays.ytdl-sub
           self.overlays.firefly-iii

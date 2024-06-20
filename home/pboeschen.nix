@@ -59,6 +59,7 @@ in
     packages = with pkgs; [
       alacritty
       gcc
+      gitlab-notifications
       globalprotect-openconnect
       jiwa
       k9s
