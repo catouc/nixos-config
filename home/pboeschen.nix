@@ -42,7 +42,7 @@ in
     username = "pboeschen";
     homeDirectory = "/home/pboeschen";
     stateVersion = "22.05";
-    packages = with pkgs; [
+    packages = (with pkgs; [
       alacritty
       gcc
       gitlab-notifications
@@ -51,12 +51,13 @@ in
       k9s
       kubectl
       kustomize
-      logbook
       #(nerdfonts.override { fonts = [ "DroidSansMono" ]; })
       okta-aws-cli
       slack
       vault
       zoom-us
+    ]) ++ [
+      logbook
     ];
   };
 }
