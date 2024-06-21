@@ -1,11 +1,5 @@
 { pkgs, ... }:
 let
-  url-rewrites = {
-    "ssh://git@gitlab.booking.com/" = {
-      insteadOf = "https://gitlab.booking.com/";
-    };
-  };
-
   logbook = pkgs.writeShellScriptBin "lb" ''
     #! /usr/bin/env bash
     set -euo pipefail
