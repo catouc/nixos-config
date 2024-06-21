@@ -24,6 +24,11 @@ in
     target = "./.config/wireplumber/bluetooth.lua.d/51-bluez-config.lua";
   };
 
+  pb.home.terminal = {
+    enable = true;
+    fontSize = 11;
+  };
+
   services.gpg-agent = {
     enable = true;
     defaultCacheTtl = 1800;
