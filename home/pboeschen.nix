@@ -50,7 +50,7 @@ in
       k9s
       kubectl
       kustomize
-      #(nerdfonts.override { fonts = [ "DroidSansMono" ]; })
+      (nerdfonts.override { fonts = [ "DroidSansMono" ]; })
       okta-aws-cli
       slack
       vault
