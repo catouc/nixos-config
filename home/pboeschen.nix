@@ -7,6 +7,17 @@ let
   '';
 in
 {
+  imports = [
+    (import ./modules/git.nix {
+      git-email = "philipp.boeschen@booking.com";
+      url-rewrites = {
+        "ssh://git@gitlab.booking.com/" = {
+          insteadOf = "https://gitlab.booking.com/";
+        };
+      };
+    })
+  ];
+
   home.file."wireplumber.bluetooth.lua.d" = {
     enable = true;
     source = ./configs/wireplumber-51-bluez-config.lua;
@@ -20,17 +31,6 @@ in
   };
 
   programs.gpg.enable = true;
-
-  imports = [
-    (import ./modules/git.nix {
-      git-email = "philipp.boeschen@booking.com";
-      url-rewrites = {
-        "ssh://git@gitlab.booking.com/" = {
-          insteadOf = "https://gitlab.booking.com/";
-        };
-      };
-    })
-  ];
 
   home = {
     username = "pboeschen";
