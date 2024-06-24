@@ -4,6 +4,11 @@
     ./modules/terminal.nix
     (import ./modules/git.nix {
       git-email = "catouc@philipp.boeschen.me";
+      url-rewrites = {
+        "ssh://git@github.com/" = {
+          insteadOf = "https://github.com";
+        };
+      };
     })
   ];
   home = {
