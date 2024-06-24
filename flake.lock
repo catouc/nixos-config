@@ -82,8 +82,8 @@
       },
       "original": {
         "owner": "catouc",
+        "ref": "0.2.1",
         "repo": "gitlab-notifications",
-        "rev": "0ee88444baca5f0a062a6c137478256e9d0d8f5f",
         "type": "github"
       }
     },

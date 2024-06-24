@@ -26,7 +26,7 @@
     };
 
     gitlab-notifications = {
-      url = "github:catouc/gitlab-notifications?rev=0ee88444baca5f0a062a6c137478256e9d0d8f5f";
+      url = "github:catouc/gitlab-notifications?ref=0.2.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
