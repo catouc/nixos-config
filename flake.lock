@@ -73,16 +73,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1716803372,
-        "narHash": "sha256-CNZ4Gz7hZ5M5ilhoHjVWHdAHLY9Y6U/ZW33HhoVevV4=",
+        "lastModified": 1719221199,
+        "narHash": "sha256-vUZqWZ29i4CDj3Eaj58vwr1SBRemxrpYWnMtQqOi64A=",
         "owner": "catouc",
         "repo": "gitlab-notifications",
-        "rev": "5da282e3831c472e8d7d4acc32744834436381ff",
+        "rev": "0ee88444baca5f0a062a6c137478256e9d0d8f5f",
         "type": "github"
       },
       "original": {
         "owner": "catouc",
         "repo": "gitlab-notifications",
+        "rev": "0ee88444baca5f0a062a6c137478256e9d0d8f5f",
         "type": "github"
       }
     },
