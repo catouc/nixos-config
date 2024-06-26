@@ -43,9 +43,8 @@ in
     stateVersion = "22.05";
     packages = (with pkgs; [
       alacritty
-      gcc
       gitlab-notifications
-      globalprotect-openconnect
+      google-chrome
       jiwa
       k9s
       kubectl
