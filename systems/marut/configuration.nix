@@ -36,6 +36,8 @@
     };
   };
 
+  virtualisation.docker.enable = true;
+
   services.mediawiki = {
     enable = true;
     name = "Panapa";
@@ -88,6 +90,17 @@
       forceSSL = true;
       enableACME = true;
     };
+
+    virtualHosts."splitwise.boeschen.me" = {
+      forceSSL = true;
+      enableACME = true;
+
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:3000";
+        extraConfig = "proxy_ssl_server_name on;";
+      };
+    };
+
   };
 
   services.hydra = {
