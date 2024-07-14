@@ -26,6 +26,15 @@ Ideally pipewire should pick this up then if you followed https://nixos.wiki/wik
 
 A helper script at `./hack/update` is there that will prepare the lock file, reconfigure the system and then try to add the new lock to git and commit
 
+## Polarbar logs in `/var/log/polybar/polybar.log`
+
+Gotta create that myself for now because I'm too lazy to actually figure this out.
+
+```
+sudo mkdir /var/log/polybar
+sudo chown root:users /var/log/polybar
+```
+
 # Chromebook
 
 ## Special notes
