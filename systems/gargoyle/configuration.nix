@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
 
       ../modules/mullvad.nix
+      ../modules/photoprism.nix
     ];
 
   boot.loader.systemd-boot.enable = true;
@@ -74,7 +75,6 @@
       "media/Movies".useTemplate = [ "videoBackup" ];
       "media/Shows".useTemplate = [ "videoBackup" ];
     };
-
   };
 
   services.openssh = {
@@ -101,6 +101,57 @@
 
       locations."/".proxyPass = "http://127.0.0.1:8096";
     };
+
+    virtualHosts."photos.catouc.com" = {
+      forceSSL = true;
+      enableACME = true;
+      http2 = true;
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:2342";
+        proxyWebsockets = true;
+      };
+    };
+  };
+
+  services.photoprism = {
+    enable = true;
+    port = 2342;
+    originalsPath = "/var/lib/private/photoprism/originals";
+    address = "0.0.0.0";
+    settings = {
+      PHOTOPRISM_ADMIN_USER = "admin";
+      PHOTOPRISM_ADMIN_PASSWORD = lib.readFile /var/secrets/photoprism;
+      PHOTOPRISM_DEFAULT_LOCALE = "en";
+      PHOTOPRISM_DATABASE_DRIVER = "mysql";
+      PHOTOPRISM_DATABASE_NAME = "photoprism";
+      PHOTOPRISM_DATABASE_SERVER = "/run/mysqld/mysqld.sock";
+      PHOTOPRISM_DATABASE_USER = "photoprism";
+      PHOTOPRISM_SITE_URL = "https://photos.catouc.com";
+      PHOTOPRISM_SITE_TITLE = "Photos";
+    };
+  };
+
+  services.mysql = {
+    enable = true;
+    dataDir = "/data/mysql";
+    package = pkgs.mariadb;
+    ensureDatabases = [ "photoprism" ];
+    ensureUsers = [ {
+      name = "photoprism";
+      ensurePermissions = {
+        "photoprism.*" = "ALL PRIVILEGES";
+      };
+    } ];
+  };
+
+  fileSystems."/var/lib/private/photoprism" = {
+    device = "/media/photoprism";
+    options = [ "bind" ];
+  };
+
+  fileSystems."/var/lib/private/photoprism/originals" ={
+    device = "/media/Photos";
+    options = [ "bind" ];
   };
 
   security.acme = {
@@ -133,6 +184,6 @@
     tmux
   ];
 
-    system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "23.11"; # Did you read the comment?
 }
 
