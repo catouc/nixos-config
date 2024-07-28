@@ -33,6 +33,13 @@
     fontSize = 8;
   };
 
+  home.file.".config/i3" = {
+    source = ./configs/changeling-i3;
+    onChange = ''
+      ${pkgs.i3}/bin/i3-msg reload
+    '';
+  };
+
   home.file."polybar.ini" = {
     enable = true;
     source = ./configs/polybar.ini;
