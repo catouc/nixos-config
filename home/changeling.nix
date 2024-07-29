@@ -17,14 +17,12 @@
     homeDirectory = "/home/pb";
     stateVersion = "22.05";
     packages = with pkgs; [
-      cargo
       mullvad-vpn
-      gcc
-      godot_4
-      rustc
+      mpv
       rtorrent
       shiori
       thunderbird
+      yt-dlp
     ];
   };
 
