@@ -1,0 +1,10 @@
+[[pipelines]]
+name =  "pre-commit"
+
+[[pipelines.steps]]
+name = "flake check"
+commands = ["nix flake check"]
+
+[[pipelines.triggers]]
+branches = ["*"]
+actions = ["pre-commit"]
