@@ -20,6 +20,7 @@
       mullvad-vpn
       mpv
       rtorrent
+      pipelight
       shiori
       thunderbird
       yt-dlp

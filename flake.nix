@@ -34,9 +34,14 @@
       url = "github:catouc/nyaa-bulk";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    pipelight = {
+      url = "github:pipelight/pipelight?ref=8e34128";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, lix-module, home-manager, jiwa, gitlab-notifications, nyaa-bulk, ... }:
+  outputs = { self, nixpkgs, lix-module, home-manager, jiwa, gitlab-notifications, nyaa-bulk, pipelight, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -46,6 +51,7 @@
           (final: prev: { jiwa = jiwa.packages.${system}.jiwa; })
           (final: prev: { gitlab-notifications = gitlab-notifications.packages.${system}.gitlab-notifications; })
           (final: prev: { nyaa-bulk = nyaa-bulk.packages.${system}.default; })
+          (final: prev: { pipelight = pipelight.packages.${system}.default; })
           self.overlays.ytdl-sub
           self.overlays.firefly-iii
         ];
