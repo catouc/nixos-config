@@ -9,7 +9,7 @@
     fontconfig.enable = true;
     enableDefaultPackages = true;
     packages = [
-      pkgs.nerdfonts
+      (pkgs.nerdfonts.override { fonts = [ "DroidSansMono" ]; })
     ];
   };
 }

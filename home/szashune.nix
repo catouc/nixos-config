@@ -16,8 +16,10 @@
       gcc
       godot_4
       rustc
+      rust-analyzer
       rtorrent
       thunderbird
+      talon
       xivlauncher
     ];
   };
