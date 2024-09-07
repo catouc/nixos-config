@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     lix = {
-      url = "git+https://git@git.lix.systems/lix-project/lix?ref=refs/tags/2.90.0-rc1";
+      url = "git+https://git@git.lix.systems/lix-project/lix?ref=refs/tags/2.91.0";
       flake = false;
     };
 
