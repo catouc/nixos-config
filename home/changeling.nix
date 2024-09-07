@@ -17,7 +17,6 @@
     homeDirectory = "/home/pb";
     stateVersion = "22.05";
     packages = with pkgs; [
-      mullvad-vpn
       mpv
       rtorrent
       pipelight
