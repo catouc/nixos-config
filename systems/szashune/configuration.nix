@@ -23,6 +23,8 @@
   networking.nftables.enable = true;
   networking.nftables.flushRuleset = true;
 
+  hardware.nvidia.open = false;
+
   pb.windowmanager = {
     enable = true;
     useNvidiaVideoDriver = true;
