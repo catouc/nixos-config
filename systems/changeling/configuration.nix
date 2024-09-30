@@ -19,10 +19,15 @@
     })
   ];
 
+  networking.nftables.enable = true;
+  networking.nftables.flushRuleset = true;
+
   pb.windowmanager = {
     enable = true;
     configFile = ../../home/configs/changeling-i3;
   };
+
+  services.mullvad-vpn.enable = true;
 
   pb.locale.enable = true;
   networking.wireguard.enable = true;
