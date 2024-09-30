@@ -27,9 +27,8 @@
     configFile = ../../home/configs/changeling-i3;
   };
 
-  services.mullvad-vpn.enable = true;
-
   pb.locale.enable = true;
+  pb.mullvad.enable = true;
   networking.wireguard.enable = true;
 
   programs.ssh.startAgent = true;
@@ -41,9 +40,7 @@
     enable = true;
     openFirewall = true;
   };
-  services.printing.enable = true;
   services.upower.enable = true;
-  services.tailscale.enable = true;
 
   virtualisation.docker.enable = true;
 
