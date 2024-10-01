@@ -38,11 +38,6 @@
 
   virtualisation.docker.enable = true;
 
-  services.gitea = {
-    enable = true;
-    passwordFile = "/run/keys/gitea-dbpassword";
-  };
-
   services.mediawiki = {
     enable = true;
     name = "Panapa";
