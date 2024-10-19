@@ -28,7 +28,10 @@
   };
 
   pb.locale.enable = true;
-  pb.mullvad.enable = true;
+  pb.mullvad = {
+    enable = true;
+    portBypasses = [ 22 ];
+  };
   networking.wireguard.enable = true;
 
   programs.ssh.startAgent = true;
