@@ -21,14 +21,20 @@ in
       group = "ytdl-sub";
     };
 
+    environment.etc."ytdl-sub-configuration" = {
+      target = ''
+        configuration:
+          ffmpeg_path: "${pkgs.ffmpeg}/bin/ffmpeg"
+          ffmpeg_path: "${pkgs.ffmpeg}/bin/ffprobe"
+          persist_logs:
+            logs_directory: ${cfg.logsDir}
+            keep_successful_logs: False
+      '';
+    };
+
     #configFile = pkgs.writeTextFile {
     #  name = "config";
     #  text = ''
-    #    configuration:
-    #      ffmpeg_path: "${pkgs.ffmpeg}/bin/ffmpeg"
-    #      ffmpeg_path: "${pkgs.ffmpeg}/bin/ffprobe"
-    #      persist_logs:
-    #        logs_directory: ${cfg.logsDir}
     #  '';
     #};
 
