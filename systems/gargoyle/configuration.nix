@@ -11,6 +11,7 @@
 
       ../modules/mullvad.nix
       ../modules/photoprism.nix
+      ../modules/soulseek.nix
     ];
 
   boot.loader.systemd-boot.enable = true;
@@ -56,6 +57,11 @@
   pb.mullvad = {
     enable = true;
     portBypasses = [ 443 22 ];
+  };
+
+  pb.slskd = {
+    enable = true;
+    hostName = "soulseek.catouc.com";
   };
 
   services.zfs.autoScrub.enable = true;
