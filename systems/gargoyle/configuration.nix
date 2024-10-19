@@ -173,6 +173,11 @@
       environmentFile = /var/secrets/cloudflare;
       webroot = null;
     };
+    certs."soulseek.catouc.com" = {
+      dnsProvider = "cloudflare";
+      environmentFile = /var/secrets/cloudflare;
+      webroot = null;
+    };
   };
 
   services.tailscale = {
