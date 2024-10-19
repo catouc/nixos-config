@@ -12,6 +12,12 @@ in
       default = "";
       description = "DNS name of the final server";
     };
+
+    shares = mkOption {
+      type = types.listOf types.path;
+      default = [];
+      description = "List of shares";
+    };
   };
 
   config = mkIf cfg.enable {
@@ -19,7 +25,8 @@ in
       enable = true;
       domain = cfg.hostName;
       environmentFile = /var/secrets/soulseek;
-      settings.shares.directories = [];
+      settings.shares.directories = forEach cfg.shares (x: builtins.toString x);
+      openFirewall = true;
       nginx = {
         enableACME = true;
         forceSSL = true;

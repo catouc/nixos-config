@@ -62,6 +62,7 @@
   pb.slskd = {
     enable = true;
     hostName = "soulseek.catouc.com";
+    shares = [ /media/Music ];
   };
 
   services.zfs.autoScrub.enable = true;
