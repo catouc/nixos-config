@@ -22,6 +22,10 @@
   boot.supportedFilesystems = [ "zfs" ];
   boot.zfs.extraPools = [ "media" ];
 
+  boot.kernel.sysctl = {
+    "fs.inotify.max_user_watches" = "16384"; # 2 times the default 8192
+  };
+
   networking.hostName = "gargoyle";
   networking.hostId = "7789dc7b";
   users.groups = {
