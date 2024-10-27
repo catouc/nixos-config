@@ -97,6 +97,15 @@
     };
   };
 
+  services.firefly-iii = {
+    enable = true;
+    enableNginx = true;
+    virtualHost = "accounting.boeschen.me";
+    settings = {
+      APP_KEY_FILE = "/var/secrets/firefly-iii-app-key.txt";
+    };
+  };
+
   services.jellyfin = {
     enable = true;
     openFirewall = true;
@@ -179,6 +188,11 @@
       webroot = null;
     };
     certs."soulseek.catouc.com" = {
+      dnsProvider = "cloudflare";
+      environmentFile = /var/secrets/cloudflare;
+      webroot = null;
+    };
+    certs."accounting.boeschen.me" = {
       dnsProvider = "cloudflare";
       environmentFile = /var/secrets/cloudflare;
       webroot = null;
