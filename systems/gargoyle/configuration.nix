@@ -104,6 +104,16 @@
     settings = {
       APP_KEY_FILE = "/var/secrets/firefly-iii-app-key.txt";
     };
+
+    data-importer = {
+      enable = true;
+      enableNginx = true;
+      virtualHost = "accounting-import.boeschen.me";
+      settings = {
+        #FIREFLY_III_ACCESS_TOKEN = "/var/secrets/firefly-iii-access-token.txt";
+        FIREFLY_III_URL = "https://accounting.boeschen.me";
+      };
+    };
   };
 
   services.jellyfin = {
