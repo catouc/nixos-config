@@ -1,5 +1,6 @@
 { pkgs, ... }: {
   imports = [
+    ../modules/nix.nix
     ../modules/ytdl-sub.nix
     ../modules/security.nix
 
@@ -115,13 +116,6 @@
   security.acme = {
     acceptTerms = true;
     defaults.email = "acme@philipp.boeschen.me";
-  };
-
-  nix = {
-    package = pkgs.nixFlakes;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
   };
 
   environment.systemPackages = with pkgs; [

@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
 
       ../modules/mullvad.nix
+      ../modules/nix.nix
       ../modules/photoprism.nix
       ../modules/soulseek.nix
     ];
@@ -105,14 +106,15 @@
       APP_KEY_FILE = "/var/secrets/firefly-iii-app-key.txt";
     };
 
-    data-importer = {
-      enable = true;
-      enableNginx = true;
-      virtualHost = "accounting-import.boeschen.me";
-      settings = {
-        #FIREFLY_III_ACCESS_TOKEN = "/var/secrets/firefly-iii-access-token.txt";
-        FIREFLY_III_URL = "https://accounting.boeschen.me";
-      };
+  };
+
+  services.firefly-iii-data-importer = {
+    enable = true;
+    enableNginx = true;
+    virtualHost = "accounting-import.boeschen.me";
+    settings = {
+      #FIREFLY_III_ACCESS_TOKEN = "/var/secrets/firefly-iii-access-token.txt";
+      FIREFLY_III_URL = "https://accounting.boeschen.me";
     };
   };
 
@@ -212,13 +214,6 @@
   services.tailscale = {
     enable = true;
     useRoutingFeatures = "server";
-  };
-
-  nix = {
-    package = pkgs.nixFlakes;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
   };
 
   environment.systemPackages = with pkgs; [
