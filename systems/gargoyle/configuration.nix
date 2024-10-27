@@ -113,8 +113,10 @@
     enableNginx = true;
     virtualHost = "accounting-import.boeschen.me";
     settings = {
-      FIREFLY_III_ACCESS_TOKEN = "/var/secrets/firefly-iii-access-token.txt";
       FIREFLY_III_URL = "https://accounting.boeschen.me";
+      FIREFILY_III_CLIENT_ID = "3";
+      TRUSTED_PROXIES = "*";
+      LOG_CHANNEL = "syslog";
     };
   };
 
