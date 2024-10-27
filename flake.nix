@@ -59,7 +59,6 @@
           (final: prev: { pipelight = pipelight.packages.${system}.default; })
           (final: prev: { talon = talon.packages.${system}.default; })
           self.overlays.ytdl-sub
-          self.overlays.firefly-iii
         ];
       };
 
@@ -75,9 +74,6 @@
       overlays = {
         ytdl-sub = final: prev: {
           ytdl-sub = final.callPackage ./packages/ytdl-sub.nix { };
-        };
-        firefly-iii = final: prev: {
-          firefly-iii = final.callPackage ./packages/firefly-iii.nix { };
         };
       };
       nixosConfigurations = {
