@@ -113,7 +113,7 @@
     enableNginx = true;
     virtualHost = "accounting-import.boeschen.me";
     settings = {
-      #FIREFLY_III_ACCESS_TOKEN = "/var/secrets/firefly-iii-access-token.txt";
+      FIREFLY_III_ACCESS_TOKEN = "/var/secrets/firefly-iii-access-token.txt";
       FIREFLY_III_URL = "https://accounting.boeschen.me";
     };
   };
@@ -142,6 +142,16 @@
         proxyPass = "http://127.0.0.1:2342";
         proxyWebsockets = true;
       };
+    };
+
+    virtualHosts."accounting.boeschen.me" = {
+      forceSSL = true;
+      enableACME = true;
+    };
+
+    virtualHosts."accounting-import.boeschen.me" = {
+      forceSSL = true;
+      enableACME = true;
     };
   };
 
@@ -205,6 +215,11 @@
       webroot = null;
     };
     certs."accounting.boeschen.me" = {
+      dnsProvider = "cloudflare";
+      environmentFile = /var/secrets/cloudflare;
+      webroot = null;
+    };
+    certs."accounting-import.boeschen.me" = {
       dnsProvider = "cloudflare";
       environmentFile = /var/secrets/cloudflare;
       webroot = null;
