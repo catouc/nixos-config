@@ -43,7 +43,6 @@ in
       k9s
       kubectl
       (nerdfonts.override { fonts = [ "DroidSansMono" ]; })
-      obsidian
       okta-aws-cli
       vault
     ]) ++ [
