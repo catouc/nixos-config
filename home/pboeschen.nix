@@ -24,6 +24,8 @@ in
     target = "./.config/wireplumber/bluetooth.lua.d/51-bluez-config.lua";
   };
 
+  targets.genericLinux.enable=true;
+
   services.gpg-agent = {
     enable = true;
     defaultCacheTtl = 1800;
