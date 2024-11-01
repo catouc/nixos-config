@@ -24,11 +24,6 @@ in
     target = "./.config/wireplumber/bluetooth.lua.d/51-bluez-config.lua";
   };
 
-  pb.home.terminal = {
-    enable = true;
-    fontSize = 11;
-  };
-
   services.gpg-agent = {
     enable = true;
     defaultCacheTtl = 1800;
@@ -42,18 +37,13 @@ in
     homeDirectory = "/home/pboeschen";
     stateVersion = "22.05";
     packages = (with pkgs; [
-      alacritty
       gitlab-notifications
-      google-chrome
-      jiwa
       k9s
       kubectl
-      kustomize
       (nerdfonts.override { fonts = [ "DroidSansMono" ]; })
+      obsidian
       okta-aws-cli
-      slack
       vault
-      zoom-us
     ]) ++ [
       logbook
     ];
