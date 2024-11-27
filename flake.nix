@@ -25,6 +25,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    firefly-iii-importer = {
+      url = "github:catouc/firefly-iii-importer";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     gitlab-notifications = {
       url = "github:catouc/gitlab-notifications?ref=0.2.1";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -46,7 +51,19 @@
     };
   };
 
-  outputs = { self, nixpkgs, lix-module, home-manager, jiwa, gitlab-notifications, nyaa-bulk, pipelight, talon, ... }:
+  outputs = {
+    self,
+    nixpkgs,
+    lix-module,
+    home-manager,
+    jiwa,
+    gitlab-notifications,
+    nyaa-bulk,
+    pipelight,
+    talon,
+    firefly-iii-importer,
+    ...
+  }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -54,6 +71,7 @@
         config.allowUnfree = true;
         overlays = [
           (final: prev: { jiwa = jiwa.packages.${system}.jiwa; })
+          (final: prev: { firefly-iii-importer = firefly-iii-importer.packages.${system}.default; })
           (final: prev: { gitlab-notifications = gitlab-notifications.packages.${system}.gitlab-notifications; })
           (final: prev: { nyaa-bulk = nyaa-bulk.packages.${system}.default; })
           (final: prev: { pipelight = pipelight.packages.${system}.default; })

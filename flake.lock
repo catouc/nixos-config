@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "firefly-iii-importer": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1732742829,
+        "narHash": "sha256-dZWyej/6W7u21H3npba2uS4cQvGmRSYpntiD+WdDmeg=",
+        "owner": "catouc",
+        "repo": "firefly-iii-importer",
+        "rev": "4559147003602a3b3bd469db0f70c0c8abfbfafd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catouc",
+        "repo": "firefly-iii-importer",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "locked": {
         "lastModified": 1652776076,
@@ -304,6 +324,7 @@
     },
     "root": {
       "inputs": {
+        "firefly-iii-importer": "firefly-iii-importer",
         "gitlab-notifications": "gitlab-notifications",
         "home-manager": "home-manager",
         "jiwa": "jiwa",
