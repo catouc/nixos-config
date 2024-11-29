@@ -8,6 +8,7 @@ let
 in
 {
   imports = [
+    ./modules/i3.nix
     (import ./modules/git.nix {
       git-email = "philipp.boeschen@booking.com";
       url-rewrites = {
@@ -17,6 +18,11 @@ in
       };
     })
   ];
+
+  pb.home.i3 = {
+    enable = true;
+    configFile = ./config/work-i3;
+  };
 
   home.file."wireplumber.bluetooth.lua.d" = {
     enable = true;
