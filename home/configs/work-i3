@@ -1,16 +1,13 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
-
 set $mod Mod4
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
+exec --no-startup-id i3-layouts
+
+exec --no-startup-id xsetroot -solid "#333333"
 font pango:monospace 8
 
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-
 exec_always --no-startup-id $HOME/.config/polybar/launch
+exec --no-startup-id xinput set-prop "VEN_0488:00 0488:104A Touchpad" "libinput Tapping Enabled" 1
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -47,13 +44,8 @@ bindsym $mod+Return exec i3-sensible-terminal
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run
 # A more modern dmenu replacement is rofi:
-# bindcode $mod+40 exec "rofi -modi drun,run -show drun"
-# There also is i3-dmenu-desktop which only displays applications shipping a
-# .desktop file. It is a wrapper around dmenu, so you need that installed.
-# bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec "rofi -modi drun,run -show drun"
 
 # change focus
 bindsym $mod+j focus left
@@ -141,6 +133,18 @@ bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# workspace layouts, powered by https://github.com/eliep/i3-layouts/tree/main
+set $i3l 2columns to workspace $ws1
+set $i3l 2columns to workspace $ws2
+set $i3l 2columns to workspace $ws3
+set $i3l 2columns to workspace $ws4
+set $i3l 2columns to workspace $ws5
+set $i3l 2columns to workspace $ws6
+set $i3l 2columns to workspace $ws7
+set $i3l 2columns to workspace $ws8
+set $i3l 2columns to workspace $ws9
+set $i3l 2columns to workspace $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload

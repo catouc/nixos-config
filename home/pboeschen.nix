@@ -21,7 +21,7 @@ in
 
   pb.home.i3 = {
     enable = true;
-    configFile = ./config/work-i3;
+    configFile = ./configs/work-i3;
   };
 
   home.file."wireplumber.bluetooth.lua.d" = {
@@ -52,6 +52,7 @@ in
       (nerdfonts.override { fonts = [ "DroidSansMono" ]; })
       okta-aws-cli
       vault
+      i3-layouts
     ]) ++ [
       logbook
     ];

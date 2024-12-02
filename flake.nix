@@ -77,6 +77,7 @@
           (final: prev: { pipelight = pipelight.packages.${system}.default; })
           (final: prev: { talon = talon.packages.${system}.default; })
           self.overlays.ytdl-sub
+          self.overlays.i3-layouts
         ];
       };
 
@@ -93,6 +94,10 @@
         ytdl-sub = final: prev: {
           ytdl-sub = final.callPackage ./packages/ytdl-sub.nix { };
         };
+        i3-layouts = final: prev: {
+          i3-layouts = final.callPackage ./packages/i3-layouts.nix { };
+        };
+
       };
       nixosConfigurations = {
         changeling = lib.nixosSystem {

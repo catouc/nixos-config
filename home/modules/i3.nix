@@ -3,7 +3,7 @@ let
   cfg = config.pb.home.i3;
 in
 {
-  options.pb.i3 = {
+  options.pb.home.i3 = {
     enable = lib.mkEnableOption "Enable i3 configuration management";
     configFile = lib.mkOption {
       type = lib.types.path;
@@ -20,7 +20,7 @@ in
 
     home.file."polybar.ini" = {
       enable = true;
-      source = ./configs/polybar.ini;
+      source = ../configs/polybar.ini;
       target = "./.config/polybar/config.ini";
     };
 
@@ -39,6 +39,7 @@ in
 
     home.packages = with pkgs; [
       polybar
+      rofi
     ];
   };
  }
