@@ -53,6 +53,7 @@ in
       okta-aws-cli
       vault
       i3-layouts
+      pwvucontrol
     ]) ++ [
       logbook
     ];
