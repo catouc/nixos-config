@@ -52,7 +52,6 @@ in
       (nerdfonts.override { fonts = [ "DroidSansMono" ]; })
       okta-aws-cli
       vault
-      i3-layouts
       pwvucontrol
     ]) ++ [
       logbook

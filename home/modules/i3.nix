@@ -39,6 +39,7 @@ in
     };
 
     home.packages = with pkgs; [
+      i3-layouts
       polybar
       rofi
     ];
