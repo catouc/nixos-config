@@ -4,14 +4,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    lix = {
-      url = "git+https://git@git.lix.systems/lix-project/lix?ref=refs/tags/2.91.0";
-      flake = false;
-    };
-
     lix-module = {
-      url = "git+https://git.lix.systems/lix-project/nixos-module";
-      inputs.lix.follows = "lix";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.1-2.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -124,6 +118,8 @@
           #extraArgs = { inherit extrapkgs; };
           modules = [
             ./systems/marut/configuration.nix
+            lix-module.nixosModules.default
+
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -142,6 +138,8 @@
           inherit system pkgs;
           modules = [
             ./systems/gargoyle/configuration.nix
+            lix-module.nixosModules.default
+
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -155,8 +153,6 @@
             }
           ];
         };
-
-
 
         szashune = lib.nixosSystem {
           inherit system pkgs;
