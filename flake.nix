@@ -219,6 +219,13 @@
             run `./setup.sh` to set this thing up properly
           '';
         };
+        rust = {
+          path = ./templates/rust;
+          description = "My Rust shell template";
+          welcomeText = ''
+            uWu
+          '';
+        };
         terraform-shell = {
           path = ./templates/terraform-shell;
           description = "My Terraform shell template";
