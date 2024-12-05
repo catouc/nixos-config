@@ -13,6 +13,7 @@ in
   config = lib.mkIf cfg.enable {
     home.file.".config/i3/config" = {
       source = cfg.configFile;
+      recursive = true;
       onChange = ''
         ${pkgs.i3}/bin/i3-msg reload
       '';
