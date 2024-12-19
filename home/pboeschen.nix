@@ -32,6 +32,7 @@ in
 
   targets.genericLinux.enable=true;
 
+  programs.gpg.enable = true;
   services.gpg-agent = {
     enable = true;
     defaultCacheTtl = 1800;
@@ -39,13 +40,33 @@ in
     pinentryPackage = pkgs.pinentry-gnome3;
   };
 
-  programs.gpg.enable = true;
+  systemd.user.services.ssh-agent = {
+    Install.WantedBy = [ "default.target" ];
+
+    Unit = {
+      Description = "SSH authentication agent";
+      Documentation = "man:ssh-agent(1)";
+    };
+
+    Service = {
+      ExecStart = "${pkgs.openssh}/bin/ssh-agent -D -a %t/ssh-agent";
+    };
+  };
+  programs.bash = {
+    enable = true;
+    initExtra = ''
+      if [ -z "$SSH_AUTH_SOCK" ]; then
+        export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent
+      fi
+    '';
+  };
 
   home = {
     username = "pboeschen";
     homeDirectory = "/home/pboeschen";
     stateVersion = "22.05";
     packages = (with pkgs; [
+      autorandr
       gitlab-notifications
       k9s
       kubectl
