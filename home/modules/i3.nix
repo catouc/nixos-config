@@ -40,6 +40,7 @@ in
 
     home.packages = with pkgs; [
       i3-layouts
+      brightnessctl
       polybar
       rofi
     ];
