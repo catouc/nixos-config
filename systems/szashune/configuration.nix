@@ -9,6 +9,7 @@
     ../modules/sound.nix
     ../modules/security.nix
     ../modules/user.nix
+    ../modules/redshift.nix
     ../modules/windowmanager.nix
 
     (import ../modules/fonts.nix { pkgs = pkgs; })
@@ -45,6 +46,8 @@
       PermitRootLogin = "no";
     };
   };
+
+  pb.redshift.enable = true;
 
   fileSystems = {
     "/home/pb/.local/share/Steam" = {
