@@ -19,6 +19,10 @@
     })
   ];
 
+  boot.supportedFilesystems = [ "zfs" ];
+  boot.zfs.extraPools = [ "home" ];
+
+  networking.hostId = "cee58c71";
   networking.nftables.enable = true;
   networking.nftables.flushRuleset = true;
 
