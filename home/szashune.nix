@@ -2,6 +2,8 @@
 {
   imports = [
     ./modules/terminal.nix
+    ./modules/i3.nix
+
     (import ./modules/git.nix {
       git-email = "catouc@philipp.boeschen.me";
     })
@@ -25,16 +27,15 @@
     ];
   };
 
-  home.file.".config/i3" = {
-    source = ./configs/szashune-i3;
-    onChange = ''
-      ${pkgs.i3}/bin/i3-msg reload
-    '';
-  };
-
   pb.home.terminal = {
     enable = true;
     fontSize = 11;
   };
+
+  pb.home.i3 = {
+    enable = true;
+    configFile = ./configs/szashune-i3;
+  };
+
 }
 
