@@ -2,55 +2,33 @@
 let
   cfg = config.pb.home.terminal;
 
-  terminalConfig = {
-    colors = {
-      bright = {
-        black = "#666666";
-        blue = "#E6FFFF";
-        cyan = "#12848E";
-        green = "#50DC81";
-        magenta = "#FFFFFF";
-        red = "#FA3F52";
-        white = "#FFFFFF";
-        yellow = "#FFFF00";
-      };
+  palette = [
+    "0=#0C141F"
+    "1=#Df740C"
+    "2=#44AF69"
+    "3=#FFE64D"
+    "4=#6FC3DF"
+    "5=#A23E48"
+    "6=#0D5C63"
+    "7=#FFFFFF"
+    "8=#666666"
+    "9=#FA3F52"
+    "10=#50DC81"
+    "11=#FFFF00"
+    "12=#E6FFFF"
+    "13=#FFFFFF"
+    "14=#12848E"
+    "15=#FFFFFF"
+  ];
 
-      normal = {
-        black = "#0C141F";
-        blue = "#6FC3DF";
-        cyan = "#0D5C63";
-        green = "#44AF69";
-        magenta = "#A23E48";
-        red = "#Df740C";
-        white = "#FFFFFF";
-        yellow = "#FFE64D";
-      };
-
-      primary = {
-        background = "#0C141F";
-        foreground = "#6FC3DF";
-      };
-
-      selection = {
-        background = "#F58C4B";
-        text = "#6FC3DF";
-      };
-
-      cursor = {
-        cursor = "#FFE64D";
-        text = "#FFE64D";
-      };
-    };
-
-    font = {
-      size = cfg.fontSize;
-
-      normal = {
-        family = "DroidSansM Nerd Font Mono";
-        style = "Regular";
-      };
-    };
-  };
+  theme = ''
+    background=#0C141F
+    foreground=#6FC3DF
+    cursor-color=#FFE64D
+    selection-foreground=#6FC3DF
+    selection-background=#F58C4B
+    ${lib.concatStringsSep "\n" (map(x: "palette = "+x) palette)}
+  '';
 in
 {
   options.pb.home.terminal = {
@@ -61,14 +39,17 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-   home.packages = [
-      pkgs.alacritty
-    ];
-
-    home.file."alacritty.toml" = {
+    programs.ghostty = {
       enable = true;
-      source = (pkgs.formats.toml {}).generate "toml" terminalConfig;
-      target = "./.config/alacritty/alacritty.toml";
+      settings = {
+        window-decoration = false;
+        theme = "Tron";
+      };
+    };
+
+    xdg.configFile."ghostty/themes/Tron" = {
+      enable = true;
+      text = theme;
     };
   };
  }

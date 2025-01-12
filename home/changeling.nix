@@ -29,7 +29,6 @@
 
   pb.home.terminal = {
     enable = true;
-    fontSize = 8;
   };
 
   pb.home.i3 = {
