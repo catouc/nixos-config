@@ -19,11 +19,7 @@
     stateVersion = "22.05";
     packages = with pkgs; [
       mpv
-      rtorrent
-      pipelight
-      shiori
       thunderbird
-      yt-dlp
     ];
   };
 
