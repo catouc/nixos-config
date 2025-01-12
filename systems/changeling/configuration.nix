@@ -49,7 +49,11 @@
   };
   services.upower.enable = true;
 
-  virtualisation.docker.enable = true;
+  virtualisation.containers.enable = true;
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+  };
 
   system.stateVersion = "22.05";
 }
