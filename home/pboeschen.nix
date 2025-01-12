@@ -70,7 +70,7 @@ in
       gitlab-notifications
       k9s
       kubectl
-      (nerdfonts.override { fonts = [ "DroidSansMono" ]; })
+      nerd-fonts.droid-sans-mono
       okta-aws-cli
       vault
       pwvucontrol
