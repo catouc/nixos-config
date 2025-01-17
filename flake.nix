@@ -29,6 +29,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixgl = {
+      url = "github:nix-community/nixGL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nyaa-bulk = {
       url = "github:catouc/nyaa-bulk";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -56,6 +61,7 @@
     pipelight,
     talon,
     firefly-iii-importer,
+    nixgl,
     ...
   }:
     let
@@ -184,6 +190,9 @@
 
         pboeschen = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
+          extraSpecialArgs = {
+            inherit nixgl;
+          };
           modules = [
             ./home/pboeschen.nix
           ] ++ common-imports;

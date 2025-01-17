@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, nixgl, ... }:
 let
   logbook = pkgs.writeShellScriptBin "lb" ''
     #! /usr/bin/env bash
@@ -9,6 +9,7 @@ in
 {
   imports = [
     ./modules/i3.nix
+    ./modules/terminal.nix
     (import ./modules/git.nix {
       git-email = "philipp.boeschen@booking.com";
       url-rewrites = {
@@ -19,9 +20,17 @@ in
     })
   ];
 
+  nixGL.packages = nixgl.packages;
+  nixGL.defaultWrapper = "mesa";
+  nixGL.installScripts = ["mesa"];
+
   pb.home.i3 = {
     enable = true;
     configFile = ./configs/work-i3;
+  };
+
+  pb.home.terminal = {
+    enable = true;
   };
 
   home.file."wireplumber.bluetooth.lua.d" = {

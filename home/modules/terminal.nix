@@ -41,6 +41,7 @@ in
   config = lib.mkIf cfg.enable {
     programs.ghostty = {
       enable = true;
+      package = config.lib.nixGL.wrap pkgs.ghostty;
       settings = {
         window-decoration = false;
         theme = "Tron";
