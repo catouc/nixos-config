@@ -43,11 +43,6 @@
       url = "github:pipelight/pipelight?ref=8e34128";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    talon = {
-      url = "github:nix-community/talon-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = {
@@ -59,7 +54,6 @@
     gitlab-notifications,
     nyaa-bulk,
     pipelight,
-    talon,
     firefly-iii-importer,
     nixgl,
     ...
@@ -75,7 +69,6 @@
           (final: prev: { gitlab-notifications = gitlab-notifications.packages.${system}.gitlab-notifications; })
           (final: prev: { nyaa-bulk = nyaa-bulk.packages.${system}.default; })
           (final: prev: { pipelight = pipelight.packages.${system}.default; })
-          (final: prev: { talon = talon.packages.${system}.default; })
           self.overlays.ytdl-sub
           self.overlays.i3-layouts
         ];

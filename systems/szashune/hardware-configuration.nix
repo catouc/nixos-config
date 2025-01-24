@@ -13,6 +13,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   fileSystems."/" =
     {

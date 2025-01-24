@@ -22,7 +22,6 @@
       rust-analyzer
       rtorrent
       thunderbird
-      talon
       xivlauncher
     ];
   };
