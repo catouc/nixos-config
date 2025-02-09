@@ -13,16 +13,10 @@
     homeDirectory = "/home/pb";
     stateVersion = "22.05";
     packages = with pkgs; [
-      cargo
       discord
       mullvad-vpn
-      gcc
-      godot_4
-      rustc
-      rust-analyzer
-      rtorrent
       thunderbird
-      xivlauncher
+      obsidian
     ];
   };
 
