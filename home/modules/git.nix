@@ -50,6 +50,7 @@ in
 
       aliases = {
         tree = "log --graph --decorate --oneline --abbrev-commit";
+        bs = "!bash -c 'git branch | fzf | xargs git switch'";
       };
 
       extraConfig = {
