@@ -3,14 +3,7 @@
   imports = [
     ./modules/i3.nix
     ./modules/terminal.nix
-    (import ./modules/git.nix {
-      git-email = "catouc@philipp.boeschen.me";
-      url-rewrites = {
-        "ssh://git@github.com/" = {
-          insteadOf = "https://github.com";
-        };
-      };
-    })
+    ./modules/git.nix
   ];
 
   home = {
@@ -30,5 +23,14 @@
   pb.home.i3 = {
     enable = true;
     configFile = ./configs/changeling-i3;
+  };
+
+  pb.home.git = {
+    enable = true;
+    email = "catouc@philipp.boeschen.me";
+    urlRewrites = [{
+      from = "https://github.com";
+      to = "ssh://git@github.com";
+    }];
   };
 }

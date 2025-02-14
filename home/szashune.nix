@@ -3,10 +3,7 @@
   imports = [
     ./modules/terminal.nix
     ./modules/i3.nix
-
-    (import ./modules/git.nix {
-      git-email = "catouc@philipp.boeschen.me";
-    })
+    ./modules/git.nix
   ];
   home = {
     username = "pb";
@@ -29,5 +26,13 @@
     configFile = ./configs/szashune-i3;
   };
 
+  pb.home.git = {
+    enable = true;
+    email = "catouc@philipp.boeschen.me";
+    urlRewrites = [{
+      from = "https://github.com";
+      to = "ssh://git@github.com";
+    }];
+  };
 }
 

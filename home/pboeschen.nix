@@ -10,14 +10,7 @@ in
   imports = [
     ./modules/i3.nix
     ./modules/terminal.nix
-    (import ./modules/git.nix {
-      git-email = "philipp.boeschen@booking.com";
-      url-rewrites = {
-        "ssh://git@gitlab.booking.com/" = {
-          insteadOf = "https://gitlab.booking.com/";
-        };
-      };
-    })
+    ./modules/git.nix
   ];
 
   nixGL.packages = nixgl.packages;
@@ -31,6 +24,15 @@ in
 
   pb.home.terminal = {
     enable = true;
+  };
+
+  pb.home.git = {
+    enable = true;
+    email = "philipp.boeschen@booking.com";
+    urlRewrites = [{
+      from = "https://gitlab.booking.com";
+      to = "ssh://git@gitlab.booking.com";
+    }];
   };
 
   home.file."wireplumber.bluetooth.lua.d" = {
