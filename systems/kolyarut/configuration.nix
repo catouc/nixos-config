@@ -5,7 +5,6 @@
 
     ../modules/boot.nix
     ../modules/locale.nix
-    ../modules/mullvad.nix
     ../modules/security.nix
     ../modules/sound.nix
     ../modules/user.nix
@@ -22,23 +21,16 @@
   networking.nftables.enable = true;
   networking.nftables.flushRuleset = true;
 
+  pb.locale.enable = true;
   pb.windowmanager = {
     enable = true;
     configFile = ../../home/configs/kolyarut-i3;
   };
 
-  pb.locale.enable = true;
-  pb.mullvad = {
-    enable = true;
-    portBypasses = [ 22 ];
-  };
-  networking.wireguard.enable = true;
-
   programs.ssh.startAgent = true;
-  programs.steam.enable = true;
 
-  services.blueman.enable = true;
   hardware.bluetooth.enable = true;
+
   services.upower.enable = true;
 
   virtualisation.containers.enable = true;
@@ -46,6 +38,7 @@
     enable = true;
     dockerCompat = true;
   };
+
 
   system.stateVersion = "22.05";
 }

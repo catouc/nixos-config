@@ -112,6 +112,26 @@
           ];
         };
 
+        kolyarut = lib.nixosSystem {
+          inherit system pkgs;
+          modules = [
+            ./systems/kolyarut/configuration.nix
+            lix-module.nixosModules.default
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.pb = {
+                imports = [
+                  ./home/changeling.nix
+                ] ++ common-imports;
+              };
+            }
+          ];
+        };
+
+
         marut = lib.nixosSystem {
           inherit system pkgs;
           #extraArgs = { inherit extrapkgs; };
