@@ -105,24 +105,23 @@
     settings = {
       APP_KEY_FILE = "/var/secrets/firefly-iii-app-key.txt";
     };
-
-  };
-
-  services.firefly-iii-data-importer = {
-    enable = true;
-    enableNginx = true;
-    virtualHost = "accounting-import.boeschen.me";
-    settings = {
-      FIREFLY_III_URL = "https://accounting.boeschen.me";
-      FIREFILY_III_CLIENT_ID = "3";
-      TRUSTED_PROXIES = "*";
-      LOG_CHANNEL = "syslog";
-    };
   };
 
   services.jellyfin = {
     enable = true;
     openFirewall = true;
+  };
+
+  services.kavita = {
+    enable = true;
+    dataDir = "/media/ebooks";
+    tokenKeyFile = "/var/secrets/kavita";
+
+    settings = {
+      options = {
+        IpAddresses = "127.0.0.1";
+      };
+    };
   };
 
   services.nginx = {
@@ -136,6 +135,13 @@
       locations."/".proxyPass = "http://127.0.0.1:8096";
     };
 
+    virtualHosts."ebooks.boeschen.me" = {
+      forceSSL = true;
+      enableACME = true;
+
+      locations."/".proxyPass = "http://127.0.0.1:5000";
+    };
+
     virtualHosts."photos.catouc.com" = {
       forceSSL = true;
       enableACME = true;
@@ -147,11 +153,6 @@
     };
 
     virtualHosts."accounting.boeschen.me" = {
-      forceSSL = true;
-      enableACME = true;
-    };
-
-    virtualHosts."accounting-import.boeschen.me" = {
       forceSSL = true;
       enableACME = true;
     };
@@ -221,7 +222,7 @@
       environmentFile = /var/secrets/cloudflare;
       webroot = null;
     };
-    certs."accounting-import.boeschen.me" = {
+    certs."ebooks.boeschen.me" = {
       dnsProvider = "cloudflare";
       environmentFile = /var/secrets/cloudflare;
       webroot = null;
