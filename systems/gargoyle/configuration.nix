@@ -57,6 +57,10 @@
     jellyfin = {
       extraGroups = [ "media" ];
     };
+
+    kavita = {
+      extraGroups = [ "media" ];
+    };
   };
 
   pb.mullvad = {
