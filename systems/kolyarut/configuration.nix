@@ -46,6 +46,9 @@
     dockerCompat = true;
   };
 
+  environment.systemPackages = with pkgs; [
+    feed-to-epub
+  ];
 
   system.stateVersion = "22.05";
 }

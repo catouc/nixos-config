@@ -16,7 +16,7 @@
     unzip
     vim
     wget
-    xsv
+    # xsv they fucking removed it?! It's the best thing ever :x`
     xclip
     zip
   ];
