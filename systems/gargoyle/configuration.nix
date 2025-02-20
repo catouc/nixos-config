@@ -120,7 +120,7 @@
     openFirewall = true;
   };
 
-  services.feed-to-epub = {
+  feed-to-epub = {
     enable = true;
     downloadDir = "/media/ebooks/Blogs";
     settings = {
