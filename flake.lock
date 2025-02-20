@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1740085596,
-        "narHash": "sha256-3EtqWy2jUJq/vr/exesemZBjLA5pzRr4d2flRg3NyZ0=",
+        "lastModified": 1740089146,
+        "narHash": "sha256-3lKzsG2nEGwdhxddUyREr1vJ8Y6F5FJnn3181si6ZQs=",
         "owner": "catouc",
         "repo": "feed-to-epub",
-        "rev": "649a7b6f2173b73609dab5af7b7476fb9c7483f6",
+        "rev": "ff200e9a9333e4b3efcffaf91f142c7c6323de90",
         "type": "github"
       },
       "original": {
