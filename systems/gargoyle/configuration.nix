@@ -61,6 +61,10 @@
     kavita = {
       extraGroups = [ "media" ];
     };
+
+    feed-to-epub = {
+      extraGroups = [ "media" ];
+    };
   };
 
   pb.mullvad = {
@@ -114,6 +118,18 @@
   services.jellyfin = {
     enable = true;
     openFirewall = true;
+  };
+
+  services.feed-to-epub = {
+    enable = true;
+    downloadDir = "/media/ebooks/Blogs";
+    settings = {
+      feeds = {
+        danluu = {
+          url = "https://danluu.com/atom.xml";
+        };
+      };
+    };
   };
 
   services.kavita = {
