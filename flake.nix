@@ -34,11 +34,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nyaa-bulk = {
-      url = "github:catouc/nyaa-bulk";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     feed-to-epub = {
       url = "github:catouc/feed-to-epub";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -52,8 +47,6 @@
     home-manager,
     jiwa,
     gitlab-notifications,
-    nyaa-bulk,
-    firefly-iii-importer,
     nixgl,
     feed-to-epub,
     ...
@@ -65,9 +58,7 @@
         config.allowUnfree = true;
         overlays = [
           (final: prev: { jiwa = jiwa.packages.${system}.jiwa; })
-          (final: prev: { firefly-iii-importer = firefly-iii-importer.packages.${system}.default; })
           (final: prev: { gitlab-notifications = gitlab-notifications.packages.${system}.gitlab-notifications; })
-          (final: prev: { nyaa-bulk = nyaa-bulk.packages.${system}.default; })
           (final: prev: { feed-to-epub = feed-to-epub.packages.${system}.default; })
           self.overlays.ytdl-sub
           self.overlays.i3-layouts

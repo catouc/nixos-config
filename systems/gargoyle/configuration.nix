@@ -241,12 +241,10 @@
   environment.systemPackages = with pkgs; [
     git
     htop
-    nyaa-bulk
     vim
     tmux
     yt-dlp
     slskd
-    firefly-iii-importer
     feed-to-epub
   ];
 

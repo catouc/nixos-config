@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1740085596,
-        "narHash": "sha256-3EtqWy2jUJq/vr/exesemZBjLA5pzRr4d2flRg3NyZ0=",
+        "lastModified": 1740086978,
+        "narHash": "sha256-xfS/tHxu0AFIGl9viu4WHEwZgUp7PPVz38eEFfgJiEE=",
         "owner": "catouc",
         "repo": "feed-to-epub",
-        "rev": "649a7b6f2173b73609dab5af7b7476fb9c7483f6",
+        "rev": "b6085f0b9ae4330c9e73aaf75b923980aede1048",
         "type": "github"
       },
       "original": {
@@ -255,26 +255,6 @@
         "type": "github"
       }
     },
-    "nyaa-bulk": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1717499951,
-        "narHash": "sha256-NGFcEHt9ZC36zjiOpwOfFeUD1ndGNeutLo+wFPDRWeY=",
-        "owner": "catouc",
-        "repo": "nyaa-bulk",
-        "rev": "4dae2645b814de7ff10bdedfe7ae5da84d5c9cf4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "catouc",
-        "repo": "nyaa-bulk",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "feed-to-epub": "feed-to-epub",
@@ -284,8 +264,7 @@
         "jiwa": "jiwa",
         "lix-module": "lix-module",
         "nixgl": "nixgl",
-        "nixpkgs": "nixpkgs",
-        "nyaa-bulk": "nyaa-bulk"
+        "nixpkgs": "nixpkgs"
       }
     },
     "systems": {
