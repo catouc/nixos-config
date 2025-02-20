@@ -39,8 +39,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    pipelight = {
-      url = "github:pipelight/pipelight?ref=8e34128";
+    feed-to-epub = {
+      url = "github:catouc/feed-to-epub";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -53,9 +53,9 @@
     jiwa,
     gitlab-notifications,
     nyaa-bulk,
-    pipelight,
     firefly-iii-importer,
     nixgl,
+    feed-to-epub,
     ...
   }:
     let
@@ -68,7 +68,7 @@
           (final: prev: { firefly-iii-importer = firefly-iii-importer.packages.${system}.default; })
           (final: prev: { gitlab-notifications = gitlab-notifications.packages.${system}.gitlab-notifications; })
           (final: prev: { nyaa-bulk = nyaa-bulk.packages.${system}.default; })
-          (final: prev: { pipelight = pipelight.packages.${system}.default; })
+          (final: prev: { feed-to-epub = feed-to-epub.packages.${system}.default; })
           self.overlays.ytdl-sub
           self.overlays.i3-layouts
         ];
@@ -90,7 +90,6 @@
         i3-layouts = final: prev: {
           i3-layouts = final.callPackage ./packages/i3-layouts.nix { };
         };
-
       };
       nixosConfigurations = {
         changeling = lib.nixosSystem {
@@ -158,6 +157,7 @@
           modules = [
             ./systems/gargoyle/configuration.nix
             lix-module.nixosModules.default
+            feed-to-epub.nixosModules.default
 
             home-manager.nixosModules.home-manager
             {

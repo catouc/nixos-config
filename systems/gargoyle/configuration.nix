@@ -247,6 +247,7 @@
     yt-dlp
     slskd
     firefly-iii-importer
+    feed-to-epub
   ];
 
   system.stateVersion = "23.11"; # Did you read the comment?
