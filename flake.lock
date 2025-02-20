@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1740084600,
-        "narHash": "sha256-1IR+9KtbJE6s/otIZoCCSZwrvXMvXwD1xtSQBckn7m0=",
+        "lastModified": 1740085596,
+        "narHash": "sha256-3EtqWy2jUJq/vr/exesemZBjLA5pzRr4d2flRg3NyZ0=",
         "owner": "catouc",
         "repo": "feed-to-epub",
-        "rev": "af78ba3e5be58b9c39887da0374ac7fe35264532",
+        "rev": "649a7b6f2173b73609dab5af7b7476fb9c7483f6",
         "type": "github"
       },
       "original": {
@@ -27,11 +27,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1736792691,
-        "narHash": "sha256-V9VCVlynUoLwgutpENv1uZVY/9eP4jVuBt0llfL0uL0=",
+        "lastModified": 1740085422,
+        "narHash": "sha256-+5Do+zA2iHyNg0owN1MTplexQGtUojAitpk6pcGGpoc=",
         "owner": "catouc",
         "repo": "firefly-iii-importer",
-        "rev": "465bb7e1892df4baf37458d59acc1c9acbb769cc",
+        "rev": "174eb6860346a6f5057cc6eeffe5ccadf5e69a61",
         "type": "github"
       },
       "original": {
