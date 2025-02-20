@@ -24,7 +24,7 @@
   boot.zfs.extraPools = [ "media" ];
 
   boot.kernel.sysctl = {
-    "fs.inotify.max_user_watches" = "16384"; # 2 times the default 8192
+    "fs.inotify.max_user_watches" = "32768"; # 4 times the default 8192
   };
 
   networking.hostName = "gargoyle";
