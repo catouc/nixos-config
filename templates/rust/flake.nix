@@ -13,8 +13,10 @@
         build = pkgs.rustPlatform.buildRustPackage {
           pname = "replace";
           version = "v0.1.0";
+          useFetchCargoVendor = true;
+          cargoLock.lockFile = ./Cargo.lock;
           src = ./.;
-          cargoSha256 = "";
+          cargoHash = "";
         };
       in
       rec {
@@ -29,6 +31,8 @@
               cargo
               rustc
               rust-analyzer
+              rustPackages.clippy
+              rustPackages.rustfmt
             ];
           };
         };
