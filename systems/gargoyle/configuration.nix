@@ -122,7 +122,7 @@
 
   feed-to-epub = {
     enable = true;
-    downloadDir = "/media/ebooks/Blogs";
+    downloadDir = "/media/ebooks/Libraries/Blogs";
     settings = {
       feeds = {
         danluu = {
