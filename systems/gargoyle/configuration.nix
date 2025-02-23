@@ -93,7 +93,9 @@
     datasets = {
       "media/Anime".useTemplate = [ "videoBackup" ];
       "media/Movies".useTemplate = [ "videoBackup" ];
+      "media/Music".useTemplate = [ "videoBackup" ];
       "media/Shows".useTemplate = [ "videoBackup" ];
+      "media/ebooks".useTemplate = [ "videoBackup" ];
     };
   };
 
@@ -122,7 +124,7 @@
 
   feed-to-epub = {
     enable = true;
-    downloadDir = "/media/ebooks/Libraries/Blogs";
+    downloadDir = "/media/ebooks/Blogs/danluu";
     settings = {
       feeds = {
         danluu = {
