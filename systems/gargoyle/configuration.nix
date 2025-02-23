@@ -124,11 +124,11 @@
 
   feed-to-epub = {
     enable = true;
-    downloadDir = "/media/ebooks/Blogs/danluu";
     settings = {
       feeds = {
-        danluu = {
+        "Dan Luu" = {
           url = "https://danluu.com/atom.xml";
+          download_dir = "/media/ebooks/Blogs/danluu";
         };
       };
     };
