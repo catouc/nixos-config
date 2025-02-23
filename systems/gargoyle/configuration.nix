@@ -124,6 +124,7 @@
 
   feed-to-epub = {
     enable = true;
+    group = "media";
     settings = {
       feeds = {
         "Dan Luu" = {
