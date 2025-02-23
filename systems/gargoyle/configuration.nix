@@ -131,6 +131,18 @@
           url = "https://danluu.com/atom.xml";
           download_dir = "/media/ebooks/Blogs/danluu";
         };
+        "Julia Evans" = {
+          url = "https://jvns.ca/atom.xml";
+          download_dir = "/media/ebooks/Blogs/julia_evans";
+        };
+        "Rachelbythebay" = {
+          url = "https://rachelbythebay.com/w/atom.xml";
+          download_dir = "/media/ebooks/Blogs/rachelbythebay";
+        };
+        "Ed Zitron" = {
+          url = "https://www.wheresyoured.at/rss";
+          download_dir = "/media/ebooks/Blogs/ed_zitron";
+        };
       };
     };
   };
