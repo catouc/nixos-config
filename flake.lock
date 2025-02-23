@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1740228673,
-        "narHash": "sha256-wGVlwdMAAez3WHxI5paz4jHBhAfIFvC63Bzj5AKAJqA=",
+        "lastModified": 1740306001,
+        "narHash": "sha256-9wWOIqxGBYZ7/ibp1KU4mubEnd0BWI+pg4VWEkH9Llk=",
         "owner": "catouc",
         "repo": "feed-to-epub",
-        "rev": "ad38fe3c170acdee0d521a08dbbd5062df13d5d4",
+        "rev": "bd7dcef00cb907a89fa3f0a51cd7ef5f2de851e0",
         "type": "github"
       },
       "original": {
@@ -149,11 +149,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1740208222,
-        "narHash": "sha256-FqgPcK5BK+Mc4cGBCGz555UsVd/TQK9FvmuamBWu+ZY=",
+        "lastModified": 1740283128,
+        "narHash": "sha256-R61wtNknWWejnl+K0l4sxu/wnLNFbNe44tNM2zbj5yE=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "f4a07823a298deff0efb0db30f9318511de7c232",
+        "rev": "ed030a787938cae01d693ebaad52bbb672a4a69d",
         "type": "github"
       },
       "original": {
