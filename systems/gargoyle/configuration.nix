@@ -11,7 +11,6 @@
 
       ../modules/mullvad.nix
       ../modules/nix.nix
-      ../modules/photoprism.nix
       ../modules/soulseek.nix
     ];
 
@@ -195,7 +194,7 @@
   };
 
   services.photoprism = {
-    enable = true;
+    enable = false;
     port = 2342;
     originalsPath = "/var/lib/private/photoprism/originals";
     address = "0.0.0.0";
@@ -213,7 +212,7 @@
   };
 
   services.mysql = {
-    enable = true;
+    enable = false;
     dataDir = "/data/mysql";
     package = pkgs.mariadb;
     ensureDatabases = [ "photoprism" ];
