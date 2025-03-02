@@ -67,8 +67,9 @@
     };
   };
 
+  # This is broken until https://github.com/NixOS/nixpkgs/issues/385996 is fixed.
   pb.mullvad = {
-    enable = true;
+    enable = false;
     portBypasses = [ 443 22 ];
   };
 
