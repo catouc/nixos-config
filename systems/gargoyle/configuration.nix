@@ -73,7 +73,7 @@
   };
 
   pb.slskd = {
-    enable = true;
+    enable = false;
     hostName = "soulseek.catouc.com";
     shares = [ /media/Music ];
   };
