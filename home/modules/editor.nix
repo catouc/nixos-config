@@ -15,7 +15,7 @@
         plugin = nvim-lspconfig;
         type = "lua";
         config = ''
-              set clipboard=unnamedplus
+              vim.opt.clipboard = 'unnamedplus'
           	  local lspconfig = require('lspconfig')
           	  lspconfig.rust_analyzer.setup{
           	    settings = {
