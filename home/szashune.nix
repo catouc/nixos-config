@@ -24,6 +24,7 @@
   pb.home.i3 = {
     enable = true;
     configFile = ./configs/szashune-i3;
+    polybarName = "szashune";
   };
 
   pb.home.git = {

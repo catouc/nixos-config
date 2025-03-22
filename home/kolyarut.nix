@@ -23,6 +23,7 @@
   pb.home.i3 = {
     enable = true;
     configFile = ./configs/kolyarut-i3;
+    polybarName = "kolyarut";
   };
 
   pb.home.git = {

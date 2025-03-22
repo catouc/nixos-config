@@ -114,7 +114,7 @@
               home-manager.useUserPackages = true;
               home-manager.users.pb = {
                 imports = [
-                  ./home/changeling.nix
+                  ./home/kolyarut.nix
                 ] ++ common-imports;
               };
             }

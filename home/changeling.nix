@@ -23,6 +23,7 @@
   pb.home.i3 = {
     enable = true;
     configFile = ./configs/changeling-i3;
+    polybarName = "changeling";
   };
 
   pb.home.git = {

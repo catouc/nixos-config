@@ -15,7 +15,6 @@
         plugin = nvim-lspconfig;
         type = "lua";
         config = ''
-              vim.opt.clipboard = 'unnamedplus'
           	  local lspconfig = require('lspconfig')
           	  lspconfig.rust_analyzer.setup{
           	    settings = {
@@ -26,9 +25,12 @@
           	  lspconfig.nixd.setup{}
               lspconfig.gdscript.setup{}
 
+              vim.opt.clipboard = 'unnamedplus'
               vim.api.nvim_create_autocmd('LspAttach', {
           	    group = vim.api.nvim_create_augroup('UserLspConfig', {}),
           	    callback = function(ev)
+                  -- Disable syntax highlighting for good
+                  -- client.server_capabilities.semanticTokensProvider = nil
           	      -- Enable completion triggered by <c-x><c-o>
                         vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
                         -- See `:help vim.lsp.*` for documentation on any of the below functions

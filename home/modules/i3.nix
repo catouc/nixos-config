@@ -5,8 +5,13 @@ in
 {
   options.pb.home.i3 = {
     enable = lib.mkEnableOption "Enable i3 configuration management";
+
     configFile = lib.mkOption {
       type = lib.types.path;
+    };
+
+    polybarName = lib.mkOption {
+      type = lib.types.str;
     };
   };
 
@@ -31,7 +36,7 @@ in
       #/usr/bin/env bash
       polybar-msg cmd quit
       echo "---" | tee -a /var/log/polybar/polybar.log
-      polybar changeling 2>&1 | tee -a /var/log/polybar/polybar.log & disown
+      polybar ${cfg.polybarName} 2>&1 | tee -a /var/log/polybar/polybar.log & disown
       echo "Bars launched..."
       '';
       target = "./.config/polybar/launch";
