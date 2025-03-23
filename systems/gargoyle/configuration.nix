@@ -276,6 +276,7 @@
     tmux
     yt-dlp
     slskd
+    ripgrep
     feed-to-epub
   ];
 
