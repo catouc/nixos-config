@@ -11,6 +11,7 @@
     homeDirectory = "/home/pb";
     stateVersion = "22.05";
     packages = with pkgs; [
+      calibre
       mpv
       thunderbird
     ];
