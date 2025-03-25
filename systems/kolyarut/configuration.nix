@@ -5,6 +5,7 @@
 
     ../modules/boot.nix
     ../modules/locale.nix
+    ../modules/mullvad.nix
     ../modules/security.nix
     ../modules/sound.nix
     ../modules/user.nix
@@ -25,6 +26,11 @@
   pb.windowmanager = {
     enable = true;
     configFile = ../../home/configs/kolyarut-i3;
+  };
+
+  pb.mullvad = {
+    enable = true;
+    portBypasses = [ 22 ];
   };
 
   programs.ssh.startAgent = true;
