@@ -196,7 +196,8 @@
       forceSSL = true;
       enableACME = true;
       locations."/" = {
-        proxyPass = "http://127.0.0.1:2342";
+        proxyPass = "http://127.0.0.1:8888";
+        proxyWebsockets = true;
       };
     };
   };
@@ -289,9 +290,10 @@
       environment.TZ = "Europe/Amsterdam";
       # Note: The image will not be updated on rebuilds, unless the version label changes
       image = "ghcr.io/home-assistant/home-assistant:stable";
+      ports = ["8888:8123"];
       extraOptions = [ 
         # Use the host network namespace for all sockets
-        "--network=host"
+        "--cap-add=CAP_NET_RAW,CAP_NET_BIND_SERVICE"
         # Pass devices into the container, so Home Assistant can discover and make use of them
         # "--device=/dev/ttyACM0:/dev/ttyACM0"
       ];
