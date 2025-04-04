@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
+    # xsv they fucking removed it?! It's the best thing ever :x`
     bluez
     delta
     dig
@@ -9,6 +10,7 @@
     git
     htop
     jq
+    obsidian
     powertop
     ripgrep
     semver
@@ -16,7 +18,6 @@
     unzip
     vim
     wget
-    # xsv they fucking removed it?! It's the best thing ever :x`
     xclip
     zip
   ];
