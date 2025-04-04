@@ -191,6 +191,14 @@
       forceSSL = true;
       enableACME = true;
     };
+
+    virtualHosts."homeassistant.boeschen.me" = {
+      forceSSL = true;
+      enableACME = true;
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:2342";
+      };
+    };
   };
 
   services.photoprism = {
@@ -262,11 +270,32 @@
       environmentFile = /var/secrets/cloudflare;
       webroot = null;
     };
+    certs."homeassistant.boeschen.me" = {
+      dnsProvider = "cloudflare";
+      environmentFile = /var/secrets/cloudflare;
+      webroot = null;
+    };
   };
 
   services.tailscale = {
     enable = true;
     useRoutingFeatures = "server";
+  };
+
+  virtualisation.oci-containers = {
+    backend = "podman";
+    containers.homeassistant = {
+      volumes = [ "/var/home-assistant:/config" ];
+      environment.TZ = "Europe/Amsterdam";
+      # Note: The image will not be updated on rebuilds, unless the version label changes
+      image = "ghcr.io/home-assistant/home-assistant:stable";
+      extraOptions = [ 
+        # Use the host network namespace for all sockets
+        "--network=host"
+        # Pass devices into the container, so Home Assistant can discover and make use of them
+        # "--device=/dev/ttyACM0:/dev/ttyACM0"
+      ];
+    };
   };
 
   environment.systemPackages = with pkgs; [
