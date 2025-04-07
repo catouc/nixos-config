@@ -12,6 +12,7 @@
     stateVersion = "22.05";
     packages = with pkgs; [
       calibre
+      discord
       mpv
       thunderbird
     ];
