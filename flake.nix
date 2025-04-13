@@ -34,6 +34,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    niri.url = "github:sodiboo/niri-flake";
+
     feed-to-epub = {
       url = "github:catouc/feed-to-epub";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -48,6 +50,7 @@
     jiwa,
     gitlab-notifications,
     nixgl,
+    niri,
     feed-to-epub,
     ...
   }:
@@ -107,6 +110,7 @@
           modules = [
             ./systems/kolyarut/configuration.nix
             lix-module.nixosModules.default
+            niri.nixosModules.niri
 
             home-manager.nixosModules.home-manager
             {

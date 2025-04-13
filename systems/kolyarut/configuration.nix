@@ -24,7 +24,7 @@
 
   pb.locale.enable = true;
   pb.windowmanager = {
-    enable = true;
+    enable = false;
     configFile = ../../home/configs/kolyarut-i3;
   };
 
@@ -34,6 +34,9 @@
   };
 
   programs.ssh.startAgent = true;
+  programs.niri = {
+    enable = true;
+  };
 
   hardware.bluetooth.enable = true;
 

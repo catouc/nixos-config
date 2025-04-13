@@ -2,6 +2,7 @@
 {
   imports = [
     ./modules/i3.nix
+    ./modules/niri.nix
     ./modules/terminal.nix
     ./modules/git.nix
   ];
@@ -23,7 +24,7 @@
   };
 
   pb.home.i3 = {
-    enable = true;
+    enable = false;
     configFile = ./configs/kolyarut-i3;
     polybarName = "kolyarut";
   };
@@ -36,4 +37,6 @@
       to = "ssh://git@github.com";
     }];
   };
+
+  pb.home.niri.enable = true;
 }
