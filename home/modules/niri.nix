@@ -26,6 +26,8 @@ in
         #  };
         #};
 
+        input.touchpad.natural-scroll = false;
+
         binds = with config.lib.niri.actions; let
           sh = spawn "sh" "-c";
         in
@@ -56,6 +58,11 @@ in
           "Mod+Shift+Ctrl+j".action = move-column-to-monitor-down;
           "Mod+Shift+Ctrl+k".action = move-column-to-monitor-up;
           "Mod+Shift+Ctrl+l".action = move-column-to-monitor-right;
+
+          "Mod+Comma".action = consume-window-into-column;
+          "Mod+Period".action = expel-window-from-column;
+          "Mod+BracketLeft".action = consume-or-expel-window-left;
+          "Mod+BracketRight".action = consume-or-expel-window-right;
 
           "Mod+Tab".action = focus-workspace-previous;
 

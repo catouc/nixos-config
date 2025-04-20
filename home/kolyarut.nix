@@ -38,5 +38,7 @@
     }];
   };
 
-  pb.home.niri.enable = true;
+  pb.home.niri = {
+    enable = true;
+  };
 }
