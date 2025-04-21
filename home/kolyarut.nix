@@ -16,6 +16,7 @@
       discord
       mpv
       thunderbird
+      rtorrent
     ];
   };
 
