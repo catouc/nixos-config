@@ -5,6 +5,11 @@ in
 {
   options.pb.home.niri = {
     enable = lib.mkEnableOption "Enable niri configuration";
+
+    outputs = lib.mkOption {
+      type = lib.types.attrs;
+      description = lib.literalExpression "Sets specific output settings acording to https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs";
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -16,7 +21,7 @@ in
 
     programs.niri = {
       settings = {
-        #outputs = {
+        outputs = {} // cfg.outputs;
         #  "eDP-1" = {
         #    mode.width = 2880;
         #    mode.height = 1920;
@@ -24,7 +29,6 @@ in
         #    position.x = 0;
         #    position.y = 0;
         #  };
-        #};
 
         input.touchpad.natural-scroll = false;
 
