@@ -3,6 +3,10 @@ let
   cfg = config.pb.home.niri;
 in
 {
+  imports = [
+    ./waybar.nix
+  ];
+
   options.pb.home.niri = {
     enable = lib.mkEnableOption "Enable niri configuration";
 
@@ -18,6 +22,8 @@ in
       fuzzel
       swaylock
     ];
+
+    pb.home.waybar.enable = true;
 
     programs.niri = {
       settings = {
@@ -121,6 +127,12 @@ in
 
           "Mod+Shift+e".action = quit;
         };
+
+        spawn-at-startup = [
+         {
+            command = ["waybar"];
+         }
+        ];
       };
     };
   };

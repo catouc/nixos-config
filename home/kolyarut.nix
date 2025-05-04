@@ -3,6 +3,7 @@
   imports = [
     ./modules/i3.nix
     ./modules/niri.nix
+    ./modules/waybar.nix
     ./modules/terminal.nix
     ./modules/git.nix
   ];
@@ -16,7 +17,6 @@
       discord
       mpv
       thunderbird
-      rtorrent
     ];
   };
 
@@ -44,6 +44,12 @@
     outputs = {
       "eDP-1" = {
         scale = 1.5;
+        position.x = 0;
+        position.y = 0;
+      };
+      "Dp-3" = {
+        position.x = 0;
+        position.y = 1280;
       };
     };
   };
