@@ -46,6 +46,7 @@ in
         mainBar = {
           position = "bottom";
           layer = "top";
+          height = 25;
           # modules-left = [ "niri/workspaces" ];
           modules-center = [ "clock" ];
           modules-right = [ "network" "battery" ];

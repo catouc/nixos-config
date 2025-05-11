@@ -20,6 +20,15 @@
     ];
   };
 
+  services.wpaperd = {
+    enable = true;
+    settings = {
+      eDP-1 = {
+        path = "/home/pb/Wallpapers/Tron-3.jpg";
+      };
+    };
+  };
+
   pb.home.terminal = {
     enable = true;
   };

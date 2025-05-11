@@ -37,6 +37,7 @@ in
         #  };
 
         input.touchpad.natural-scroll = false;
+        layout.gaps = 8;
 
         binds = with config.lib.niri.actions; let
           sh = spawn "sh" "-c";
