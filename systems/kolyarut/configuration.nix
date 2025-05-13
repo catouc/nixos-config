@@ -32,6 +32,12 @@
   pb.mullvad = {
     enable = true;
     portBypasses = [ 22 ];
+    localHostBypasses = [
+      {
+        ipv4="192.168.178.0/24";
+        ports=[ 22 443 ];
+      }
+    ];
   };
 
   programs.ssh.startAgent = true;

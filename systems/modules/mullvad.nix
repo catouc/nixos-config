@@ -2,6 +2,21 @@
 with lib;
 let
   cfg = config.pb.mullvad;
+
+  localHostBypassOptionType = { ... }: {
+    options = {
+      ipv4 = mkOption {
+        type = types.str;
+        description = literalExpression "The local IPv4 address we want to exclude";
+        example = literalExpression "192.168.178.58";
+      };
+
+      ports = lib.mkOption {
+        type = types.listOf types.port;
+        description = literalExpression "The ports we want to exclude for local traffic";
+      };
+    };
+  };
 in
 {
   options.pb.mullvad = {
@@ -11,6 +26,16 @@ in
       type = types.listOf types.port;
       default = [];
       description = mDoc "A set of ports we want to bypass the wireguard tunnels, for server side stuff";
+    };
+
+    localHostBypasses = mkOption {
+      type = types.listOf (types.submoduleWith {
+        modules = [
+          localHostBypassOptionType
+        ];
+      });
+      default = [];
+      description = mDoc "A list of IP Addresses we want to bypass the wireguard tunnels, for client side stuff";
     };
   };
 
@@ -40,6 +65,13 @@ in
           ${lib.strings.concatMapStringsSep "\n"
             (port: "tcp sport ${port} ct mark set 0x00000f41 meta mark set 0x6d6f6c65;")
             (lists.forEach cfg.portBypasses (x: toString x))
+          }
+        }
+
+        chain excludeOutgoing {
+          type filter hook output priority -10; policy accept;
+          ${lib.strings.concatStringsSep "\n" (map (bypass:
+            "ip daddr ${bypass.ipv4} tcp dport {${lib.strings.concatStringsSep ", " (map(x: toString x) bypass.ports)}} ct mark set 0x00000f41;" ) cfg.localHostBypasses)
           }
         }
       '';
