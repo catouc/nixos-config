@@ -45,6 +45,8 @@
     enable = true;
   };
 
+  programs.steam.enable = true;
+
   hardware.bluetooth.enable = true;
 
   pb.redshift.enable = true;

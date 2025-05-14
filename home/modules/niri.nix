@@ -21,6 +21,7 @@ in
       brightnessctl
       fuzzel
       swaylock
+      xwayland-satellite
     ];
 
     pb.home.waybar.enable = true;
@@ -130,10 +131,13 @@ in
         };
 
         spawn-at-startup = [
-         {
-            command = ["waybar"];
-         }
+         { command = ["waybar"]; }
+         { command = ["xwayland-satellite"]; }
         ];
+
+        environment = {
+          DISPLAY = ":0";
+        };
       };
     };
   };
