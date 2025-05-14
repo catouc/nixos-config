@@ -70,6 +70,12 @@
   pb.mullvad = {
     enable = true;
     portBypasses = [ 443 22 ];
+    localHostBypasses = [
+      {
+        ipv4="192.168.178.0/24"; 
+        ports = [ 8443 443 22 ];
+      }
+    ];
   };
 
   pb.slskd = {
