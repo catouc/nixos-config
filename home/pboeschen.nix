@@ -20,6 +20,7 @@ in
   pb.home.i3 = {
     enable = true;
     configFile = ./configs/work-i3;
+    polybarName = "changeling";
   };
 
   pb.home.terminal = {
@@ -48,7 +49,7 @@ in
     enable = true;
     defaultCacheTtl = 1800;
     enableSshSupport = true;
-    pinentryPackage = pkgs.pinentry-gnome3;
+    pinentry.package = pkgs.pinentry-gnome3;
   };
 
   systemd.user.services.ssh-agent = {
