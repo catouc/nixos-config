@@ -190,6 +190,13 @@
       locations."/" = {
         proxyPass = "http://127.0.0.1:2342";
         proxyWebsockets = true;
+        recommendedProxySettings = true;
+        extraConfig = ''
+          client_max_body_size 50000M;
+          proxy_read_timeout   600s;
+          proxy_send_timeout   600s;
+          send_timeout         600s;
+        '';
       };
     };
 
@@ -208,45 +215,10 @@
     };
   };
 
-  services.photoprism = {
-    enable = false;
-    port = 2342;
-    originalsPath = "/var/lib/private/photoprism/originals";
-    address = "0.0.0.0";
-    settings = {
-      PHOTOPRISM_ADMIN_USER = "admin";
-      # PHOTOPRISM_ADMIN_PASSWORD = lib.readFile /var/secrets/photoprism;
-      PHOTOPRISM_DEFAULT_LOCALE = "en";
-      PHOTOPRISM_DATABASE_DRIVER = "mysql";
-      PHOTOPRISM_DATABASE_NAME = "photoprism";
-      PHOTOPRISM_DATABASE_SERVER = "/run/mysqld/mysqld.sock";
-      PHOTOPRISM_DATABASE_USER = "photoprism";
-      PHOTOPRISM_SITE_URL = "https://photos.catouc.com";
-      PHOTOPRISM_SITE_TITLE = "Photos";
-    };
-  };
-
-  services.mysql = {
-    enable = false;
-    dataDir = "/data/mysql";
-    package = pkgs.mariadb;
-    ensureDatabases = [ "photoprism" ];
-    ensureUsers = [ {
-      name = "photoprism";
-      ensurePermissions = {
-        "photoprism.*" = "ALL PRIVILEGES";
-      };
-    } ];
-  };
-
-  fileSystems."/var/lib/private/photoprism" = {
-    device = "/media/photoprism";
-    options = [ "bind" ];
-  };
-
-  fileSystems."/var/lib/private/photoprism/originals" ={
-    device = "/media/Photos";
-    options = [ "bind" ];
+  services.immich = {
+    enable = true;
+    mediaLocation = "/media/Photos";
+    group = "media";
   };
 
   security.acme = {
