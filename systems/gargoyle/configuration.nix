@@ -188,7 +188,7 @@
       enableACME = true;
       http2 = true;
       locations."/" = {
-        proxyPass = "http://127.0.0.1:2283";
+        proxyPass = "http://[::1]:${toString config.services.immich.port}";
         proxyWebsockets = true;
         recommendedProxySettings = true;
         extraConfig = ''
