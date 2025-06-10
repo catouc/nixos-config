@@ -30,10 +30,16 @@ in
   pb.home.git = {
     enable = true;
     email = "philipp.boeschen@booking.com";
-    urlRewrites = [{
-      from = "https://gitlab.booking.com";
-      to = "ssh://git@gitlab.booking.com";
-    }];
+    urlRewrites = [
+      {
+        from = "https://gitlab.booking.com";
+        to = "ssh://git@gitlab.booking.com";
+      }
+      {
+        from = "https://gitlab.com";
+        to = "ssh://git@gitlab.com";
+      }
+    ];
   };
 
   home.file."wireplumber.bluetooth.lua.d" = {
