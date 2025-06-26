@@ -1,7 +1,6 @@
 { pkgs, config, ... }:
 {
   imports = [
-    ./modules/i3.nix
     ./modules/niri.nix
     ./modules/waybar.nix
     ./modules/terminal.nix
@@ -31,12 +30,6 @@
 
   pb.home.terminal = {
     enable = true;
-  };
-
-  pb.home.i3 = {
-    enable = false;
-    configFile = ./configs/kolyarut-i3;
-    polybarName = "kolyarut";
   };
 
   pb.home.git = {
