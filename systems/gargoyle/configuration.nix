@@ -287,6 +287,7 @@
     yt-dlp
     slskd
     ripgrep
+    rtorrent
     feed-to-epub
   ];
 
