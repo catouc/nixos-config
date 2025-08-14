@@ -54,7 +54,7 @@ in
   services.gpg-agent = {
     enable = true;
     defaultCacheTtl = 1800;
-    enableSshSupport = true;
+    enableSshSupport = false;
     pinentry.package = pkgs.pinentry-gnome3;
   };
 
@@ -73,9 +73,7 @@ in
   programs.bash = {
     enable = true;
     initExtra = ''
-      if [ -z "$SSH_AUTH_SOCK" ]; then
-        export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent
-      fi
+      export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent
     '';
   };
 
