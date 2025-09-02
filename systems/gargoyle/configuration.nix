@@ -267,7 +267,7 @@
       volumes = [ "/var/home-assistant:/config" ];
       environment.TZ = "Europe/Amsterdam";
       # Note: The image will not be updated on rebuilds, unless the version label changes
-      image = "ghcr.io/home-assistant/home-assistant:stable";
+      image = "ghcr.io/home-assistant/home-assistant:2025.8";
       ports = ["8888:8123"];
       extraOptions = [ 
         # Use the host network namespace for all sockets
