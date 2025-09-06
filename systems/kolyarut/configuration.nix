@@ -9,7 +9,6 @@
     ../modules/security.nix
     ../modules/sound.nix
     ../modules/user.nix
-    ../modules/redshift.nix
     ../modules/windowmanager.nix
 
     (import ../modules/fonts.nix { pkgs = pkgs; })
@@ -52,9 +51,9 @@
 
   hardware.bluetooth.enable = true;
 
-  pb.redshift.enable = true;
-
+  services.gvfs.enable = true;
   services.upower.enable = true;
+  services.fwupd.enable = true;
   services.openssh = {
     enable = true;
     settings = {
