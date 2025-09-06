@@ -9,7 +9,7 @@
       set number
       set splitright
       set splitbelow
-      let g:markdown_folding = 1
+      set clipboard=unnamedplus
     '';
     plugins = with pkgs.vimPlugins; [
       {

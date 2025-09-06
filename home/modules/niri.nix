@@ -13,6 +13,7 @@ in
     outputs = lib.mkOption {
       type = lib.types.attrs;
       description = lib.literalExpression "Sets specific output settings acording to https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs";
+      default = {};
     };
   };
 
@@ -20,7 +21,7 @@ in
     home.packages = with pkgs; [
       brightnessctl
       fuzzel
-      swaylock
+      sway-contrib.grimshot
       xwayland-satellite
     ];
 
@@ -46,7 +47,7 @@ in
         {
           "Mod+Return".action.spawn = ["ghostty"];
           "Mod+d".action.spawn = ["fuzzel"];
-          "Mod+Alt+l".action.spawn = ["swaylock"];
+          "Mod+Alt+l".action.spawn = ["/bin/swaylock"];
           "Mod+Shift+Slash".action = show-hotkey-overlay;
 
           "Mod+q".action = close-window;
@@ -65,6 +66,7 @@ in
           "Mod+Shift+j".action = focus-monitor-down;
           "Mod+Shift+k".action = focus-monitor-up;
           "Mod+Shift+l".action = focus-monitor-right;
+          "Mod+Shift+c".action = center-column;
 
           "Mod+Shift+Ctrl+h".action = move-column-to-monitor-left;
           "Mod+Shift+Ctrl+j".action = move-column-to-monitor-down;
@@ -121,6 +123,8 @@ in
 
           "XF86MonBrightnessUp".action = sh "brightnessctl set 10%+";
           "XF86MonBrightnessDown".action = sh "brightnessctl set 10%-";
+
+          "Mod+Shift+p".action.spawn = ["grimshot" "save" "area"];
 
           "XF86AudioMicMute" = {
             allow-when-locked = true;

@@ -8,7 +8,8 @@ let
 in
 {
   imports = [
-    ./modules/i3.nix
+    ./modules/niri.nix
+    ./modules/waybar.nix
     ./modules/terminal.nix
     ./modules/git.nix
   ];
@@ -17,10 +18,13 @@ in
   nixGL.defaultWrapper = "mesa";
   nixGL.installScripts = ["mesa"];
 
-  pb.home.i3 = {
+  pb.home.niri = {
     enable = true;
-    configFile = ./configs/work-i3;
-    polybarName = "changeling";
+    outputs = {
+      "eDP-1" = {
+        scale = 1;
+      };
+    };
   };
 
   pb.home.terminal = {
@@ -74,6 +78,7 @@ in
     enable = true;
     initExtra = ''
       export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent
+      export TERM=xterm
     '';
   };
 

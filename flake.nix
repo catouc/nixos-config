@@ -205,6 +205,7 @@
             inherit nixgl;
           };
           modules = [
+            niri.homeModules.niri
             ./home/pboeschen.nix
           ] ++ common-imports;
         };
