@@ -66,7 +66,7 @@
       };
 
       "PageForms" = pkgs.fetchzip {
-        url = "https://github.com/wikimedia/mediawiki-extensions-PageForms/archive/5.7.2.zip";
+        url = "https://github.com/wikimedia/mediawiki-extensions-PageForms/archive/6.0.1.zip";
         hash = "sha256-L+qWC7LjABbzs+YMnnNVhKEGgKlH+AWTci2KwWkEEPk=";
       };
     };
