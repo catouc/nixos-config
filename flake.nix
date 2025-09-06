@@ -64,7 +64,9 @@
           (final: prev: { jiwa = jiwa.packages.${system}.jiwa; })
           (final: prev: { gitlab-notifications = gitlab-notifications.packages.${system}.gitlab-notifications; })
           (final: prev: { feed-to-epub = feed-to-epub.packages.${system}.default; })
+          (final: prev: {b = feed-to-epub.packages.${system}.default; })
           self.overlays.ytdl-sub
+          ( import ./overlays/mediawiki.nix )
           self.overlays.i3-layouts
         ];
       };
