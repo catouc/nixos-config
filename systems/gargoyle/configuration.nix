@@ -32,6 +32,14 @@
     "media" = {};
   };
 
+  networking = {
+    interfaces = {
+      enp4s0.ipv4.addresses = [{
+        address = "192.168.178.184";
+        prefixLength = 24;
+      }];
+    };
+  };
   networking.nftables.enable = true;
   networking.nftables.flushRuleset = true;
   networking.firewall = {
@@ -259,6 +267,16 @@
   services.tailscale = {
     enable = true;
     useRoutingFeatures = "server";
+  };
+
+  services.dnsmasq = {
+    enable = true;
+    settings = {
+      port = 0; # disable DNS serving?
+      dhcp-authoritative = true;
+      dhcp-range = [ "192.168.178.50,192.168.178.150,5m" "::f,::ff,constructor:enp4s0" ] ;
+      dhcp-option = [ "3,192.168.178.1" "6,192.168.178.1" ];
+    };
   };
 
   services.unbound = {
