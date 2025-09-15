@@ -39,7 +39,7 @@
 
     trustedInterfaces = [ "tailscale0" ];
     allowedTCPPorts = [ 22 80 443 ];
-    allowedUDPPorts = [ config.services.tailscale.port ];
+    allowedUDPPorts = [ config.services.tailscale.port 53 ];
   };
 
   users.users = {
@@ -259,6 +259,36 @@
   services.tailscale = {
     enable = true;
     useRoutingFeatures = "server";
+  };
+
+  services.unbound = {
+    enable = true;
+    settings = {
+      server = {
+        interface = [ "0.0.0.0" ];
+        access-control = [ "192.168.178.0/24 allow" "127.0.0.1/32 allow" ];
+        # Based on recommended settings in
+        # https://docs.pi-hole.net/guides/dns/unbound/#configure-unbound
+        harden-glue = true;
+        harden-dnssec-stripped = true;
+        use-caps-for-id = false;
+        prefetch = true;
+        edns-buffer-size = 1232;
+        hide-identity = true;
+        hide-version = true;
+      };
+      forward-zone = [
+        # Example config with quad9
+        {
+          name = ".";
+          forward-addr = [
+            "9.9.9.9#dns.quad9.net"
+            "149.112.112.112#dns.quad9.net"
+          ];
+          forward-tls-upstream = true;
+        }
+      ];
+    };
   };
 
   virtualisation.oci-containers = {
