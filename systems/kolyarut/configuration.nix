@@ -10,6 +10,7 @@
     ../modules/sound.nix
     ../modules/user.nix
     ../modules/windowmanager.nix
+    ../modules/redshift.nix
 
     (import ../modules/fonts.nix { pkgs = pkgs; })
     (import ../modules/nix.nix { pkgs = pkgs; })
@@ -21,12 +22,15 @@
 
   networking.nftables.enable = true;
   networking.nftables.flushRuleset = true;
+  networking.nameservers = [ "1.1.1.1" "4.4.4.4" ];
 
   pb.locale.enable = true;
   pb.windowmanager = {
     enable = false;
     configFile = ../../home/configs/kolyarut-i3;
   };
+
+  pb.redshift.enable = false;
 
   pb.mullvad = {
     enable = true;
