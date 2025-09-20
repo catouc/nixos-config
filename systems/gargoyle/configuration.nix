@@ -332,6 +332,7 @@
     htop
     vim
     tmux
+    mytube
     yt-dlp
     slskd
     ripgrep

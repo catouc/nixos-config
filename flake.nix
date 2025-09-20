@@ -20,6 +20,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    mytube = {
+      url = "github:catouc/mytube";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     firefly-iii-importer = {
       url = "github:catouc/firefly-iii-importer";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -48,6 +53,7 @@
     nixpkgs,
     lix-module,
     home-manager,
+    mytube,
     jiwa,
     gitlab-notifications,
     nixgl,
@@ -61,6 +67,7 @@
         inherit system;
         config.allowUnfree = true;
         overlays = [
+          (final: prev: { mytube = mytube.packages.${system}.default; })
           (final: prev: { jiwa = jiwa.packages.${system}.jiwa; })
           (final: prev: { gitlab-notifications = gitlab-notifications.packages.${system}.gitlab-notifications; })
           (final: prev: { feed-to-epub = feed-to-epub.packages.${system}.default; })

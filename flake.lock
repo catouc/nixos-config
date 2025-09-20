@@ -91,6 +91,22 @@
       }
     },
     "flake-utils_4": {
+      "locked": {
+        "lastModified": 1652776076,
+        "narHash": "sha256-gzTw/v1vj4dOVbpBSJX4J0DwUR6LIyXo7/SuuTJp1kM=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "04c1b180862888302ddfb2e3ad9eaa63afc60cf8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "ref": "v1.0.0",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "flake-utils_5": {
       "inputs": {
         "systems": "systems_2"
       },
@@ -223,6 +239,27 @@
         "url": "https://git.lix.systems/lix-project/nixos-module"
       }
     },
+    "mytube": {
+      "inputs": {
+        "flake-utils": "flake-utils_4",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1740321955,
+        "narHash": "sha256-/qkzCv5X3rRSzWHjKB7C2qv6n17mg/UCgIT21kU3kUg=",
+        "owner": "catouc",
+        "repo": "mytube",
+        "rev": "8a5d6e0eb0fa8e4bae46798466f44c60b8fe4197",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catouc",
+        "repo": "mytube",
+        "type": "github"
+      }
+    },
     "niri": {
       "inputs": {
         "niri-stable": "niri-stable",
@@ -281,7 +318,7 @@
     },
     "nixgl": {
       "inputs": {
-        "flake-utils": "flake-utils_4",
+        "flake-utils": "flake-utils_5",
         "nixpkgs": [
           "nixpkgs"
         ]
@@ -356,6 +393,7 @@
         "home-manager": "home-manager",
         "jiwa": "jiwa",
         "lix-module": "lix-module",
+        "mytube": "mytube",
         "niri": "niri",
         "nixgl": "nixgl",
         "nixpkgs": "nixpkgs_2"
