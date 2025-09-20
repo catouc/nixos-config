@@ -39,6 +39,10 @@
         prefixLength = 24;
       }];
     };
+    defaultGateway = {
+      address = "192.168.178.1";
+      interface = "enp4s0";
+    };
   };
   networking.nftables.enable = true;
   networking.nftables.flushRuleset = true;
