@@ -11,7 +11,6 @@
 
       ../modules/mullvad.nix
       ../modules/nix.nix
-      ../modules/soulseek.nix
     ];
 
   boot.loader.systemd-boot.enable = true;
@@ -88,12 +87,6 @@
         ports = [ 8443 443 22 ];
       }
     ];
-  };
-
-  pb.slskd = {
-    enable = false;
-    hostName = "soulseek.catouc.com";
-    shares = [ /media/Music ];
   };
 
   services.zfs.autoScrub.enable = true;
@@ -242,11 +235,6 @@
       webroot = null;
     };
     certs."photos.catouc.com" = {
-      dnsProvider = "cloudflare";
-      environmentFile = /var/secrets/cloudflare;
-      webroot = null;
-    };
-    certs."soulseek.catouc.com" = {
       dnsProvider = "cloudflare";
       environmentFile = /var/secrets/cloudflare;
       webroot = null;

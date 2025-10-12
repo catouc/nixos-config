@@ -49,7 +49,6 @@
   };
 
   outputs = {
-    self,
     nixpkgs,
     lix-module,
     home-manager,
@@ -72,9 +71,7 @@
           (final: prev: { gitlab-notifications = gitlab-notifications.packages.${system}.gitlab-notifications; })
           (final: prev: { feed-to-epub = feed-to-epub.packages.${system}.default; })
           (final: prev: {b = feed-to-epub.packages.${system}.default; })
-          self.overlays.ytdl-sub
           ( import ./overlays/mediawiki.nix )
-          self.overlays.i3-layouts
         ];
       };
 
@@ -87,33 +84,7 @@
       ];
     in
     {
-      overlays = {
-        ytdl-sub = final: prev: {
-          ytdl-sub = final.callPackage ./packages/ytdl-sub.nix { };
-        };
-        i3-layouts = final: prev: {
-          i3-layouts = final.callPackage ./packages/i3-layouts.nix { };
-        };
-      };
       nixosConfigurations = {
-        changeling = lib.nixosSystem {
-          inherit system pkgs;
-          modules = [
-            ./systems/changeling/configuration.nix
-            lix-module.nixosModules.default
-
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.pb = {
-                imports = [
-                  ./home/changeling.nix
-                ] ++ common-imports;
-              };
-            }
-          ];
-        };
 
         kolyarut = lib.nixosSystem {
           inherit system pkgs;

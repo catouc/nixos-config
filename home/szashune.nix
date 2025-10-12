@@ -2,7 +2,6 @@
 {
   imports = [
     ./modules/terminal.nix
-    ./modules/i3.nix
     ./modules/git.nix
   ];
   home = {
@@ -19,12 +18,6 @@
 
   pb.home.terminal = {
     enable = true;
-  };
-
-  pb.home.i3 = {
-    enable = true;
-    configFile = ./configs/szashune-i3;
-    polybarName = "szashune";
   };
 
   pb.home.git = {
