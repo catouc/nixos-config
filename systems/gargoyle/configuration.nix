@@ -42,6 +42,7 @@
       address = "192.168.1.1";
       interface = "enp4s0";
     };
+    nameservers = ["192.168.1.1"];
   };
   networking.nftables.enable = true;
   networking.nftables.flushRuleset = true;
