@@ -256,51 +256,6 @@
     };
   };
 
-  services.tailscale = {
-    enable = true;
-    useRoutingFeatures = "server";
-  };
-
-  services.dnsmasq = {
-    enable = true;
-    settings = {
-      port = 0; # disable DNS serving?
-      dhcp-authoritative = true;
-      dhcp-range = [ "192.168.178.50,192.168.178.150,5m" "::f,::ff,constructor:enp4s0" ] ;
-      dhcp-option = [ "3,192.168.178.1" "6,192.168.178.1" ];
-    };
-  };
-
-  services.unbound = {
-    enable = true;
-    settings = {
-      server = {
-        interface = [ "0.0.0.0" ];
-        access-control = [ "192.168.178.0/24 allow" "127.0.0.1/32 allow" ];
-        # Based on recommended settings in
-        # https://docs.pi-hole.net/guides/dns/unbound/#configure-unbound
-        harden-glue = true;
-        harden-dnssec-stripped = true;
-        use-caps-for-id = false;
-        prefetch = true;
-        edns-buffer-size = 1232;
-        hide-identity = true;
-        hide-version = true;
-      };
-      forward-zone = [
-        # Example config with quad9
-        {
-          name = ".";
-          forward-addr = [
-            "9.9.9.9#dns.quad9.net"
-            "149.112.112.112#dns.quad9.net"
-          ];
-          forward-tls-upstream = true;
-        }
-      ];
-    };
-  };
-
   virtualisation.oci-containers = {
     backend = "podman";
     containers.homeassistant = {
@@ -326,7 +281,6 @@
     tmux
     mytube
     yt-dlp
-    slskd
     ripgrep
     rtorrent
     feed-to-epub
