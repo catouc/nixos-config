@@ -34,12 +34,12 @@
   networking = {
     interfaces = {
       enp4s0.ipv4.addresses = [{
-        address = "192.168.178.184";
+        address = "192.168.1.10";
         prefixLength = 24;
       }];
     };
     defaultGateway = {
-      address = "192.168.178.1";
+      address = "192.168.1.1";
       interface = "enp4s0";
     };
   };
@@ -83,7 +83,7 @@
     portBypasses = [ 443 22 ];
     localHostBypasses = [
       {
-        ipv4="192.168.178.0/24"; 
+        ipv4="192.168.1.0/24"; 
         ports = [ 8443 443 22 ];
       }
     ];
