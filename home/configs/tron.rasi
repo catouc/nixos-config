@@ -1,26 +1,26 @@
 * {
-    font:   "Droid Sans Mono 10";
+    font:   "IBM Plex Mono 12";
 
-    tron0:   #0C141F";
-    tron1:   #Df740C";
-    tron2:   #44AF69";
-    tron3:   #FFE64D";
-    tron4:   #6FC3DF";
-    tron5:   #A23E48";
-    tron6:   #0D5C63";
-    tron7:   #FFFFFF";
-    tron8:   #666666";
-    tron9:   #FA3F52";
-    tron10:  #50DC81";
-    tron11:  #FFFF00";
-    tron12:  #E6FFFF";
-    tron13:  #FFFFFF";
-    tron14:  #12848E";
-    tron15:  #FFFFFF";
+    tron0:   #0C141F;
+    tron1:   #Df740C;
+    tron2:   #44AF69;
+    tron3:   #FFE64D;
+    tron4:   #6FC3DF;
+    tron5:   #A23E48;
+    tron6:   #0D5C63;
+    tron7:   #FFFFFF;
+    tron8:   #666666;
+    tron9:   #FA3F52;
+    tron10:  #50DC81;
+    tron11:  #FFFF00;
+    tron12:  #E6FFFF;
+    tron13:  #FFFFFF;
+    tron14:  #12848E;
+    tron15:  #FFFFFF;
 
-    background-color:   @tron0;
+    background-color:   transparent;
     text-color:         @tron4;
-    accent-color:       @tron4;
+    accent-color:       @tron1;
 
     margin:     0px;
     padding:    0px;
@@ -28,21 +28,18 @@
 }
 
 window {
-    location:           north;
-    width:              100%;
-    background-color:   @background-color;
-    children:           [ mainbox,message ];
-}
+    background-color:   @tron0;
+    border-color:       @tron0;
 
-mainbox {
-    orientation:    horizontal;
-    children:       [ inputbar,listview ];
+    location:   center;
+    width:      480px;
+    border:     1px;
+    border-radius: 15px;
 }
 
 inputbar {
-    width:      25%;
-    padding:    1px 8px;
-    spacing:    8px;
+    padding:    8px 12px;
+    spacing:    12px;
     children:   [ prompt, entry ];
 }
 
@@ -51,50 +48,31 @@ prompt, entry, element-text, element-icon {
 }
 
 prompt {
-    text-color: @accent-color;
+    text-color: @tron3;
+}
+
+textbox {
+	padding: 4px 8px;
+	background-color: @tron1;
 }
 
 listview {
-    layout: horizontal;
+  padding      : 4px 0px;
+  lines        : 12;
+  columns      : 1;
+  fixed-height : false;
 }
 
 element {
-    padding:    1px 8px;
-    spacing:    4px;
-}
-
-element normal urgent {
-    text-color: @tron13;
-}
-
-element normal active {
-    text-color: @accent-color;
-}
-
-element alternate active {
-    text-color: @accent-color;
+    padding:            4px 8px;
+    spacing:            8px;
 }
 
 element selected {
-    text-color: @background-color;
-}
-
-element selected normal {
-    background-color:   @accent-color;
-}
-
-element selected urgent {
-    background-color:   @tron13;
-}
-
-element selected active {
-    background-color:   @tron8;
-}
-
-element-icon {
-    size:   0.75em;
+    text-color: @tron1;
 }
 
 element-text {
-    text-color: inherit;
+	text-color: inherit;
 }
+

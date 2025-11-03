@@ -51,7 +51,8 @@ in
         in
         {
           "Mod+Return".action.spawn = ["ghostty"];
-          "Mod+d".action.spawn = ["rofi" "-show" "drun"];
+          "Mod+d".action.spawn = ["rofi" "-display-drun" ">" "-show" "drun"];
+          "Mod+s".action.spawn = ["rofi" "-show" "ssh"];
           "Mod+Alt+l".action.spawn = ["/bin/swaylock"];
           "Mod+Shift+Slash".action = show-hotkey-overlay;
 
