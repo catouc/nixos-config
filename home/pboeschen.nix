@@ -40,8 +40,8 @@ in
         to = "ssh://git@gitlab.booking.com";
       }
       {
-        from = "https://gitlab.com";
-        to = "ssh://git@gitlab.com";
+        from = "https://gitlab.com/booking-com";
+        to = "ssh://git@gitlab.com:booking-com";
       }
     ];
   };
