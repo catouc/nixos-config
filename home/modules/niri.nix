@@ -44,6 +44,9 @@ in
         #  };
 
         input.touchpad.natural-scroll = false;
+        input.keyboard.xkb = {
+          layout = "us";
+        };
         layout.gaps = 8;
 
         binds = with config.lib.niri.actions; let
