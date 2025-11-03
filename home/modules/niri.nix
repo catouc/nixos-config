@@ -22,6 +22,7 @@ in
       brightnessctl
       rofi
       sway-contrib.grimshot
+      wl-clipboard
       xwayland-satellite
     ];
 
