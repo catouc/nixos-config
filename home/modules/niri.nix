@@ -20,10 +20,15 @@ in
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       brightnessctl
-      fuzzel
+      rofi
       sway-contrib.grimshot
       xwayland-satellite
     ];
+
+    home.file."${config.xdg.configHome}/rofi/tron.rasi" = {
+      enable = true;
+      source = ../configs/tron.rasi;
+    };
 
     pb.home.waybar.enable = true;
 
@@ -46,7 +51,7 @@ in
         in
         {
           "Mod+Return".action.spawn = ["ghostty"];
-          "Mod+d".action.spawn = ["fuzzel"];
+          "Mod+d".action.spawn = ["rofi" "-show" "drun"];
           "Mod+Alt+l".action.spawn = ["/bin/swaylock"];
           "Mod+Shift+Slash".action = show-hotkey-overlay;
 

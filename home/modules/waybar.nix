@@ -8,6 +8,10 @@ in
   }; 
 
   config = lib.mkIf cfg.enable {
+    home.packages = with pkgs; [
+      rofi-bluetooth
+    ];
+
     programs.waybar = {
       enable = true;
 
@@ -24,6 +28,7 @@ in
 
       #clock,
       #battery,
+      #bluetooth,
       #cpu,
       #memory,
       #disk,
@@ -49,7 +54,7 @@ in
           height = 25;
           # modules-left = [ "niri/workspaces" ];
           modules-center = [ "clock" ];
-          modules-right = [ "network" "battery" ];
+          modules-right = [ "bluetooth" "network" "battery" ];
 
           battery = {
             states = {
@@ -63,6 +68,10 @@ in
             format-plugged = "{capacity}% ";
             format-alt = "{capacity}% {icon}";
             format-icons = ["" "" "" "" ""];
+          };
+
+          bluetooth = {
+            on-click = "rofi-bluetooth";
           };
 
           clock = {
