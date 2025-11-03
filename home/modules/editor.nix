@@ -16,15 +16,17 @@
         plugin = nvim-lspconfig;
         type = "lua";
         config = ''
-          	  local lspconfig = require('lspconfig')
-          	  lspconfig.rust_analyzer.setup{
+              vim.lsp.enable('rust-analyzer')
+          	  vim.lsp.config('rust_analyzer', {
           	    settings = {
-                        highlightingOn = false;
+                  ['rust-analyzer'] = {
+                    highlightingOn = false
+                  }
           	    }
-          	  }
-          	  lspconfig.gopls.setup{}
-          	  lspconfig.nixd.setup{}
-              lspconfig.gdscript.setup{}
+          	  })
+
+          	  vim.lsp.enable('gopls')
+          	  vim.lsp.enable('nixd')
 
               vim.opt.clipboard = 'unnamedplus'
               vim.api.nvim_create_autocmd('LspAttach', {
