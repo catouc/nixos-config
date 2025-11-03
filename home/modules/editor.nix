@@ -16,14 +16,12 @@
         plugin = nvim-lspconfig;
         type = "lua";
         config = ''
-              vim.lsp.enable('rust-analyzer')
-          	  vim.lsp.config('rust_analyzer', {
-          	    settings = {
-                  ['rust-analyzer'] = {
-                    highlightingOn = false
-                  }
-          	    }
-          	  })
+              vim.lsp.config('rust_analyzer', {
+                settings = {
+                  ['rust-analyzer'] = {},
+                },
+              })
+              vim.lsp.enable('rust_analyzer')
 
           	  vim.lsp.enable('gopls')
           	  vim.lsp.enable('nixd')
