@@ -1,6 +1,8 @@
 { pkgs, lib, config, ... }:
 {
   imports = [
+    ./modules/niri.nix
+    ./modules/waybar.nix
     ./modules/terminal.nix
     ./modules/git.nix
   ];
@@ -20,13 +22,14 @@
     enable = true;
   };
 
+  pb.home.niri = {
+    enable = true;
+  };
+
   pb.home.git = {
     enable = true;
     email = "catouc@philipp.boeschen.me";
-    urlRewrites = [{
-      from = "https://github.com";
-      to = "ssh://git@github.com";
-    }];
+    urlRewrites = [];
   };
 }
 

@@ -154,6 +154,7 @@
           modules = [
             ./systems/szashune/configuration.nix
             lix-module.nixosModules.default
+            niri.nixosModules.niri
 
             home-manager.nixosModules.home-manager
             {

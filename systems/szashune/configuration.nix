@@ -24,13 +24,35 @@
   networking.nftables.enable = true;
   networking.nftables.flushRuleset = true;
 
-  hardware.nvidia.open = false;
+  services.xserver.videoDrivers = ["nvidia"];
+
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
+  hardware.nvidia = {
+    open = false;
+    modesetting.enable = true;
+    powerManagement.enable = true;
+    nvidiaSettings = true;
+  };
 
   pb.windowmanager = {
-    enable = true;
+    enable = false;
     useNvidiaVideoDriver = true;
     configFile = ../../home/configs/szashune-i3;
   };
+
+  # Conflicts with ssh.startAgent somehow
+  # TODO: Investigate if I can just turn off all of gnome?
+  services.gnome.gcr-ssh-agent.enable = false;
+  programs.ssh.startAgent = true;
+
+  programs.niri = {
+    enable = true;
+  };
+
 
   security.polkit.enable = true;
   pb.locale.enable = true;
@@ -60,8 +82,14 @@
     };
   };
 
-  programs.ssh.startAgent = true;
   programs.steam.enable = true;
+
+  virtualisation.containers.enable = true;
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+    defaultNetwork.settings.dns_enabled = true;
+  };
 
   services.mullvad-vpn.enable = true;
   services.printing.enable = true;
