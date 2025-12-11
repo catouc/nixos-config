@@ -55,6 +55,11 @@
 
   hardware.bluetooth.enable = true;
 
+  services.tailscale = {
+    enable = true;
+    useRoutingFeatures = "client";
+  };
+
   services.gvfs.enable = true;
   services.upower.enable = true;
   services.fwupd.enable = true;

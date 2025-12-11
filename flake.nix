@@ -77,6 +77,7 @@
 
       lib = nixpkgs.lib;
       common-imports = [
+        ./home/modules/base_packages.nix
         ./home/modules/common.nix
         ./home/modules/shell.nix
         ./home/modules/terminal.nix
@@ -141,7 +142,9 @@
               home-manager.useUserPackages = true;
               home-manager.users.pb = {
                 imports = [
-                  ./home/marut.nix
+                  ./home/gargoyle.nix
+                  ./home/modules/base_packages.nix
+                  ./home/modules/editor.nix
                   ./home/modules/shell.nix
                 ];
               };
