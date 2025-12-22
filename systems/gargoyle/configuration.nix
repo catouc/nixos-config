@@ -156,6 +156,11 @@
     };
   };
 
+  services.tailscale = {
+    enable = true;
+    useRoutingFeatures = "server";
+  };
+
   services.kavita = {
     enable = true;
     dataDir = "/media/ebooks";

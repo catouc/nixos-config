@@ -15,9 +15,6 @@
   pb.home.git = {
     enable = true;
     email = "catouc@philipp.boeschen.me";
-    urlRewrites = [{
-      from = "https://github.com";
-      to = "ssh://git@github.com";
-    }];
+    urlRewrites = [];
   };
 }
