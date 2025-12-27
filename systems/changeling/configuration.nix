@@ -8,11 +8,11 @@
     ../modules/mullvad.nix
     ../modules/security.nix
     ../modules/sound.nix
+    ../modules/nix.nix
     ../modules/user.nix
     ../modules/windowmanager.nix
 
     (import ../modules/fonts.nix { pkgs = pkgs; })
-    (import ../modules/nix.nix { pkgs = pkgs; })
     (import ../modules/network.nix {
       networkManagerEnabled = true;
       hostName = "changeling";

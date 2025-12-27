@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   nix = {
     optimise.automatic = true;
@@ -10,5 +10,7 @@
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
+
+    package = pkgs.lixPackageSets.stable.lix;
   };
 }

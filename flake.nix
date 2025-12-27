@@ -4,12 +4,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    lix-module = {
-      #url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
-      url = "git+https://git.lix.systems/lix-project/nixos-module";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -50,7 +44,6 @@
 
   outputs = {
     nixpkgs,
-    lix-module,
     home-manager,
     mytube,
     jiwa,
@@ -72,6 +65,13 @@
           (final: prev: { feed-to-epub = feed-to-epub.packages.${system}.default; })
           (final: prev: {b = feed-to-epub.packages.${system}.default; })
           ( import ./overlays/mediawiki.nix )
+          (final: prev: {
+            inherit (prev.lixPackageSets.stable)
+              nixpkgs-review
+              nix-eval-jobs
+              nix-fast-build
+              colmena;
+          })
         ];
       };
 
@@ -91,7 +91,6 @@
           inherit system pkgs;
           modules = [
             ./systems/kolyarut/configuration.nix
-            lix-module.nixosModules.default
             niri.nixosModules.niri
 
             home-manager.nixosModules.home-manager
@@ -113,7 +112,6 @@
           #extraArgs = { inherit extrapkgs; };
           modules = [
             ./systems/marut/configuration.nix
-            lix-module.nixosModules.default
 
             home-manager.nixosModules.home-manager
             {
@@ -133,7 +131,6 @@
           inherit system pkgs;
           modules = [
             ./systems/gargoyle/configuration.nix
-            lix-module.nixosModules.default
             feed-to-epub.nixosModules.default
 
             home-manager.nixosModules.home-manager
@@ -156,7 +153,6 @@
           inherit system pkgs;
           modules = [
             ./systems/szashune/configuration.nix
-            lix-module.nixosModules.default
             niri.nixosModules.niri
 
             home-manager.nixosModules.home-manager

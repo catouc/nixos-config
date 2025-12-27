@@ -4,6 +4,7 @@
     ./hardware-configuration.nix
 
     ../modules/boot.nix
+    ../modules/nix.nix
     ../modules/locale.nix
     ../modules/mullvad.nix
     ../modules/sound.nix
@@ -14,7 +15,6 @@
 
     (import ../modules/fonts.nix { pkgs = pkgs; })
     (import ../modules/fonts.nix { pkgs = pkgs; })
-    (import ../modules/nix.nix { pkgs = pkgs; })
     (import ../modules/network.nix {
       networkManagerEnabled = true;
       hostName = "szashune";
