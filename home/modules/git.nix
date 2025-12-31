@@ -42,6 +42,7 @@ in
       gp = "git push";
       gpu = "git push -u origin $(git rev-parse --abbrev-ref HEAD)";
       gpum = "git push -u origin $(git rev-parse --abbrev-ref HEAD) -o merge_request.create";
+      gpums = "git push -u origin $(git rev-parse --abbrev-ref HEAD) -o merge_request.create -o merge_request.auto_merge";
     };
     programs.git = {
       enable = true;

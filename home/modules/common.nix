@@ -3,8 +3,9 @@
   home.packages = with pkgs; [
     bluez
     firefox
-    obsidian
-    powertop
+    git
+    htop
+    jq
   ];
 
   programs.home-manager.enable = true;

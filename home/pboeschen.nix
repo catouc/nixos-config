@@ -90,6 +90,7 @@ in
       autorandr
       gitlab-notifications
       k9s
+      fd
       kubectl
       nerd-fonts.droid-sans-mono
       okta-aws-cli
