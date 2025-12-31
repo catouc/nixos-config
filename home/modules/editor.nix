@@ -13,6 +13,10 @@
     '';
     plugins = with pkgs.vimPlugins; [
       {
+        plugin = transparent-nvim;
+        type = "lua";
+      }
+      {
         plugin = nvim-lspconfig;
         type = "lua";
         config = ''

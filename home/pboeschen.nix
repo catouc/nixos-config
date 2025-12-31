@@ -27,6 +27,10 @@ in
     };
   };
 
+  services.swww = {
+    enable = true;
+  };
+
   pb.home.terminal = {
     enable = true;
   };
