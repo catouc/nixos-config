@@ -145,6 +145,17 @@ in
           "Mod+Shift+e".action = quit;
         };
 
+        window-rules = [
+          {
+            matches = [
+              {
+                app-id = "ghostty$";
+              }
+            ];
+            draw-border-with-background = false;
+          }
+        ];
+
         spawn-at-startup = [
          { command = ["waybar"]; }
          { command = ["xwayland-satellite"]; }

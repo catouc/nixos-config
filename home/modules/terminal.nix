@@ -44,6 +44,7 @@ in
       package = config.lib.nixGL.wrap pkgs.ghostty;
       settings = {
         window-decoration = false;
+        background-opacity = "0.5";
         theme = "Tron";
       };
     };
