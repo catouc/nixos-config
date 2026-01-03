@@ -51,7 +51,7 @@
     enable = true;
   };
 
-  programs.steam.enable = true;
+  programs.steam.enable = false;
 
   hardware.bluetooth.enable = true;
 
