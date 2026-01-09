@@ -23,7 +23,6 @@ in
       rofi
       sway-contrib.grimshot
       wl-clipboard
-      xwayland-satellite
     ];
 
     home.file."${config.xdg.configHome}/rofi/tron.rasi" = {
@@ -43,6 +42,11 @@ in
         #    position.x = 0;
         #    position.y = 0;
         #  };
+
+        xwayland-satellite = {
+          enable = true;
+          path = lib.getExe pkgs.xwayland-satellite;
+        };
 
         input.touchpad.natural-scroll = false;
         input.keyboard.xkb = {
@@ -158,12 +162,7 @@ in
 
         spawn-at-startup = [
          { command = ["waybar"]; }
-         { command = ["xwayland-satellite"]; }
         ];
-
-        environment = {
-          DISPLAY = ":0";
-        };
       };
     };
   };
