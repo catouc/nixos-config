@@ -15,6 +15,7 @@
   networking.nftables.flushRuleset = true;
   networking.firewall = {
     enable = true;
+    logRefusedConnections = false;
     allowedTCPPorts = [ 22 80 443 ];
   };
 
