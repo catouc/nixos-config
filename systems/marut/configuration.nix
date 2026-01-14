@@ -83,8 +83,6 @@
     };
   };
 
-  services.jellyfin.enable = false;
-
   services.nginx = {
     enable = true;
     recommendedProxySettings = true;
@@ -116,6 +114,17 @@
     };
   };
 
+  services.postgresql = {
+    enable = true;
+    ensureDatabases = [ "spliit" ];
+    ensureUsers = [
+      {
+        name = "spliit";
+        ensureDBOwnership = true;
+      }
+    ];
+  };
+
   virtualisation.oci-containers = {
     backend = "podman";
     containers.rustpad = {
@@ -123,15 +132,6 @@
       image = "docker.io/ekzhang/rustpad:latest";
       ports = ["3030:3030"];
     };
-  };
-
-  services.hydra = {
-    enable = false;
-    hydraURL = "https://hydra.catouc.com";
-    listenHost = "127.0.0.1";
-    notificationSender = "hydra@catouc.com";
-    buildMachinesFiles = [ ];
-    useSubstitutes = true;
   };
 
   security.acme = {
