@@ -39,6 +39,7 @@
     spliit = {
       isSystemUser = true;
       group = "spliit";
+      linger = false;
     };
   };
 
@@ -140,6 +141,15 @@
       # Note: The image will not be updated on rebuilds, unless the version label changes
       image = "docker.io/ekzhang/rustpad:latest";
       ports = ["3030:3030"];
+    };
+    containers.spliit = {
+      image = "ghcr.io/spliit-app/spliit:1.19.0";
+      ports = ["3333:3333"];
+      podman.user = "spliit";
+      environment = {
+        POSTGRES_PRISMA_URL="postgres:///dbname";
+        POSTGRES_URL_NON_POOLING="postgres:///dbname";
+      };
     };
   };
 
