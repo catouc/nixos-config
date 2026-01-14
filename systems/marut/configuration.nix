@@ -39,6 +39,8 @@
 
   virtualisation.docker.enable = true;
 
+  services.fail2ban.enable = true;
+
   services.mediawiki = {
     enable = true;
     name = "Panapa";
