@@ -35,6 +35,15 @@
         "keys"
       ];
     };
+
+    spliit = {
+      isSystemUser = true;
+      group = "spliit";
+    };
+  };
+
+  users.groups = {
+    spliit = {};
   };
 
   virtualisation.docker.enable = true;
