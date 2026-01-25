@@ -22,7 +22,7 @@
   users.users = {
     pb = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "jellyfin" ];
+      extraGroups = [ "wheel" "spliit" ];
       openssh.authorizedKeys.keys = [
         ''sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAILbWTzMhSpruetqZrxqKuGbZSdjPBtT+utpLScb4y3obAAAABHNzaDo=''
         ''sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIOlJaLeMqxg7P+2lBzSjEbSf6tthaHiHD8IrOlTkFaNQAAAABHNzaDo=''
@@ -37,7 +37,7 @@
     };
 
     spliit = {
-      isSystemUser = true;
+      isNormalUser = true;
       group = "spliit";
       linger = false;
     };
