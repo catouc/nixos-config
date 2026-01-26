@@ -2,6 +2,7 @@
   imports = [
     ../modules/nix.nix
     ../modules/security.nix
+    ../../packages/spliit/nixos-module.nix
 
     ./hardware-configuration.nix
   ];
@@ -47,8 +48,6 @@
     spliit = {};
   };
 
-  virtualisation.docker.enable = true;
-
   services.fail2ban.enable = true;
 
   services.mediawiki = {
@@ -83,6 +82,8 @@
       };
     };
   };
+
+  pb.spliit.enable = true;
 
   services.openssh = {
     enable = true;

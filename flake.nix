@@ -43,6 +43,7 @@
   };
 
   outputs = {
+    self,
     nixpkgs,
     home-manager,
     mytube,
@@ -64,6 +65,7 @@
           (final: prev: { gitlab-notifications = gitlab-notifications.packages.${system}.gitlab-notifications; })
           (final: prev: { feed-to-epub = feed-to-epub.packages.${system}.default; })
           (final: prev: {b = feed-to-epub.packages.${system}.default; })
+          self.overlays.spliit
           ( import ./overlays/mediawiki.nix )
           (final: prev: {
             inherit (prev.lixPackageSets.stable)
@@ -85,6 +87,12 @@
       ];
     in
     {
+      overlays = {
+        spliit = final: prev: {
+          spliit = final.callPackage ./packages/spliit/spliit.nix { };
+        }; 
+      };
+
       nixosConfigurations = {
 
         kolyarut = lib.nixosSystem {

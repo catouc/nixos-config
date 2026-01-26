@@ -1,0 +1,19 @@
+diff --git a/next.config.mjs b/next.config.mjs
+index 6579620..26fec6c 100644
+--- a/next.config.mjs
++++ b/next.config.mjs
+@@ -27,12 +27,13 @@ const nextConfig = {
+   images: {
+     remotePatterns
+   },
++  output: "standalone",
+   // Required to run in a codespace (see https://github.com/vercel/next.js/issues/58019)
+   experimental: {
+     serverActions: {
+         allowedOrigins: ['localhost:3000'],
+     },
+-},
++  },
+ }
+ 
+ export default withNextIntl(nextConfig)
