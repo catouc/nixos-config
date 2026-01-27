@@ -44,17 +44,21 @@ in
       gpum = "git push -u origin $(git rev-parse --abbrev-ref HEAD) -o merge_request.create";
       gpums = "git push -u origin $(git rev-parse --abbrev-ref HEAD) -o merge_request.create -o merge_request.auto_merge";
     };
+
     programs.git = {
       enable = true;
-      userName = "Philipp Böschen";
-      userEmail = cfg.email;
 
-      aliases = {
-        tree = "log --graph --decorate --oneline --abbrev-commit";
-        bs = "!bash -c 'git branch | fzf | xargs git switch'";
-      };
+      settings = {
+        user = {
+          name = "Philipp Böschen";
+          email = cfg.email;
+        };
 
-      extraConfig = {
+        alias = {
+          tree = "log --graph --decorate --oneline --abbrev-commit";
+          bs = "!bash -c 'git branch | fzf | xargs git switch'";
+        };
+
         core = {
           pager = "delta";
         };
