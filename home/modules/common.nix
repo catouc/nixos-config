@@ -6,6 +6,7 @@
     git
     htop
     jq
+    feishin
   ];
 
   programs.home-manager.enable = true;
