@@ -40,7 +40,7 @@
     spliit = {
       isNormalUser = true;
       group = "spliit";
-      linger = false;
+      linger = true;
     };
   };
 
