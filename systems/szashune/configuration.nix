@@ -53,13 +53,7 @@
     enable = true;
   };
 
-
   security.polkit.enable = true;
-  pb.locale.enable = true;
-  services.jellyfin = {
-    enable = true;
-    openFirewall = true;
-  };
 
   services.openssh = {
     enable = true;
@@ -83,16 +77,7 @@
   };
 
   programs.steam.enable = true;
-
-  virtualisation.containers.enable = true;
-  virtualisation.podman = {
-    enable = true;
-    dockerCompat = true;
-    defaultNetwork.settings.dns_enabled = true;
-  };
-
   services.mullvad-vpn.enable = true;
-  services.printing.enable = true;
 
   system.stateVersion = "22.05";
 }
