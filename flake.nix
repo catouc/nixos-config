@@ -66,7 +66,6 @@
           (final: prev: { feed-to-epub = feed-to-epub.packages.${system}.default; })
           (final: prev: {b = feed-to-epub.packages.${system}.default; })
           self.overlays.spliit
-          ( import ./overlays/mediawiki.nix )
           (final: prev: {
             inherit (prev.lixPackageSets.stable)
               nixpkgs-review

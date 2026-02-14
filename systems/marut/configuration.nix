@@ -72,13 +72,13 @@
 
     extensions = {
       Cargo = pkgs.fetchzip {
-        url = "https://github.com/wikimedia/mediawiki-extensions-Cargo/archive/3.5.1.zip";
-        hash = "sha256-mEzeCnZyFK6ig9JZD2ZsGN2slfvhBttohxYDDHKB5zU=";
+        url = "https://github.com/wikimedia/mediawiki-extensions-Cargo/archive/refs/heads/REL1_45.zip";
+        hash = "sha256-97r5AVkg/vZsgDmjHkKbOOLrlOQeN41Q6k+Oh4FONtU=";
       };
 
       "PageForms" = pkgs.fetchzip {
-        url = "https://github.com/wikimedia/mediawiki-extensions-PageForms/archive/6.0.1.zip";
-        hash = "sha256-L+qWC7LjABbzs+YMnnNVhKEGgKlH+AWTci2KwWkEEPk=";
+        url = "https://github.com/wikimedia/mediawiki-extensions-PageForms/archive/refs/heads/REL1_45.zip";
+        hash = "sha256-krxcDCKVD1kRVxevJo7//HWIi1PH4Ovs4rO0chyCMXk=";
       };
     };
   };
