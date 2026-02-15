@@ -221,6 +221,14 @@
         proxyWebsockets = true;
       };
     };
+
+    virtualHosts."torrent.catouc.com" = {
+      forceSSL = true;
+      enableACME = true;
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:11000";
+      };
+    };
   };
 
   services.immich = {
@@ -256,6 +264,44 @@
       dnsProvider = "cloudflare";
       environmentFile = /var/secrets/cloudflare;
       webroot = null;
+    };
+    certs."torrent.catouc.com" = {
+      dnsProvider = "cloudflare";
+      environmentFile = /var/secrets/cloudflare;
+      webroot = null;
+    };
+  };
+
+   services.qbittorrent = {
+    enable = true;
+    profileDir = "/var/data/qbittorrent";
+    webuiPort = 11000;
+    torrentingPort = 37001;
+    openFirewall = true;
+    group = "media";
+    serverConfig = {
+      LegalNotice.Accepted = true;
+      BitTorrent = {
+        Session = {
+          DHTEnabled=false;
+          LSDEnabled=false;
+          PeXEnabled=false;
+          QueueingSystemEnabled=false;
+          DefaultSavePath="/media/torrent/downloads";
+          TempPath="/media/torrent/incomplete";
+          GlobalDLSpeedLimit=110000;
+          GlobalUPSpeedLimit=30000;
+          Encryption=1;
+        }; 
+      };
+      Preferences = {
+        WebUI = {
+          AuthSubnetWhitelist="192.168.1.0/24";
+          LocalHostAuth=false;
+          AuthSubnetWhitelistEnabled=true;
+          UseUPnP=false;
+        };
+      };
     };
   };
 
