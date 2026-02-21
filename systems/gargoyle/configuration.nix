@@ -11,6 +11,7 @@
 
       ../modules/mullvad.nix
       ../modules/nix.nix
+      ../modules/ntp.nix
     ];
 
   boot.loader.systemd-boot.enable = true;

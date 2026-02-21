@@ -7,6 +7,7 @@
     ../modules/nix.nix
     ../modules/locale.nix
     ../modules/mullvad.nix
+    ../modules/ntp.nix
     ../modules/security.nix
     ../modules/sound.nix
     ../modules/user.nix

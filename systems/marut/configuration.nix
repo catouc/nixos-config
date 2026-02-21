@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   imports = [
     ../modules/nix.nix
+    ../modules/ntp.nix
     ../modules/security.nix
     ../../packages/spliit/nixos-module.nix
 
