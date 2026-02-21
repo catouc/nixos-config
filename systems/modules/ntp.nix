@@ -8,4 +8,6 @@
       "ptbtime3.ptb.de"
     ];
   };
+
+  time.timeZone = "Europe/Brussels";
 }
