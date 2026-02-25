@@ -26,6 +26,16 @@
     "fs.inotify.max_user_watches" = "32768"; # 4 times the default 8192
   };
 
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver
+      intel-vaapi-driver
+    ];
+  };
+
+  environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
+
   networking.hostName = "gargoyle";
   networking.hostId = "7789dc7b";
   users.groups = {
