@@ -29,8 +29,11 @@
   hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
+      # TODO: Actually learn what these do ...
+      intel-compute-runtime
       intel-media-driver
       intel-vaapi-driver
+      vpl-gpu-rt
     ];
   };
 
@@ -74,7 +77,7 @@
     };
 
     jellyfin = {
-      extraGroups = [ "media" ];
+      extraGroups = [ "media" "render" "video" ];
     };
 
     kavita = {
