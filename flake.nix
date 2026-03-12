@@ -113,6 +113,24 @@
           ];
         };
 
+        changeling = lib.nixosSystem {
+          inherit system pkgs;
+          modules = [
+            ./systems/changeling/configuration.nix
+            niri.nixosModules.niri
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.pb = {
+                imports = [
+                  ./home/changeling.nix
+                ] ++ common-imports;
+              };
+            }
+          ];
+        };
 
         marut = lib.nixosSystem {
           inherit system pkgs;

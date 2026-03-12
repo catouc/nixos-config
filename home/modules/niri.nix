@@ -25,7 +25,7 @@ in
       wl-clipboard
     ];
 
-    home.file."${config.xdg.configHome}/rofi/tron.rasi" = {
+    home.file."${config.xdg.configHome}/rofi/themes/tron.rasi" = {
       enable = true;
       source = ../configs/tron.rasi;
     };
@@ -42,6 +42,8 @@ in
         #    position.x = 0;
         #    position.y = 0;
         #  };
+
+        prefer-no-csd = true;
 
         xwayland-satellite = {
           enable = true;
