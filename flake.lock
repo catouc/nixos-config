@@ -177,11 +177,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1773438611,
-        "narHash": "sha256-vbV9VpZE2sm3LPFYr5tp2epP/HcZ2xj45F1Wn6fHTu0=",
+        "lastModified": 1773439909,
+        "narHash": "sha256-EzfYb5cVomTUzrWHQaHgtGPjgBQZcvG2rU+hSn3QY1g=",
         "owner": "catouc",
         "repo": "mytube",
-        "rev": "167db6f12795a615033539fd79b8c4c13dd72893",
+        "rev": "da02163c454d41ca7461d8986969a2ef14d9524a",
         "type": "github"
       },
       "original": {
