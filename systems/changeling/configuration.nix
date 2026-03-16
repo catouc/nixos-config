@@ -17,7 +17,7 @@
     (import ../modules/fonts.nix { pkgs = pkgs; })
     (import ../modules/network.nix {
       networkManagerEnabled = true;
-      hostName = "kolyarut";
+      hostName = "changeling";
     })
   ];
 
