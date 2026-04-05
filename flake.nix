@@ -157,6 +157,7 @@
           modules = [
             ./systems/gargoyle/configuration.nix
             feed-to-epub.nixosModules.default
+            mytube.nixosModules.default
 
             home-manager.nixosModules.home-manager
             {
