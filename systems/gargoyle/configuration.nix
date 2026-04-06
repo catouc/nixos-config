@@ -245,6 +245,8 @@
     };
   };
 
+  mytube.enable = true;
+
   services.immich = {
     enable = true;
     mediaLocation = "/media/Photos";
