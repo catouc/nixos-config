@@ -101,6 +101,11 @@
     ];
   };
 
+  services.beszel.agent = {
+    enable = true;
+    environmentFile = "/var/secrets/beszel";
+  };
+
   services.zfs.autoScrub.enable = true;
   services.sanoid = {
     enable = true;
