@@ -138,6 +138,10 @@
   };
 
   services.beszel.hub.enable = true;
+  services.beszel.agent = {
+    enable = true;
+    environmentFile = /var/secrets/beszel;
+  };
 
   services.postgresql = {
     enable = true;
