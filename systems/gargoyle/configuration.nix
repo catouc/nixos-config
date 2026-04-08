@@ -243,6 +243,13 @@
         proxyPass = "http://127.0.0.1:11000";
       };
     };
+
+    virtualHosts."travel.erikaszucs.com" = {
+      forceSSL = true;
+      enableACME = true;
+      root = "/var/www/erikaszucs.com";
+    };
+
   };
 
   mytube.enable = true;
@@ -282,6 +289,11 @@
       webroot = null;
     };
     certs."torrent.catouc.com" = {
+      dnsProvider = "cloudflare";
+      environmentFile = /var/secrets/cloudflare;
+      webroot = null;
+    };
+    certs."travel.erikaszucs.com" = {
       dnsProvider = "cloudflare";
       environmentFile = /var/secrets/cloudflare;
       webroot = null;
