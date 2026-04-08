@@ -124,7 +124,20 @@
         proxyWebsockets = true;
       };
     };
+
+    virtualHosts."monitoring.catouc.com" = {
+      forceSSL = true;
+      enableACME = true;
+
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:8090";
+        extraConfig = "proxy_ssl_server_name on;";
+        proxyWebsockets = true;
+      };
+    };
   };
+
+  services.beszel.hub.enable = true;
 
   services.postgresql = {
     enable = true;
