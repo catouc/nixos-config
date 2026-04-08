@@ -47,7 +47,9 @@ in
 
     programs.git = {
       enable = true;
-
+      # Because home.stateVersion < 25.05 and the default changed
+      # This adopts new behaviour
+      signing.format = null;
       settings = {
         user = {
           name = "Philipp Böschen";
