@@ -4,6 +4,11 @@
     enable = true;
     viAlias = true;
     vimAlias = true;
+    # since home.stateVersion 26.05 this now defaults to false
+    # but the previous default was true, this adopts the new
+    # default to squash a warning.
+    withRuby = false;
+    withPython3 = false;
     extraConfig = ''
       syntax off
       set number
