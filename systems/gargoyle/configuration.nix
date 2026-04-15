@@ -76,6 +76,11 @@
       ];
     };
 
+    rtoo = {
+      isNormalUser = true;
+      openssh.authorizedKeys.keys = [];
+    };
+
     jellyfin = {
       extraGroups = [ "media" "render" "video" ];
     };
