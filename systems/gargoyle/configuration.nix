@@ -78,7 +78,9 @@
 
     rtoo = {
       isNormalUser = true;
-      openssh.authorizedKeys.keys = [];
+      openssh.authorizedKeys.keys = [
+        ''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILQkDNyEV8UEwpgJCkAR3y6R1m/BTIP+790qexrQ94fC''
+      ];
     };
 
     jellyfin = {
