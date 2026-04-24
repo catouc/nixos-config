@@ -97,7 +97,7 @@
 
   services.nginx = {
     enable = true;
-    recommendedProxySettings = true;
+    recommendedProxySettings = false;
     recommendedTlsSettings = true;
     virtualHosts."panapa.catouc.com" = {
       forceSSL = true;
@@ -135,6 +135,31 @@
         proxyWebsockets = true;
       };
     };
+
+    virtualHosts."pictures.catouc.com" = {
+      forceSSL = true;
+      enableACME = true;
+
+      locations."/" = {
+        proxyPass = "https://192.168.1.10";
+        extraConfig = ''
+          proxy_set_header Host photos.catouc.com;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Host $host;
+          proxy_set_header X-Forwarded-Proto https;
+
+          proxy_ssl_server_name on;
+          proxy_ssl_name photos.catouc.com;
+          proxy_ssl_verify off;
+        '';
+      };
+    };
+
+  };
+
+  services.tailscale = {
+    enable = true;
+    useRoutingFeatures = "client";
   };
 
   services.beszel.hub.enable = true;
