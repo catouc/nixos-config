@@ -46,6 +46,26 @@
     enable = true;
   };
 
+  xdg.portal = {
+    enable = true;
+
+    # NOTE: `configPackages` is ignored when `xdg.portal.config.niri` is defined.
+    config.niri = {
+      default = [
+        "gnome"
+        "gtk"
+      ];
+      "org.freedesktop.impl.portal.Access" = "gtk";
+      "org.freedesktop.impl.portal.FileChooser" = "gtk";
+      "org.freedesktop.impl.portal.Notification" = "gtk";
+      "org.freedesktop.impl.portal.Secret" = "gnome-keyring";
+    };
+
+    # Recommended by upstream, required for screencast support
+    # https://github.com/YaLTeR/niri/wiki/Important-Software#portals
+    extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
+  };
+
   programs.steam.enable = true;
   programs.steam.gamescopeSession.enable = true;
   programs.gamemode.enable = true;
