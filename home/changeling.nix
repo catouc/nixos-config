@@ -12,6 +12,7 @@
     homeDirectory = "/home/pb";
     stateVersion = "22.05";
     packages = with pkgs; [
+      racket
       jellyfin-desktop
       mpv
     ];
