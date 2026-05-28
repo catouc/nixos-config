@@ -20,7 +20,10 @@
   boot.loader.grub.device = "nodev";
 
   boot.supportedFilesystems = [ "zfs" ];
-  boot.zfs.extraPools = [ "media" ];
+  boot.zfs = {
+    forceImportRoot = false;
+    extraPools = [ "media" ];
+  };
 
   boot.kernel.sysctl = {
     "fs.inotify.max_user_watches" = "32768"; # 4 times the default 8192
