@@ -66,6 +66,7 @@
           (final: prev: { feed-to-epub = feed-to-epub.packages.${system}.default; })
           (final: prev: {b = feed-to-epub.packages.${system}.default; })
           self.overlays.spliit
+          self.overlays.onecastle
           (final: prev: {
             inherit (prev.lixPackageSets.stable)
               nixpkgs-review
@@ -90,6 +91,10 @@
         spliit = final: prev: {
           spliit = final.callPackage ./packages/spliit/spliit.nix { };
         }; 
+
+        onecastle = final: prev: {
+          onecastle = final.callPackage ./packages/onecastle/onecastle.nix { };
+        };
       };
 
       nixosConfigurations = {

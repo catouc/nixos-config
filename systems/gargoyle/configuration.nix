@@ -13,6 +13,7 @@
       ../modules/nix.nix
       ../modules/ntp.nix
       ../modules/terminal.nix
+      ../../packages/onecastle/nixos-module.nix
     ];
 
   boot.loader.systemd-boot.enable = true;
@@ -110,6 +111,11 @@
         ports = [ 8443 443 22 ];
       }
     ];
+  };
+
+  pb.onecastle = {
+    enable = true;
+    port = 8888;
   };
 
   services.beszel.agent = {
@@ -221,6 +227,13 @@
       locations."/".proxyPass = "http://127.0.0.1:5000";
     };
 
+    virtualHosts."onecastle.erikaszucs.com" = {
+      forceSSL = true;
+      enableACME = true;
+
+      locations."/".proxyPass = "http://127.0.0.1:${toString config.pb.onecastle.port}";
+    };
+
     virtualHosts."photos.catouc.com" = {
       forceSSL = true;
       enableACME = true;
@@ -310,6 +323,11 @@
       webroot = null;
     };
     certs."travel.erikaszucs.com" = {
+      dnsProvider = "cloudflare";
+      environmentFile = /var/secrets/cloudflare;
+      webroot = null;
+    };
+    certs."onecastle.erikaszucs.com" = {
       dnsProvider = "cloudflare";
       environmentFile = /var/secrets/cloudflare;
       webroot = null;
