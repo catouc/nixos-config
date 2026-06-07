@@ -39,20 +39,12 @@
     nvidiaSettings = true;
   };
 
-  pb.windowmanager = {
-    enable = false;
-    useNvidiaVideoDriver = true;
-    configFile = ../../home/configs/szashune-i3;
-  };
+  pb.windowmanager.enable = true;
 
   # Conflicts with ssh.startAgent somehow
   # TODO: Investigate if I can just turn off all of gnome?
   services.gnome.gcr-ssh-agent.enable = false;
   programs.ssh.startAgent = true;
-
-  programs.niri = {
-    enable = true;
-  };
 
   security.polkit.enable = true;
 

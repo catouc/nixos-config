@@ -26,10 +26,7 @@
   networking.nameservers = [ "1.1.1.1" "4.4.4.4" ];
 
   pb.locale.enable = true;
-  pb.windowmanager = {
-    enable = false;
-    configFile = ../../home/configs/kolyarut-i3;
-  };
+  pb.windowmanager.enable = true;
 
   pb.redshift.enable = false;
 
@@ -48,9 +45,6 @@
   # TODO: Investigate if I can just turn off all of gnome?
   services.gnome.gcr-ssh-agent.enable = false;
   programs.ssh.startAgent = true;
-  programs.niri = {
-    enable = true;
-  };
 
   programs.steam.enable = true;
   programs.steam.gamescopeSession.enable = true;
