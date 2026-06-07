@@ -3,6 +3,7 @@
     ../modules/nix.nix
     ../modules/ntp.nix
     ../modules/security.nix
+    ../modules/terminal.nix
     ../../packages/spliit/nixos-module.nix
 
     ./hardware-configuration.nix
