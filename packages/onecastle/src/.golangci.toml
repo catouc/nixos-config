@@ -1,0 +1,16 @@
+version = "2"
+
+[linters]
+default = "all"
+disable = [
+	"wsl",        # wsl_v5 is the replacement
+	"gomodguard", # gomodguard_v2 is the replacement
+	"depguard",   # just too enterprisy might revisit to cage agents
+]
+
+[formatters]
+enable = [
+	"gci",
+	"goimports",
+	"golines",
+]
