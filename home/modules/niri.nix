@@ -78,16 +78,21 @@ in
           "Mod+Ctrl+k".action = move-window-up;
           "Mod+Ctrl+l".action = move-column-right;
 
+          "Mod+Shift+Ctrl+h".action = move-workspace-to-monitor-left;
+          "Mod+Shift+Ctrl+j".action = move-workspace-to-monitor-down;
+          "Mod+Shift+Ctrl+k".action = move-workspace-to-monitor-up;
+          "Mod+Shift+Ctrl+l".action = move-workspace-to-monitor-right;
+
           "Mod+Shift+h".action = focus-monitor-left;
           "Mod+Shift+j".action = focus-monitor-down;
           "Mod+Shift+k".action = focus-monitor-up;
           "Mod+Shift+l".action = focus-monitor-right;
           "Mod+Shift+c".action = center-column;
 
-          "Mod+Shift+Ctrl+h".action = move-column-to-monitor-left;
-          "Mod+Shift+Ctrl+j".action = move-column-to-monitor-down;
-          "Mod+Shift+Ctrl+k".action = move-column-to-monitor-up;
-          "Mod+Shift+Ctrl+l".action = move-column-to-monitor-right;
+          "Mod+Shift+Alt+h".action = move-column-to-monitor-left;
+          "Mod+Shift+Alt+j".action = move-column-to-monitor-down;
+          "Mod+Shift+Alt+k".action = move-column-to-monitor-up;
+          "Mod+Shift+Alt+l".action = move-column-to-monitor-right;
 
           "Mod+Comma".action = consume-window-into-column;
           "Mod+Period".action = expel-window-from-column;
