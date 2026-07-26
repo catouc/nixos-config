@@ -66,6 +66,7 @@
           (final: prev: { feed-to-epub = feed-to-epub.packages.${system}.default; })
           (final: prev: {b = feed-to-epub.packages.${system}.default; })
           self.overlays.spliit
+          self.overlays.stinkpot
           self.overlays.onecastle
           (final: prev: {
             inherit (prev.lixPackageSets.stable)
@@ -94,6 +95,10 @@
 
         onecastle = final: prev: {
           onecastle = final.callPackage ./packages/onecastle/onecastle.nix { };
+        };
+
+        stinkpot = final: prev: {
+          stinkpot = final.callPackage ./packages/stinkpot/stinkpot.nix { };
         };
       };
 

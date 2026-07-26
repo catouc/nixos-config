@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, lib, ... }:
 {
   home = {
     shellAliases = {
@@ -6,15 +6,19 @@
       kc = "kubectl";
       l = "ls -lisah";
     };
+
+    packages = with pkgs; [
+      stinkpot
+    ];
   };
 
-  programs.fzf.enable = true;
   programs.autojump.enable = true;
 
   programs.bash = {
     enable = true;
     initExtra = ''
       export EDITOR="vim"
+      eval "$(${pkgs.stinkpot}/bin/stinkpot init)"
     '';
   };
 
