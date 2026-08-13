@@ -6,10 +6,6 @@
       kc = "kubectl";
       l = "ls -lisah";
     };
-
-    packages = with pkgs; [
-      stinkpot
-    ];
   };
 
   programs.autojump.enable = true;
@@ -18,9 +14,10 @@
     enable = true;
     initExtra = ''
       export EDITOR="vim"
-      eval "$(${pkgs.stinkpot}/bin/stinkpot init)"
     '';
   };
+
+  programs.fzf.enable = true;
 
   programs.starship = {
     enable = true;
