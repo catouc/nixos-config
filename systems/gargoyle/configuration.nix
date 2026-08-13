@@ -54,20 +54,16 @@
     interfaces = {
       enp4s0.ipv4.addresses = [
         {
-          address = "192.168.1.10";
-          prefixLength = 24;
-        }
-        {
-          address = "10.10.0.10";
+          address = "10.1.0.10";
           prefixLength = 24;
         }
       ];
     };
     defaultGateway = {
-      address = "192.168.1.1";
+      address = "10.1.0.1";
       interface = "enp4s0";
     };
-    nameservers = ["192.168.1.1"];
+    nameservers = ["10.1.0.1"];
   };
   networking.nftables.enable = true;
   networking.nftables.flushRuleset = true;
