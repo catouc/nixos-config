@@ -142,7 +142,7 @@
       enableACME = true;
 
       locations."/" = {
-        proxyPass = "https://192.168.1.10";
+        proxyPass = "https://10.1.0.10";
         extraConfig = ''
           proxy_set_header Host photos.catouc.com;
           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
