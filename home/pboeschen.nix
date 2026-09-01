@@ -95,7 +95,9 @@ in
       gitlab-notifications
       k9s
       fd
+      glab
       kubectl
+      tiddlywiki
       nerd-fonts.droid-sans-mono
       okta-aws-cli
       vault
