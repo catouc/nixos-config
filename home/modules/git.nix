@@ -94,6 +94,10 @@ in
           autoSetupRemote = true;
         };
 
+        credential = {
+          helper = "cache --timeout 691200";
+        };
+
         # https://noogle.dev/f/builtins/mapAttrs
         url = lib.listToAttrs (lib.map (rewrite: {
           name = "${rewrite.to}";
