@@ -16,6 +16,7 @@
       thunderbird
       obsidian
       godot
+      jftui
     ];
   };
 
