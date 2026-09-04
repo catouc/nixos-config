@@ -15,6 +15,7 @@
       mullvad-vpn
       thunderbird
       obsidian
+      godot
     ];
   };
 
