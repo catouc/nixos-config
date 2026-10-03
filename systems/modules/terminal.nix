@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
-  environment.enableAllTerminfo = true;
+  environment.systemPackages = [ pkgs.ghostty.terminfo ];
 }
