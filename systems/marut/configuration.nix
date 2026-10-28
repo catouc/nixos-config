@@ -96,6 +96,11 @@
     };
   };
 
+  services.silverbullet = {
+    enable = true;
+    listenPort = 3333;
+  };
+
   services.nginx = {
     enable = true;
     recommendedProxySettings = false;
@@ -103,6 +108,17 @@
     virtualHosts."panapa.catouc.com" = {
       forceSSL = true;
       enableACME = true;
+    };
+
+    virtualHosts."notes.catouc.com" = {
+      forceSSL = true;
+      enableACME = true;
+
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:3333";
+        recommendedProxySettings = true;
+        extraConfig = "proxy_ssl_server_name on;";
+      };
     };
 
     virtualHosts."splitwise.boeschen.me" = {
