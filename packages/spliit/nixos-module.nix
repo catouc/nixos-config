@@ -2,29 +2,6 @@
 with lib;
 let
   cfg = config.pb.spliit;
-
-  prismaDepsEnv = pkgs.runCommand "prisma-7-config-node-modules" {} ''
-    mkdir -p $out/node_modules/prisma
-
-    ln -s ${pkgs.prisma_7}/lib/prisma/packages/config $out/node_modules/prisma/config
-  '';
-
-  prismaDeploy = pkgs.symlinkJoin {
-    name = "prisma-deploy";
-    paths = [ pkgs.prisma_7 ];
-    nativeBuildInputs = [ pkgs.makeWrapper ];
-    postBuild = ''
-      wrapProgram $out/bin/prisma \
-        --set PRISMA_SCHEMA_ENGINE_BINARY "${pkgs.prisma-engines_7}/bin/schema-engine" \
-        --set PRISMA_QUERY_ENGINE_BINARY "${pkgs.prisma-engines_7}/bin/query-engine" \
-        --set PRISMA_QUERY_ENGINE_LIBRARY "${pkgs.prisma-engines_7}/lib/libquery_engine.node" \
-        --set PRISMA_FMT_BINARY "${pkgs.prisma-engines_7}/bin/prisma-fmt" \
-        --set PRISMA_DISABLE_TELEMETRY "1" \
-        --prefix LD_LIBRARY_PATH : "${makeLibraryPath [ pkgs.openssl ]}" \
-        --prefix NODE_PATH : ${prismaDepsEnv}/node_modules \
-        --set HOME "/tmp"
-    '';
-  };
 in
 {
   options.pb.spliit = {
@@ -77,27 +54,23 @@ in
       wantedBy = [ "spliit.service" ];
 
       path = [
-        pkgs.nodejs
         pkgs.openssl
-        pkgs.tsx
       ];
 
       environment = {
-        # PRISMA_SCHEMA_ENGINE_BINARY="${pkgs.prisma-engines_7}/bin/schema-engine";
-        # PRISMA_QUERY_ENGINE_BINARY="${pkgs.prisma-engines_7}/bin/query-engine";
-        # PRISMA_QUERY_ENGINE_LIBRARY="${pkgs.prisma-engines_7}/lib/libquery_engine.node";
-        # PRISMA_FMT_BINARY="${pkgs.prisma-engines_7}/bin/prisma-fmt";
-        # LD_LIBRARY_PATH="${makeLibraryPath [ pkgs.openssl ]}";
-        # PRISMA_DISABLE_TELEMETRY="1";
-        # NODE_PATH="${pkgs.spliit}/share/spliit/node_modules:${pkgs.prisma_7}/lib/node_modules";
+        PRISMA_SCHEMA_ENGINE_BINARY="${pkgs.prisma-engines_6}/bin/schema-engine";
+        PRISMA_QUERY_ENGINE_BINARY="${pkgs.prisma-engines_6}/bin/query-engine";
+        PRISMA_QUERY_ENGINE_LIBRARY="${pkgs.prisma-engines_6}/lib/libquery_engine.node";
+        PRISMA_FMT_BINARY="${pkgs.prisma-engines_6}/bin/prisma-fmt";
+    	  LD_LIBRARY_PATH="${makeLibraryPath [ pkgs.openssl ]}";
+        PRISMA_DISABLE_TELEMETRY="1";
 	      POSTGRES_URL_NON_POOLING="postgres://${cfg.user}@localhost/${cfg.postgresDatabaseName}?host=${cfg.postgresHost}";
 	      POSTGRES_PRISMA_URL="postgres://${cfg.user}@localhost/${cfg.postgresDatabaseName}?host=${cfg.postgresHost}";
-        DATABASE_URL="postgres://spliit@localhost/spliit?host=/var/run/postgresql";
       };
 
       serviceConfig = {
         Type = "oneshot";
-        ExecStart = "${prismaDeploy}/bin/prisma migrate deploy --schema ${pkgs.spliit}/prisma/schema.prisma --config ${pkgs.spliit}/prisma/prisma.config.ts";
+        ExecStart = "${pkgs.prisma_6}/bin/prisma migrate deploy --schema ${pkgs.spliit}/prisma/schema.prisma";
         User = cfg.user;
         Group = cfg.group;
       };

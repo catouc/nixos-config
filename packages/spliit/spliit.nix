@@ -3,40 +3,37 @@
   lib,
   buildNpmPackage,
   fetchFromGitHub,
-  prisma_7,
-  prisma-engines_7,
+  prisma_6,
+  prisma-engines_6,
   openssl,
 }:
 
 buildNpmPackage {
 	pname = "spliit";
-	version = "1.30.0";
+	version = "1.19.1";
 
 	src = fetchFromGitHub {
 		owner = "spliit-app";
 		repo = "spliit";
-		rev = "1.30.0";
-		sha256 = "sha256-iOhCIFiEVGB/LGnvt+2RP57mQZBkybHaM53LPuutlfk=";
+		rev = "1.19.1";
+		sha256 = "sha256-a2xz91g2tCkW+Si5mN2VQ29BE1PXHg4BBNdYt/gnIUs=";
 	};
 
-	npmDepsHash = "sha256-uZuZOvsyUTslwYF1WMZENIxU2Guqe985hXF4b/D1VIM=";
-  makeCacheWritable = true;
-  npmFlags = [ "--legacy-peer-deps" ];
-  npmInstallFlags = [ "--legacy-peer-deps" ];
-	nativeBuildInputs = [ prisma_7 ];
-	buildInputs = [ prisma-engines_7 openssl ];
+	npmDepsHash = "sha256-XBaFjoJpB6jE97G4hADdHRyywUn8gcgY0fb3DpV3NsE=";
+	nativeBuildInputs = [ prisma_6 ];
+	buildInputs = [ prisma-engines_6 openssl ];
 
-	patches = [ ./package-lock.patch ];
+	patches = [ ./nextjs-standalone.patch ];
 
 	postPatch = ''
 	  sed -i "/postinstall/d" package.json
 	'';
 
 	preBuild = ''
-    export PRISMA_SCHEMA_ENGINE_BINARY="${prisma-engines_7}/bin/schema-engine"
-    export PRISMA_QUERY_ENGINE_BINARY="${prisma-engines_7}/bin/query-engine"
-    export PRISMA_QUERY_ENGINE_LIBRARY="${prisma-engines_7}/lib/libquery_engine.node"
-    export PRISMA_FMT_BINARY="${prisma-engines_7}/bin/prisma-fmt"
+    export PRISMA_SCHEMA_ENGINE_BINARY="${prisma-engines_6}/bin/schema-engine"
+    export PRISMA_QUERY_ENGINE_BINARY="${prisma-engines_6}/bin/query-engine"
+    export PRISMA_QUERY_ENGINE_LIBRARY="${prisma-engines_6}/lib/libquery_engine.node"
+    export PRISMA_FMT_BINARY="${prisma-engines_6}/bin/prisma-fmt"
     export LD_LIBRARY_PATH="${lib.makeLibraryPath [ openssl ]}"
     export PRISMA_DISABLE_TELEMETRY=1
     export POSTGRES_URL_NON_POOLING='postgres://localhost'
@@ -65,7 +62,6 @@ buildNpmPackage {
 
     mkdir -p $out/{share,bin,prisma}
 
-    cp ./prisma.config.ts $out/prisma
     cp -r prisma/* $out/prisma	
     cp -r .next/standalone $out/share/spliit
     cp -r public $out/share/spliit/public
@@ -74,10 +70,10 @@ buildNpmPackage {
     chmod +x $out/share/spliit/server.js
     makeWrapper $out/share/spliit/server.js $out/bin/spliit \
       --set-default PORT 3334 \
-      --set PRISMA_SCHEMA_ENGINE_BINARY ${prisma-engines_7}/bin/schema-engine \
-      --set PRISMA_QUERY_ENGINE_BINARY ${prisma-engines_7}/bin/query-engine \
-      --set PRISMA_QUERY_ENGINE_LIBRARY ${prisma-engines_7}/lib/libquery_engine.node \
-      --set PRISMA_FMT_BINARY ${prisma-engines_7}/bin/prisma-fmt \
+      --set PRISMA_SCHEMA_ENGINE_BINARY ${prisma-engines_6}/bin/schema-engine \
+      --set PRISMA_QUERY_ENGINE_BINARY ${prisma-engines_6}/bin/query-engine \
+      --set PRISMA_QUERY_ENGINE_LIBRARY ${prisma-engines_6}/lib/libquery_engine.node \
+      --set PRISMA_FMT_BINARY ${prisma-engines_6}/bin/prisma-fmt \
       --set PRISMA_DISABLE_TELEMETRY 1 \
       --prefix PATH : ${ lib.makeBinPath [openssl] } \
       --prefix LD_LIBRARY_PATH : ${ lib.makeLibraryPath [ openssl ]}
