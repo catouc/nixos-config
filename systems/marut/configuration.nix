@@ -115,17 +115,6 @@
       };
     };
 
-    virtualHosts."perlwith.catouc.com" = {
-      forceSSL = true;
-      enableACME = true;
-
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:3030";
-        extraConfig = "proxy_ssl_server_name on;";
-        proxyWebsockets = true;
-      };
-    };
-
     virtualHosts."monitoring.catouc.com" = {
       forceSSL = true;
       enableACME = true;
@@ -178,15 +167,6 @@
         ensureDBOwnership = true;
       }
     ];
-  };
-
-  virtualisation.oci-containers = {
-    backend = "podman";
-    containers.rustpad = {
-      # Note: The image will not be updated on rebuilds, unless the version label changes
-      image = "docker.io/ekzhang/rustpad:latest";
-      ports = ["3030:3030"];
-    };
   };
 
   security.acme = {
