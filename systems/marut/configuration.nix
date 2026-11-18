@@ -105,14 +105,19 @@
     enable = true;
     recommendedProxySettings = false;
     recommendedTlsSettings = true;
+    commonHttpConfig = ''
+      http2 off;
+    '';
     virtualHosts."panapa.catouc.com" = {
       forceSSL = true;
       enableACME = true;
+      http2 = false;
     };
 
     virtualHosts."notes.catouc.com" = {
       forceSSL = true;
       enableACME = true;
+      http2 = false;
 
       locations."/" = {
         proxyPass = "http://127.0.0.1:3333";
@@ -124,6 +129,7 @@
     virtualHosts."splitwise.boeschen.me" = {
       forceSSL = true;
       enableACME = true;
+      http2 = false;
 
       locations."/" = {
         proxyPass = "http://127.0.0.1:3000";
@@ -134,6 +140,7 @@
     virtualHosts."monitoring.catouc.com" = {
       forceSSL = true;
       enableACME = true;
+      http2 = false;
 
       locations."/" = {
         proxyPass = "http://127.0.0.1:8090";
@@ -145,6 +152,7 @@
     virtualHosts."pictures.catouc.com" = {
       forceSSL = true;
       enableACME = true;
+      http2 = false;
 
       locations."/" = {
         proxyPass = "https://10.1.0.10";
